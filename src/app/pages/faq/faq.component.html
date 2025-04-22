@@ -1,0 +1,33 @@
+<section class="pageheadone">
+  <img src="{{filepathabout}}{{pageBan}}" class="pagebanner" alt="{{pageData.pge_subtitle}}" title="{{pageData.pge_subtitle}}">
+  <div class="pageheader container">  
+    <div class="textbar">
+      <h1>{{pageData.pge_subtitle}}</h1>
+      <br/><span><i class="bi bi-house-fill"></i> Home <i class="bi bi-chevron-right"></i> {{pageData.pge_title}}</span>
+    </div>
+  </div>  
+</section>
+	
+
+	    <!-- ======= Frequently Asked Questions Section ======= -->
+    <section id="faq" class="faq container">
+    	<div *ngFor="let faq of tncdata">
+    		<h4>{{faq.cat_faqname}}</h4>
+		    <div ngbAccordion>
+				<div ngbAccordionItem *ngFor="let items of faq.subrec; let i = index">
+					<h2 ngbAccordionHeader *ngIf="items.faq_question != ''">
+						<button ngbAccordionButton class="question">Q. {{i+1}}) {{items.faq_question}}</button>
+					</h2>
+					<div ngbAccordionCollapse>
+						<div ngbAccordionBody>
+							<ng-template>
+								Answer: {{items.faq_answer}}
+							</ng-template>
+						</div>
+					</div>
+				</div>	
+			</div>
+
+		</div>
+    </section><!-- End Frequently Asked Questions Section -->
+

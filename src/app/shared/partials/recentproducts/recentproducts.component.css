@@ -1,0 +1,240 @@
+:root {
+  /*--swiper-scrollbar-bottom: 0;*/
+  /*--swiper-scrollbar-drag-bg-color: var(--theme);*/
+  /*--swiper-scrollbar-size: 10px;*/
+  /*--swiper-scrollbar-width: 400px;*/
+
+  --swiper-navigation-color: var(--theme);
+
+ 
+}
+
+
+
+
+
+/*===============================
+#swap image 
+===================================*/
+.recentprdholder{
+	border-radius: 5px;
+	border:2px solid #F2F2F2;
+	height: 300px;
+	padding: 0px 0px 0px 0px;
+	position: relative;
+	margin: 5px 5px 40px 5px;
+	/*width: 90%;*/
+}
+
+.recentprdholder .imgholdr .thumbnail{
+	/*width: 300px;*/
+	height: 240px;
+	text-align: center;
+	vertical-align: middle;
+	transition: .3s;
+	z-index: 1;
+	/*padding-top: 15%;*/
+	background-color: #fff;
+}
+
+.recentprdholder .imgholdr .thumbnail img{
+	max-width: 100%;
+	max-height: 240px;
+	transition: .6s;
+	z-index: 2;
+
+}
+
+.recentprdholder .imgholdr .caption{
+	background-color: #eeeeee;
+	padding:5px 15px 15px 15px;
+	height: 80px;
+	z-index: 2;
+	line-height: 20px;
+	position: relative;
+}
+
+.recentprdholder .lablenew{
+	position: absolute;
+	margin-top: -8px;
+	margin-left: 0px;
+	z-index: 20;
+}
+
+.recentprdholder .lablesale{
+	position: absolute;
+	margin-top: -5px;
+	margin-left: calc(100% - 66px);
+	z-index: 15;
+}
+
+.recentprdholder .lablebest{
+	position: absolute;
+	margin-top: 210px;
+	margin-left: 160px;
+	z-index: 20;
+}
+
+.prdholder .imgholdr .caption h6{
+	font-weight: bold;
+	/*font-family: 'Arial';*/
+	font-size: 14px;
+	color: #000;
+	margin: 5px 0 5px 0;
+}
+
+
+
+ngb-rating{
+	font-size: 16px;
+	color: #000;
+
+}
+.recentprdholder .imgholdr .caption .price .old{
+	text-decoration: line-through;
+	color: #000;
+	font-size: 14px;
+	/*margin-right: 20px;*/
+	font-family: 'Arial';
+}
+
+.recentprdholder .imgholdr .caption .price .new{	
+	color: #000;
+	font-size: 18px;
+	font-weight: bold;
+	/*font-family: 'Arial Black';*/
+	font-family: 'Arial';
+}
+
+.prodoverlay{
+    position: absolute;
+    width: 0;
+    height: 200px;
+    background-color: transparent;
+    right: 0px;
+    top: 20px;
+    z-index: 115;
+    transition: .3s;
+    overflow: hidden;
+}
+
+.prodoverlay .sociolink{
+    z-index: 116;
+    overflow: hidden;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--theme);
+    color: #fff;
+    font-size: 16px;
+    margin: 5px 5px 5px 5px;
+    padding: 3px 5px 5px 7px;
+
+}
+
+.prodoverlay .sociolink:hover{
+	background-color: #fff;
+    color: var(--theme);
+    border:1px solid var(--theme);
+    cursor: pointer;
+}
+
+.recentprdholder:hover .prodoverlay{
+    width: 80px;
+}
+
+
+.image-wrapper {
+  position: relative;
+}
+
+.image-wrapper .image{
+  opacity: 1;
+}
+
+.image-hover {
+  position: absolute;
+  top: 0;
+  left: 5%;
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
+.recentprdholder:hover .image-hover {
+  opacity: 1;
+}
+
+.recentprdholder:hover .image{
+  opacity: 0;
+}
+
+@media screen and (max-width: 450px){
+  .fullpage{display: none;}
+  .mobilepage{display: block;}
+
+  .recentnxtbtn{
+    background-color:  var(--theme);
+    color: #fff;
+    border:none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 25px;
+    position: absolute;
+    margin-top: 120px;
+    right: 20px;
+    z-index: 10;
+    /*text-align: center;*/
+  }
+
+  .recentprebtn{
+    background-color:  var(--theme);
+    color: #fff;
+    border:none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 25px;
+    position: absolute;
+    margin-top: 120px;
+    left: 20px;
+    z-index: 10;
+    /*text-align: center;*/
+  }
+
+}
+
+
+@media screen and (min-width: 576px){
+  .fullpage{display: block;}
+  .mobilepage{display: none;}
+
+  .recentnxtbtn{
+    background-color:  var(--theme);
+    color: #fff;
+    border:none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 25px;
+    position: absolute;
+    margin-top: 120px;
+    right: 90px;
+    z-index: 10;
+    /*text-align: center;*/
+  }
+
+  .recentprebtn{
+    background-color:  var(--theme);
+    color: #fff;
+    border:none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 25px;
+    position: absolute;
+    margin-top: 120px;
+    left: 90px;
+    z-index: 10;
+    /*text-align: center;*/
+  }
+}

@@ -1,0 +1,27 @@
+<div class="pt-4 pb-4">
+
+  <swiper-container appSwiperDirective [config]="config" init="false" class="w-full row">
+     <div class="swiper-slide  col-12 col-sm-12 col-md-12 col-lg-6  col-xl-6  col-xxl-6" *ngFor="let testimony of testimonydata">
+        <div class="diva">
+         	<div class="trainingtimoanials">
+         		<div class="contentt">                
+         			<p><i class="bi bi-quote invert"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{testimony.tst_feedback | slice:0:500}}... </p>                
+                    <div class="clietchunk">
+                        <img src="{{filepath}}{{testimony.tst_photo}}" alt="{{testimony.tst_company}}" title="{{testimony.tst_company}}">
+                        <h6>{{testimony.tst_name}}</h6><br/>
+                        <span>{{testimony.tst_designation}} - {{testimony.tst_company}}</span>
+                    </div>
+                    
+         		</div> 
+         	</div>
+         </div>
+     </div>
+   
+   
+     <div class="swiper-pagination"></div>
+  </swiper-container>
+
+
+  </div>
+
+

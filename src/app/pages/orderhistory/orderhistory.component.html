@@ -1,0 +1,202 @@
+<section class="pageheadone">
+  <img src="{{filepathabout}}{{pageBan}}" class="pagebanner" alt="{{pageData.pge_subtitle}}" title="{{pageData.pge_subtitle}}">
+  <div class="pageheader container">  
+    <div class="textbar">
+      <h1>{{pageData.pge_subtitle}}</h1>
+      <br/><span><i class="bi bi-house-fill"></i> Home <i class="bi bi-chevron-right"></i> {{pageData.pge_title}}</span>
+    </div>
+  </div>  
+</section>
+
+<section class="aboutus container">
+
+	<div class="" *ngIf="totalCount >=1">
+
+		<div class="row paginatr mb-4">
+			<div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2 mobispace">
+				<select class="form-control form-control-sm" [value]="rowPerPage" (change)="changePageSize($event)" >
+					<option value="5">5 Item's/Page</option>
+					<option value="10">10 Item's/Page</option>
+					<option value="25">25 Item's/Page</option>
+					<option value="50">50 Item's/Page</option>
+					<option value="100">100 Item's/Page</option>
+				</select>	
+			</div>
+			<div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2 mobispace">
+				<div>Go To Page <input placeholder="1" maxlength="3" size="1" [value]="currentPage" (keyup)="getPageProperty($event)" class="ronded" type="text"> / {{totalPage}}</div>			
+			</div>
+			<input type="hidden" name="searchblog" [(ngModel)]="searchtag" (change)="searchFor()">
+			<div class="col-12 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5 row mobispace">
+				
+				<div class="col-md-6 col-6">
+					<div class="dp-hidden position-absolute">
+						<div class="input-group">							
+							<input name="datepicker" class="form-control form-control-sm" ngbDatepicker #datepicker="ngbDatepicker" [autoClose]="'outside'" (dateSelect)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t" outsideDays="hidden" [startDate]="fromDate!" tabindex="-1"	/>
+							<ng-template #t let-date let-focused="focused">
+								<span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)" [class.faded]="isHovered(date) || isInside(date)" (mouseenter)="hoveredDate = date" (mouseleave)="hoveredDate = null">
+									{{ date.day }}
+								</span>
+							</ng-template>
+						</div>
+					</div>
+					<div class="input-group">
+						<input #dpFromDate class="form-control form-control-sm" placeholder="yyyy-mm-dd" name="dpFromDate" [value]="formatter.format(fromDate)" (input)="fromDate = validateInput(fromDate, dpFromDate.value)" />
+						<button class="btn btn-outline-secondary bi bi-calendar3 btn-sm" (click)="datepicker.toggle()" type="button"></button>
+					</div>
+				</div>
+				<!-- <label>&nbsp;&nbsp;<i class="bi bi-bi-arrow-left-right"></i>&nbsp;&nbsp;</label> -->
+				<div class="col-md-6 col-6">
+					<div class="input-group">						
+						<input #dpToDate class="form-control form-control-sm" placeholder="yyyy-mm-dd" name="dpToDate" [value]="formatter.format(toDate)" (input)="toDate = validateInput(toDate, dpToDate.value)" />
+						<button class="btn btn-outline-secondary bi bi-calendar3 btn-sm" (click)="datepicker.toggle()" type="button"></button>
+					</div>
+				</div>
+
+			</div>
+
+			
+
+			<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 col-xxl-3 stats text-end mobispace">
+				<span *ngIf="recordCount < totalCount">Showing {{recordStart}}-{{recordCount}} Orders Out Of {{totalCount}} </span>
+				<span *ngIf="recordCount >= totalCount">Only {{recordCount}} Orders Found</span>
+				&nbsp;&nbsp;&nbsp;
+			</div>
+		</div>
+
+
+	
+		<div class="wishitem row" *ngFor="let job of jobData; let i = index">
+			<div class="col-md-12 col-12 row">
+				<div class="col-md-1 col-12"></div>	
+				<div class="col-md-4 col-12" style="border-bottom: 1px solid #000;"><small><b>Order ID : </b></small>  <b> {{job.ord_id}}</b></div>
+				<div class="col-md-3 col-12" style="border-bottom: 1px solid #000;"><small>&nbsp;&nbsp;<b>Order Status : </b></small> <b> {{job.ord_status}}</b></div>
+				<div class="col-md-4 col-12" style="border-bottom: 1px solid #000;"><small>&nbsp;&nbsp;&nbsp;&nbsp;<b>Date : </b></small> <b> {{job.ord_createdAt | date}}</b></div>
+			</div>
+
+			<div class="col-md-1 mobhide"><span>{{i + 1}}</span></div>		
+			<div class="col-md-4 col-12 contnt">					
+				<b><u>Payment Details</u></b><br/>
+				<small><b>Billing Amount:</b></small>{{job.ord_total | currency : '₹'}}<br/>
+				<small><b>Coupon Applied:</b></small> {{job.ord_coupon}}<br/>
+				<small><b>Discount Applied:</b></small> {{job.ord_discount}}<br/>
+				<small><b>Discount Amount:</b></small>{{job.ord_discounted | currency : '₹'}}<br/>
+				<small><b>Amount Paid :</b></small>{{job.ord_amount | currency : '₹'}}<br/>
+				<small><b>Payment Mode:</b></small> {{job.ord_paymethod}}<br/>
+				<small><b>Payment Status:</b></small> {{job.ord_paystatus}}<br/>
+				<small><b>Payment Transaction ID:</b></small> {{job.ord_transid}}<br/>				
+				<small><b>Invoice #:</b>(PDF Downloadable)</small><a href="{{docPath}}{{job.ord_pdf}}" download target="_blank"> {{job.ord_invoice}}</a><br/>
+				
+			</div>
+			<div class="col-md-3 col-12">
+				<b><u>Shipping Details</u></b><br/>
+				<small><b>Total Itmes:</b></small> {{job.ord_items}}<br/>
+				<small><b>Tracking ID:</b></small> {{job.ord_trackingid}}<br/>				
+				<small><b>Courrier Company:</b></small> {{job.ord_shipmentpartner}}<br/>				
+				<small><b>Shipping Charges:</b></small> {{job.ord_shippingfees | currency : '₹'}}<br/>
+				<small><b>Last Updated:</b></small> {{job.ord_updatedAt | date}}<br/>
+				<small><b>Shipping Status:</b></small> {{job.ord_shippingfees}}<br/>					
+			</div>
+
+			<div class="col-md-3 col-12">
+				<b><u>Address</u></b><br />
+				<small><b>Billing Address:</b></small><br>{{job.ord_shipaddress}}<br />
+				<small><b>Shipping Address:</b></small><br /> {{job.ord_billaddress}}<br />
+			</div>
+
+
+			<div class="col-md-12 row fullpage">
+				<div class="col-md-1"></div>	
+				<div class="col-md-11" style="border-bottom: 1px solid #000; border-top: 1px solid #000;"><b>Ordered Items</b></div>				
+			</div>
+
+
+
+			<div class="col-md-12 row fullpage">
+				<div class="col-md-1"></div>	
+				<div class="col-md-11 row">
+					<table>
+						<thead>
+							<th>#</th>
+							<th width="120px;">Product</th>
+							<th></th>
+							<th>MRP</th>
+							<th>Price</th>
+							<th>Quantity</th>
+							<th>Sub-Total</th>
+
+						</thead>
+						<tbody>
+							<tr *ngFor="let item of job.items; let sn = index">
+								<td valign="top">{{sn+1}}</td>
+								<td valign="top"><img src="{{filepaththumbnail}}{{item.img_image}}" class="img-thumbnail" width="100px" alt="{{item.ctl_name}}" title="{{item.ctl_name}}"></td>
+								<td valign="top">
+									<b>{{item.ctl_name}}</b> <br/>
+									<small *ngIf="item.ctl_filter_size !=''">Size: <b>{{item.ctl_filter_size}}</b></small><small *ngIf="item.ctl_filter_color !=''"> | Color: <b>{{item.ctl_filter_color}}</b></small><br/>
+									<small>Brand:</small> <b>{{item.ctl_brand}}</b><br/>
+									<small>Category:</small> <b>{{item.ctl_catid}}</b><br/>									
+								</td>
+								<td valign="top">{{item.itm_mrp | currency : '₹'}}</td>
+								<td valign="top">{{item.ctl_discount | currency : '₹'}}</td>
+								<td valign="top">{{item.itm_quantity}}</td>
+								<td valign="top">{{item.itm_price * item.itm_quantity | currency : '₹'}}</td>								
+							</tr>
+						</tbody>
+					</table>
+				</div>				
+			</div>
+
+
+			<div class="col-12 row mobilepage"><b>Ordered Items</b></div>
+			<div class="col-12 mobilepage" *ngFor="let item of job.items; let sn = index">
+
+					<div><img src="{{filepaththumbnail}}{{item.img_image}}" class="img-thumbnail" width="100%" alt="{{item.ctl_name}}" title="{{item.ctl_name}}"></div>
+					<div>
+						<b>{{item.ctl_name}}</b>
+						<small *ngIf="item.ctl_filter_size !=''">Size: <b>{{item.ctl_filter_size}}</b></small><small *ngIf="item.ctl_filter_color !=''"> | Color: <b>{{item.ctl_filter_color}}</b></small><br/>
+						<small>Brand:</small> <b>{{item.ctl_brand}}</b><br/>
+						<small>Category:</small> <b>{{item.ctl_catid}}</b><br/>									
+					</div>
+					<div><small>MRP</small> {{item.itm_mrp | currency : '₹'}}</div>
+					<div class="row">
+						<div class="col-4"><small>Our Price</small><br/>{{item.ctl_discount| currency : '₹'}}</div>
+						<div class="col-4"><small>Quantity</small><br/>{{item.itm_quantity}}</div>
+						<div class="col-4"><small>Sub Total</small><br/>{{item.itm_price * item.itm_quantity| currency : '₹'}}</div>					
+					</div>
+			</div>
+
+
+			
+
+		</div>
+	
+
+
+		<div class="row elitepager ">
+			<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 text-center">
+				<button class="btn mb-3" (click)="getjoblist(1)" [disabled]="1 == currentPage">
+					<i class="bi bi-chevron-bar-left"></i>
+				</button>
+				<button class="btn mb-3" (click)="getjoblist('p')" [disabled]="btnPrevious">
+					<i class="bi bi-chevron-left"></i>
+				</button>
+				<button class="btn mb-3" *ngFor="let pages of pagesArray" [ngClass]="{'btnpageactive': currentPage === pages}" (click)="getjoblist(pages)">{{pages}}</button>
+				<button class="btn mb-3" (click)="getjoblist('n')" [disabled]="btnNext || totalPage == currentPage">
+					<i class="bi bi-chevron-right"></i>
+				</button>
+				<button class="btn  mb-3" (click)="getjoblist(totalPage)" [disabled]="totalPage == currentPage || totalCount === 0">
+					<i class="bi bi-chevron-bar-right"></i>
+				</button>
+			</div>
+		</div>
+
+		
+
+	</div>
+
+	<div class="alert alert-danger" *ngIf="totalCount == 0">
+	  <strong>Oops!</strong> You have not yet placed any orders with us so far.
+	</div>
+
+</section>
+
+

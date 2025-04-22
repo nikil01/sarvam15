@@ -1,0 +1,220 @@
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+#footer {
+  background: #020E28; 
+  color: #fff;
+  font-size: 14px;
+  margin-top: 50px;
+  display: block;
+}
+
+#footer .footer-top { 
+  border-bottom: 1px solid #3F495F;
+  padding: 40px 0 40px 0;
+  display: none;
+  visibility: none;
+}
+
+#footer .footer-top .left-side img{ 
+  /*filter: invert(1);*/
+  height: 60px;
+}
+
+@media screen and (max-width: 575px) {
+  #footer .footer-top .left-side img{ 	  
+	  height: 50px ;
+	  text-align: center;
+	  margin-left: auto;
+	  margin-right: auto;
+	}
+}
+
+#footer .footer-top .right-side input, input:focus, input:active{ 
+ 	outline-offset: none;
+ 	border-radius: 5px;
+ 	border:1px solid #3F495F;
+ 	padding: 20px 20px 20px 40px;
+ 	background: transparent;
+ 	width: 400px;
+ 	height: 40px;
+ 	fill: none;
+ 	color: #fff;
+ 	outline:none;
+}
+
+#footer .footer-top .right-side button{ 
+ 	padding: 10px 24px 10px 24px;
+ 	font-variant-caps: all;
+ 	font-weight: bold;
+ 	margin-left: 30px;
+}
+
+#footer .footer-top .right-side i{ 
+	color: #3F495F;
+ 	position: absolute;
+ 	padding: 15px;
+    min-width: 40px;
+    font-size: 14px;
+}
+
+#footer .footer-middle{
+	border-bottom: 1px solid #3F495F;
+  	padding: 50px 0 50px 0;
+}
+
+#footer .footer-middle .footer-info h6{
+	font-size: 20px;
+	color: #fff;
+	font-weight: bold;
+}
+
+#footer .footer-middle .footer-info li{
+	list-style: none;
+	margin-left: -30px;
+	margin-top: 15px;
+
+}
+
+#footer .footer-middle .footer-info li i{
+	color: var(--theme);
+	font-size: 18px;
+	padding-right: 15px;
+	float: left;
+}
+
+#footer .footer-middle .footer-info li, a{
+	color: #7E879C;
+	transition: 0.6s;
+}
+
+#footer .footer-middle .footer-info a:hover{
+	color: var(--theme);
+}
+
+.underline {
+  display: inline;
+  position: relative;
+  overflow: hidden;
+}
+.underline:after {
+  content: "";
+  position: absolute;
+  /*z-index: -1;*/
+  right: 0;
+  width: 0;
+  bottom: -5px;
+  background: #fff;
+  height: 1px;
+  transition-property: width;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+}
+.underline:hover:after,
+.underline:focus:after,
+.underline:active:after {
+  left: 0;
+  right: auto;
+  width: 100%;
+}
+
+#footer .footer-middle .footer-link h6{
+	font-size: 20px;
+	color: #fff;
+	font-weight: bold;
+}
+
+#footer .footer-middle .footer-link li{
+	list-style:'>';
+	margin-left: -15px;
+	margin-top: 15px;
+	color: #7E879C;
+	font-size: 15px;
+}
+
+#footer .footer-middle .footer-link li a:hover, a:active{
+	color: #fff;
+}
+
+
+#footer .footer-middle .footer-file h4{
+	font-size: 18px;
+	color: #fff;
+	font-weight: bold;
+	padding-top: 10px;
+}
+
+#footer .footer-middle .footer-file h6{
+	font-size: 14px;
+	color: #7E879C;	
+}
+
+#footer .footer-middle .footer-file li{
+	list-style: none;
+	margin-left: -15px;
+	margin-top: 15px;
+	color: #7E879C;
+	display: block;
+	transition: 0.6s;
+}
+
+#footer .footer-middle .footer-file li i{
+	font-size: 40px;
+	color: #fff;
+	float: left;
+	display: inline-block;
+	color: #7E879C;
+	padding-right: 15px;
+}
+
+#footer .footer-middle .footer-file li:hover h5{
+	color: var(--theme);
+	transition: 0.6s;
+}
+
+#footer .footer-middle .footer-file li:hover i{
+	color: var(--theme);
+	transition: 0.6s;
+}
+
+#footer .footer-down .copyright-text {
+	color: #7E879C;
+}
+
+#footer .footer-down .copyright-text a{
+	color: #fff;
+	font-weight: bold;
+	margin: 0px 5px 0px 5px;
+}
+
+#footer .footer-down .social-links li{
+	list-style: none;
+	transition: 0.6s;	
+	margin: 0px 5px 0px 5px;
+	padding: 3px 3px 3px 3px;
+	display: inline-block;
+	font-size: 22px;
+	color: #fff !important;
+}
+
+#footer .footer-down .social-links li a{	
+	color: #fff !important;
+}
+
+#footer .footer-down .copyright-text a:hover{
+	color: #fff;
+	
+	
+}
+
+#footer .footer-down .social-links li:hover i{
+	color: var(--theme);
+}
+.mobisocial{display: none;}
+@media screen and (max-width: 576px){
+  .copyright-text{
+  	font-size: 11px;
+  }
+  .mobisocial{display: block; margin-left: 25%;}
+}

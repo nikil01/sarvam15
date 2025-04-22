@@ -1,0 +1,77 @@
+<section class="pageheadone">
+	<img src="{{filepathabout}}{{pageBan}}" class="pagebanner" alt="{{pageData.pge_subtitle}}" title="{{pageData.pge_subtitle}}">
+	<div class="pageheader container">	
+		<div class="textbar">
+			<h1>{{pageData.pge_subtitle}}</h1>
+			<br/><span><i class="bi bi-house-fill"></i> Home <i class="bi bi-chevron-right"></i> {{pageData.pge_title}}</span>
+		</div>
+	</div>	
+</section>
+
+
+
+<section class="aboutus container" data-aos="zoom-in-up" data-aos-duration="3000">	
+
+	<!-- <div class="row paginatr ">
+		<div class="col-12 col-sm-4 col-md-4 col-lg-3 col-xl-3 col-xxl-4">
+			<select class="form-control form-control-sm" [value]="rowPerPage" (change)="changePageSize($event)" >
+				<option value="5">5 Item's/Page</option>
+				<option value="10">10 Item's/Page</option>
+				<option value="25">25 Item's/Page</option>
+				<option value="50">50 Item's/Page</option>
+				<option value="100">100 Item's/Page</option>
+			</select>	
+		</div>
+		<div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
+			<div>Go To Page <input placeholder="1" maxlength="3" size="1" [value]="currentPage" (keyup)="getPageProperty($event)" class="ronded" type="text"> / {{totalPage}}</div>			
+		</div>
+		<div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4 stats text-end">
+			<span *ngIf="recordCount < totalCount">Showing {{recordStart}}-{{recordCount}} Records Out Of {{totalCount}} </span>
+			<span *ngIf="recordCount >= totalCount">Only {{recordCount}} Records Found</span>
+			&nbsp;&nbsp;&nbsp;
+		</div>
+	</div> -->
+
+
+	<div class="row">
+			
+		<div class="col-md-6 col-sm-6 col-12 col-lg-4 col-xl-3 col-xxl-3 prdcatlog padding-0" rel="canonical" [routerLink]="['/elite-product/',eliteprod.seo_urlink]"  *ngFor="let eliteprod of elitedata">
+			<div class="prdholder">							
+				<div class="imgholdr">
+					<div class="thumbnail">				              
+						  <img src="{{filepaththumbnail}}{{eliteprod.img_image}}" class="img-responsive" alt="{{eliteprod.ctl_name}}"  title="{{eliteprod.ctl_name}}"/>
+		            </div>
+		            <div class="caption">				            		
+		                    <h6>{{eliteprod.ctl_name | slice:0:50}}</h6>			<span class="text-danger" *ngIf="eliteprod.ctl_prdid == 'yes'">Only Few Left</span>
+		            </div>
+				</div>			           
+		  	</div>
+        </div>
+
+	</div>
+
+
+
+
+	<div class="row elitepager ">
+			<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 text-center">
+				<button class="btn mb-3" (click)="getelitedata(1)" [disabled]="1 == currentPage">
+					<i class="bi bi-chevron-bar-left"></i>
+				</button>
+				<button class="btn mb-3" (click)="getelitedata('p')" [disabled]="btnPrevious">
+					<i class="bi bi-chevron-left"></i>
+				</button>
+				<button class="btn mb-3" *ngFor="let pages of pagesArray" [ngClass]="{'btnpageactive': currentPage === pages}" (click)="getelitedata(pages)">{{pages}}</button>
+				<button class="btn mb-3" (click)="getelitedata('n')" [disabled]="btnNext || totalPage == currentPage">
+					<i class="bi bi-chevron-right"></i>
+				</button>
+				<button class="btn  mb-3" (click)="getelitedata(totalPage)" [disabled]="totalPage == currentPage || totalCount === 0">
+					<i class="bi bi-chevron-bar-right"></i>
+				</button>
+			</div>
+	</div>
+
+
+
+</section>
+

@@ -1,0 +1,107 @@
+<section class="fullpage">
+  <button id="recent-prev-button" class="recentprebtn"><</button>
+  <button id="recent-next-button" class="recentnxtbtn">></button>
+<swiper-container appSwiperDirective [config]="config" init="false" class="w-full" navigation-next-el="#recent-next-button"
+      navigation-prev-el="#recent-prev-button">
+
+
+  <div class="swiper-slide col-md-6 col-sm-6 col-12 col-lg-4 col-xl-3 col-xxl-3" *ngFor="let product of recentProducts">       
+    <div class="recentprdholder">
+      <img src="assets/img/badgenew.png" class="lablenew" *ngIf="product.ctl_new == 'Yes'" alt="new" title="new">
+      <img src="assets/img/badgesale.png" class="lablesale" *ngIf="product.ctl_onsale == 'Yes'" alt="sale" title="sale">
+      
+      <div class="imgholdr">
+        <div class="thumbnail" (click)="reloadPage(product.seo_urlink)">
+          <div class="image-wrapper">
+            <img src="{{filepaththumbnail}}{{product.imgone}}" class="image img-responsive" alt="{{product.ctl_name}}" title="{{product.ctl_name}}"/>
+            <img src="{{filepaththumbnail}}{{product.imgtwo}}" class="image-hover img-responsive" alt="{{product.ctl_name}}" title="{{product.ctl_name}}"/>
+          </div>                  
+        </div>
+        <div class="caption" (click)="reloadPage(product.seo_urlink)">
+         
+          <h6>{{product.ctl_name | slice:0:60}}</h6>
+          <span class="price">
+            <span class="new" *ngIf="product.ctl_rate != product.ctl_discount">₹ {{product.ctl_discount}}/-</span>
+            &nbsp;<span *ngIf="product.ctl_rate >= product.ctl_discount" [ngClass]="{ 'old': product.ctl_rate > product.ctl_discount, 'normal': product.ctl_rate == product.ctl_discount }">₹ {{product.ctl_rate}}/-</span>
+            &nbsp;<small *ngIf="product.ctl_rate != product.ctl_discount" class="text-success">({{100-((product.ctl_discount/product.ctl_rate) * 100) |  number: '1.0-0'}}% off)</small>
+          </span>
+        </div>
+      </div>
+
+     <!--  <div class="prodoverlay">
+        <div class="sociolink" (click)="reloadPage(product.seo_urlink)"><i class="bi bi-eye-fill"></i></div>
+        <div class="sociolink" *ngIf="product.ctl_onsale == 'Yes' && product.ctl_stock >=1" (click)="addToCart(product.ctl_id)"><i class="bi bi-cart-fill"></i></div>
+        <div class="sociolink"><i class="bi bi-search"></i></div>
+        <div class="sociolink"><i class="bi bi-heart-fill" (click)="addToWishlist(product.ctl_id)"></i></div>
+      </div> -->
+    </div>        
+  </div>  
+    
+
+   
+     
+</swiper-container>
+
+
+</section>
+
+<section class="mobilepage">
+  
+
+
+<div class="row ">
+  <div class="col-1 col-sm-3 col-md-1 col-lg-1 col-xl-1 col-xxl-1"><button id="recent-prev-button" class="recentprebtn"><</button></div>
+  
+<div class="col-10 col-sm-6 col-md-10 col-lg-10 col-xl-10 col-xxl-10">
+
+
+<!-- <button id="recent-prev-button" class="recentprebtn"><</button>
+  <button id="recent-next-button" class="recentnxtbtn">></button> -->
+<swiper-container appSwiperDirective [config]="config" init="false" class="w-full" navigation-next-el="#recent-next-button"
+      navigation-prev-el="#recent-prev-button">
+
+
+  <div class="swiper-slide col-md-6 col-sm-6 col-12 col-lg-4 col-xl-3 col-xxl-3" *ngFor="let product of recentProducts">       
+    <div class="recentprdholder">
+      <img src="assets/img/badgenew.png" class="lablenew" *ngIf="product.ctl_new == 'Yes'" alt="new" title="new">
+      <img src="assets/img/badgesale.png" class="lablesale" *ngIf="product.ctl_onsale == 'Yes'" alt="sale" title="sale">
+      
+      <div class="imgholdr">
+        <div class="thumbnail" (click)="reloadPage(product.seo_urlink)">
+          <div class="image-wrapper">
+            <img src="{{filepaththumbnail}}{{product.imgone}}" class="image img-responsive" alt="{{product.ctl_name}}" title="{{product.ctl_name}}"/>
+            <img src="{{filepaththumbnail}}{{product.imgtwo}}" class="image-hover img-responsive" alt="{{product.ctl_name}}" title="{{product.ctl_name}}"/>
+          </div>                  
+        </div>
+        <div class="caption" (click)="reloadPage(product.seo_urlink)">
+         
+          <h6>{{product.ctl_name | slice:0:60}}</h6>
+          <span class="price">
+            <span class="new" *ngIf="product.ctl_rate != product.ctl_discount">₹ {{product.ctl_discount}}/-</span>
+            &nbsp;<span *ngIf="product.ctl_rate >= product.ctl_discount" [ngClass]="{ 'old': product.ctl_rate > product.ctl_discount, 'normal': product.ctl_rate == product.ctl_discount }">₹ {{product.ctl_rate}}/-</span>
+            &nbsp;<small *ngIf="product.ctl_rate != product.ctl_discount" class="text-success">({{100-((product.ctl_discount/product.ctl_rate) * 100) |  number: '1.0-0'}}% off)</small>
+          </span>
+        </div>
+      </div>
+
+     <!--  <div class="prodoverlay">
+        <div class="sociolink" (click)="reloadPage(product.seo_urlink)"><i class="bi bi-eye-fill"></i></div>
+        <div class="sociolink" *ngIf="product.ctl_onsale == 'Yes' && product.ctl_stock >=1" (click)="addToCart(product.ctl_id)"><i class="bi bi-cart-fill"></i></div>
+        <div class="sociolink"><i class="bi bi-search"></i></div>
+        <div class="sociolink"><i class="bi bi-heart-fill" (click)="addToWishlist(product.ctl_id)"></i></div>
+      </div> -->
+    </div>        
+  </div>  
+    
+
+   
+     
+</swiper-container>
+
+</div>
+  <div class="col-1 col-sm-3 col-md-1 col-lg-1 col-xl-1 col-xxl-1"><button id="recent-next-button" class="recentnxtbtn">></button></div>
+</div>
+
+
+
+</section>

@@ -1,0 +1,88 @@
+<section class="pageheadone">
+	<img src="{{filepathabout}}{{pageBan}}" class="pagebanner" alt="{{pageData.pge_subtitle}}" title="{{pageData.pge_subtitle}}">
+	<div class="pageheader container">	
+		<div class="textbar">
+			<h1>{{pageData.pge_subtitle}}</h1>
+			<br/><span><i class="bi bi-house-fill"></i> Home <i class="bi bi-chevron-right"></i> {{pageData.pge_title}}</span>
+		</div>
+	</div>	
+</section>
+
+<section class="bloglist container">
+	<div class="row">
+		<div class="menuside col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5 col-xxl-4">
+			
+			<div  class="catmenu sticky-top" data-aos="fade-right" data-aos-duration="3000">
+				
+				<h4>Search</h4>				
+				<div class="d-flex justify-content-center justify-content-md-between">
+					<input type="search" name="searchblog" [(ngModel)]="searchtag" (change)="searchFor()"><button class="anibutton btn1" style="width: 140px;" (click)="searchFor()">Search</button>
+				</div>
+
+				<h4>Other Posts</h4>		
+				<ul>
+					<li *ngFor="let blglist of blogList" rel="canonical" [routerLink]="['/blogs']" [queryParams]="{id: blglist.blg_id, title: blglist.seo_title }">{{blglist.blg_title}}</li>									
+				</ul>
+
+
+				<h4>Categories</h4>		
+				<ul>
+					<li [routerLink]="['/blog']" [queryParams]="{category: 'csr'}">CSR Activity</li>
+					<li [routerLink]="['/blog']" [queryParams]="{category: 'blog'}">Blogs</li>								
+				</ul>
+				
+			</div>
+
+
+		</div>
+
+
+		<div class="blogside col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7 col-xxl-8">			
+			    <div class="blogitem" *ngFor="let blog of blogData" rel="canonical" [routerLink]="['/blogs']" [queryParams]="{id: blog.blg_id, title: blog.seo_title }">
+			      <div class="img"><img src="{{filepathblog}}{{blog.blg_photo}}" style="width: 100%;" alt="{{blog.blg_title}}" title="{{blog.blg_title}}">
+			      	<!-- <button class="catbtn btn btn-sm btn-danger">{{blog.blg_csra? 'CSR Event' : 'Blog'}}</button> -->
+			      </div>
+			      <div class="blogtext">
+			      	<div class="dateauthor">
+			      		<i class="bi bi-calendar2-week"></i><span>{{blog.blg_createdAt | date}}</span>
+			      		<i class="bi bi-person-circle"></i><span>{{blog.blg_postedby}}</span>
+			      	</div>
+			      	<div class="bloghead">{{blog.blg_title}}</div>			      
+			      	<p class="brief">{{blog.blg_brief}}</p>
+			      	<div class="button text-end"><button class="anibutton btn1" [routerLink]="['/blogs']" [queryParams]="{id: blog.blg_id, title: blog.seo_title }">Read More</button></div>
+			      </div>
+			    </div>
+
+			    <div class="row elitepager ">
+					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 text-center">
+						<button class="btn mb-3" (click)="getblogdata(1)" [disabled]="1 == currentPage">
+							<i class="bi bi-chevron-bar-left"></i>
+						</button>
+						<button class="btn mb-3" (click)="getblogdata('p')" [disabled]="btnPrevious">
+							<i class="bi bi-chevron-left"></i>
+						</button>
+						<button class="btn mb-3" *ngFor="let pages of pagesArray" [ngClass]="{'btnpageactive': currentPage === pages}" (click)="getblogdata(pages)">{{pages}}</button>
+						<button class="btn mb-3" (click)="getblogdata('n')" [disabled]="btnNext || totalPage == currentPage">
+							<i class="bi bi-chevron-right"></i>
+						</button>
+						<button class="btn  mb-3" (click)="getblogdata(totalPage)" [disabled]="totalPage == currentPage || totalCount === 0">
+							<i class="bi bi-chevron-bar-right"></i>
+						</button>
+					</div>
+				</div>
+		</div>
+
+
+
+		
+	</div>
+
+	
+
+<!-- 	<div class="row">
+		<div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7 col-xxl-8">
+			
+		</div>
+		<div class="col-12 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-4"></div>
+	</div> -->
+</section>

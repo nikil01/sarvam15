@@ -1,0 +1,28 @@
+.picsum-img-wrapper img{
+	max-width: 100%;
+	max-height: 450px;
+
+  vertical-align: middle;
+  display: inline-block;
+    padding-top: calc(100% - 95%);
+}
+
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+   filter: invert(1);
+
+}
+
+
+.carousel-indicators{
+  position: absolute;
+  padding-top: 400px;
+}
+
+.carousel-indicators [data-bs-target] {
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  background-color: var(--theme);
+}

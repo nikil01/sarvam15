@@ -1,0 +1,167 @@
+<section class="pageheadone">
+  <img src="{{filepathabout}}{{pageBan}}" class="pagebanner" alt="{{pageData.pge_subtitle}}" title="{{pageData.pge_subtitle}}">
+  <div class="pageheader container">  
+    <div class="textbar">
+      <h1>{{pageData.pge_subtitle}}</h1>
+      <br/><span><i class="bi bi-house-fill"></i> Home <i class="bi bi-chevron-right"></i> {{pageData.pge_title}}</span>
+    </div>
+  </div>  
+</section>
+
+<section class="proddetails container">
+	
+<div class="row prddata">
+	<div class="col-md-12 col-sm-12 col-12 col-lg-6 col-xl-6 col-xxl-6" data-aos="zoom-in" data-aos-duration="3000">
+		<div class="imgfocus nomobi">
+			<lib-ngx-image-zoom [thumbImage]=imgbank [fullImage]=imgbankfull zoomMode='hover' [enableLens]="true" [circularLens]="true" [lensWidth]="200" [lensHeight]="200"></lib-ngx-image-zoom>
+		</div>
+		<div class="imgfocus yesmobi mb-3">
+          <!-- <img src="{{thumbimg}}" class="img-responsive"> -->
+
+          <swiper-container appSwiperDirective [config]="config" init="false" class="w-full" class="row">
+		    <div class="swiper-slide prdimg" *ngFor="let thmbimg of prdimages">
+		          <img src="{{filepaththumbnail}}{{thmbimg.img_image}}"  class="img-responsive" alt="{{elitedata.ctl_title}}" title="{{elitedata.ctl_title}}">
+		    </div>
+		  </swiper-container>
+
+
+        </div>
+        <section class="nomobi">
+		<div class="thumbnails d-flex justify-content-center justify-content-md-between ">
+			<ul>
+				<li *ngFor="let thmbimg of prdimages" class='' (click)="showthisimg(thmbimg.img_image)" [ngClass]="{'selected': thmbimg.img_image == focussedimg}"><img src="{{filepaththumbnail}}{{thmbimg.img_image}}" class="img-responsive"  alt="{{elitedata.ctl_title}}" title="{{elitedata.ctl_title}}"></li>
+			</ul>
+		</div>		
+		</section>	
+	</div>
+
+	
+	<div class="col-md-12 col-sm-12 col-12 col-lg-6 col-xl-6 col-xxl-6" data-aos="fade-left" data-aos-duration="3000">
+		
+		<h2>{{elitedata.ctl_title}}</h2>		
+		<span class="price"><span class="new" *ngIf="elitedata.ctl_rate != elitedata.ctl_discount">₹ {{elitedata.ctl_discount}}/-</span>&nbsp;&nbsp;<span *ngIf="elitedata.ctl_rate >= elitedata.ctl_discount" [ngClass]="{ 'old': elitedata.ctl_rate > elitedata.ctl_discount, 'normal': elitedata.ctl_rate == elitedata.ctl_discount }">₹ {{elitedata.ctl_rate}}/-</span>&nbsp;<span *ngIf="elitedata.ctl_rate != elitedata.ctl_discount" class="text-success">({{100-((elitedata.ctl_discount/elitedata.ctl_rate) * 100) |  number: '1.0-0'}}% off)</span></span>
+		&nbsp;&nbsp;&nbsp;
+		<span *ngIf="elitedata.ctl_fewleft == 'Yes'" class="text-danger scndline">Only Few Left</span>
+        <span *ngIf="elitedata.ctl_fewleft == 'Yes' && elitedata.ctl_limitedoffer == 'Yes'" class="text-danger scndline"> / </span>
+        <span *ngIf="elitedata.ctl_limitedoffer == 'Yes'" class="text-danger scndline">Limited Offer</span>
+		<!-- <img src="{{filepathbrand}}{{branddata.spl_logo}}" class="img-responsive brandimg" alt="{{branddata.spl_name}}"> -->
+			
+		<p>{{proddescription | slice:0:chrlit}}
+			<small *ngIf="proddescriptionsize > chrlit" class="text-danger">... <button  (click)="scrollDown(readmore)" class="text-danger btn btn-link btn-sm"> Read More</button></small>
+			<!-- <small *ngIf="proddescriptionsize > chrlit" (click)="loadfull()" class="text-success">...Read More</small> -->
+			<!-- <small *ngIf="chrlit > 300" (click)="loadless()" class="text-success">Show Less</small> -->
+		</p>
+		
+		
+		<p>Units in Pack: <span class="text-success"> {{elitedata.ctl_units}}</span></p>
+		<p>Availability: <span *ngIf="elitedata.ctl_stock >= 1" class="text-success"><i class="bi bi-check2-square"></i> In Stock</span><span *ngIf="elitedata.ctl_stock <= 0" class="text-danger"><i class="bi bi-x-square"></i> Out Of Stock</span></p>
+		<p class="d-flex align-items-left"><input type="number" name="pincode" [(ngModel)]="pincode" (keyup)="checkpin()" class="form-control" placeholder="Enter PIN for delivery" min="100001" max="999999" maxlength="6" minlength="6" style="width: 200px;">&nbsp;&nbsp;&nbsp; <span [ngClass]="{'deliverable': deliverystat == true, 'notdeliverable': deliverystat == false}"> {{deliverymsg}}</span></p>
+		
+
+		<!-- <div class="color" *ngFor="let filterItem of varientsItems"> 
+			<div [innerHTML]="elitedata.ctl_features"></div>
+		</div> -->
+		<p *ngIf="elitedata.ctl_filter_size != ''">Size: <span class="text-success"> {{elitedata.ctl_filter_size}}</span></p>
+		<div class="filter" *ngIf="isSize >= 1">
+			<p class="">Size Available</p><br/>
+			<ul>
+				<li class="filteritem mb-2" *ngFor="let filterSize of varientsSizes" [ngClass]="{ 'thissize':filterSize.ctl_filter_size == elitedata.ctl_filter_size }" (click)="changeSize(filterSize.ctl_filter_size)" style="width: auto;">
+				{{filterSize.ctl_filter_size}}</li>							
+			</ul>
+		</div>
+		
+
+		<div class="imgfltr" *ngIf="isColor >= 1">
+			<p>Colors Available</p><br/>
+			<ul>
+				<li class="filteritem mb-2" *ngFor="let filterColor of varientsColors" (click)="changeColor(filterColor.clr_name)" style="background-color: {{filterColor.clr_color}} ;" ngbTooltip="{{filterColor.clr_name}}" tooltipClass="my-custom-class"><i class="bi bi-check" *ngIf="filterColor.clr_name == elitedata.ctl_filter_color"></i>
+				</li>						
+			</ul>
+		</div>
+
+		<!-- <div class="color" *ngFor="let filterItem of varientsItems"> 
+			<div [innerHTML]="filterItem.ctl_features"></div>
+		</div> -->
+
+		
+
+		<div class="btns"> 
+			<div class="qntitypack d-flex align-items-center justify-content-between col-6 col-sm-6 col-md-6 col-lg-4  col-xl-3  col-xxl-3 mb-2">
+			  <button class="btn quantitybtn" (click)="qntityDecrease()"><i class="bi bi-dash"></i></button>
+			  <input type="number" class="form-control quantity" size="2" [(ngModel)]="quantity" (keyup)="qntityChange()" style="text-align: center;">
+			  <button class="btn quantitybtn" (click)="qntityIncrease()"><i class="bi bi-plus"></i></button>
+			</div>
+
+			<div class="subttl col-6 col-sm-6 col-md-6 col-lg-8  col-xl-9  col-xxl-9">Sub-Total : ₹ {{subtotal}}/-</div>
+		</div>
+
+		<div class="mainbtns notmblebtn">
+			<button class="anibutton btn1 mr2 text-light" (click)="addToCart(elitedata.ctl_id)" *ngIf="elitedata.ctl_sell == 'Yes' && elitedata.ctl_stock >=1"><i class="bi bi-cart-fill"></i> &nbsp; Add To Cart</button>		
+			<button class="anibutton btn1 text-light" (click)="addToWishlist(elitedata.ctl_id)"><i class="bi bi-heart"></i> Add To Wishlist</button>
+			<span style=""></span>
+		</div>
+		<br/><br/>
+
+		<div class="highlighter">
+			<!-- <div class="hilight d-flex align-items-center" *ngIf="elitedata.ctl_sku != ''"><h5>SKU: </h5><span>{{elitedata.ctl_sku}}</span></div> -->
+			<div class="hilight d-flex align-items-center" *ngIf="elitedata.ctl_manid != ''"><h5>{{elitedata.ctl_brand}} ID: </h5><span>{{elitedata.ctl_manid}}</span></div>
+			<div class="hilight d-flex align-items-center"><h5>Category: </h5><span>{{elitedata.ctl_catid}}</span></div>
+		</div>
+
+	</div>
+</div>
+
+
+
+<section class="extraainfo col-md-12 col-sm-12 col-12 col-lg-12 col-xl-12 col-xxl-12" data-aos="fade-down" data-aos-duration="3000" #readmore>
+	<div class="nvbtngrp">
+		<button class="btn btn-link nvbtn" (click)="showtab1()" [ngClass]="{'setcolor':tabone}">&nbsp;&nbsp;DESCRIPTION</button>
+		<button class="btn btn-link nvbtn" (click)="showtab2()" [ngClass]="{'setcolor':tabtwo}">SPECIFICATION</button>		
+	</div>
+		
+	
+
+<div *ngIf="tabone" class="tabcontent col-md-12 col-sm-12 col-12 col-lg-12 col-xl-12 col-xxl-12">
+		<div>{{elitedata.ctl_description}}</div>
+	</div>
+
+	<div *ngIf="tabtwo" class="tabcontent">
+		<div [innerHTML]="elitedata.ctl_features"></div>
+	</div>
+
+	<!-- <div *ngIf="tabthree" class="tabcontent">
+		<p>No Reviews.</p>
+	</div> -->
+</section>
+
+<!--  *ngIf="showRelprod" -->
+<section class="recentpoducts container col-xl-12" *ngIf="showRelprod">
+	<div class="headtitle"><h4>Related Product</h4><span class="redunderline"></span></div>
+	<app-relatedproducts (newItemEvent)="reloadPage($event)"></app-relatedproducts>
+</section>
+
+
+<section class="recentpoducts container  col-xl-12" >
+	<div class="headtitle"><h4>Recently Viewed Products</h4><span class="redunderline"></span></div>
+	<app-recentproducts (newItemEvent)="reloadPage($event)"></app-recentproducts>
+</section>
+
+
+
+
+
+
+</section>
+
+<section class="mobilebtns fixed-bottom">
+	<div class="row">
+		<div class="col-6 rightbrdr"><button class="btn btn-md btn-default text-light" (click)="addToCart(elitedata.ctl_id)" *ngIf="elitedata.ctl_sell == 'Yes' && elitedata.ctl_stock >=1"><i class="bi bi-cart-fill"></i> &nbsp; Add To Cart</button>	</div>
+		<div class="col-6 leftbrdr"><button class="btn btn-md btn-default text-light" (click)="addToWishlist(elitedata.ctl_id)"><i class="bi bi-heart"></i> Add To Wish</button></div>
+	</div>
+</section>
+
+
+	
+			
+
+<app-toasts aria-live="polite" aria-atomic="true"></app-toasts>

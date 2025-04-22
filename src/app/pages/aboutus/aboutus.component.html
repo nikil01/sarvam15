@@ -1,0 +1,87 @@
+<section class="pageheadone">
+	<img src="{{filepathabout}}{{pageBan}}" class="pagebanner" alt="{{pageData.pge_subtitle}}" title="{{pageData.pge_subtitle}}">
+	<div class="pageheader container">	
+		<div class="textbar">
+			<h1>{{pageData.pge_subtitle}}</h1>
+			<br/><span><i class="bi bi-house-fill"></i> Home <i class="bi bi-chevron-right"></i> {{pageData.pge_title}}</span>
+		</div>
+	</div>	
+</section>
+
+
+<section class="aboutus container" data-aos="fade-up" data-aos-duration="3000">
+	<div class="row col-12">
+		<div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 maincontent ">
+			<h2>{{AboutMainTexts.log_title}}</h2>			
+			<div [innerHTML]="AboutMainTexts.log_content" class="general"></div>			
+		</div>
+		<div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 pt-5" data-aos="zoom-out" data-aos-duration="3000">
+			<img src="{{filepathabout}}{{AboutMainTexts.log_imgone}}" class="img-responsive" width="100%" alt="{{AboutMainTexts.log_title}}" title="{{AboutMainTexts.log_title}}">
+		</div>
+	</div>
+</section>
+
+<section class="subcontent">		
+	<div class="container">
+		<div class="row pt-5 ">
+			<div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 patchdiv"  data-aos="fade-left" data-aos-duration="3000">
+				<h3>{{AboutFirstTexts.log_title}}</h3>	
+				<div [innerHTML]="AboutFirstTexts.log_content"></div>
+			</div>			
+			
+			<div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 patchdiv" data-aos="fade-right" data-aos-duration="3000">
+				<img src="{{filepathabout}}{{AboutFirstTexts.log_imgone}}" class="img-responsive" style="width: 100%;" alt="{{AboutFirstTexts.log_title}}" title="{{AboutFirstTexts.log_title}}">
+			</div>
+
+		</div>
+		<div class="row pb-5">		
+			<div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 patchdiv" data-aos="fade-right" data-aos-duration="3000" style="float: left;">
+				<img src="{{filepathabout}}{{AboutSecondTexts.log_imgone}}"  class="img-responsive" style="width: 100%;" alt="{{AboutSecondTexts.log_title}}" title="{{AboutSecondTexts.log_title}}">
+			</div>
+			
+			<div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 patchdiv" data-aos="fade-left" data-aos-duration="3000" style="float: right;">
+				<h3>{{AboutSecondTexts.log_title}}</h3>	
+				<div [innerHTML]="AboutSecondTexts.log_content"></div>
+			</div>
+
+			
+		</div>
+	</div>
+</section>
+
+
+<section class="team mt-5 mb-0 pt-4 pb-4" data-aos="zoom-in-up" data-aos-duration="3000">
+ 
+
+<div style="color: var(--theme)" class="topicline">
+    <svg xmlns="http://www.w3.org/2000/svg" width="39" height="16" viewBox="0 0 39 22" fill="none">
+        <path d="M39 0V3.5H2.6L0 0H39Z" fill="currentcolor"></path>
+        <path d="M39 7.20001V10.7H8.00002L5.40002 7.20001H39Z" fill="currentcolor"></path>
+        <path d="M39 14.4V17.9H13.5L10.9 14.4H39Z" fill="currentcolor"></path>
+    </svg>
+    <span>{{teamHeading.log_title}}</span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="39" height="16" viewBox="0 0 39 22" fill="none">
+        <path d="M0 0V3.5H36.4L39 0H0Z" fill="currentcolor"></path>
+        <path d="M0 7.20001V10.7H31L33.6 7.20001H0Z" fill="currentcolor"></path>
+        <path d="M0 14.4V17.9H25.5L28.2 14.4H0Z" fill="currentcolor"></path>
+    </svg>
+  </div>
+
+
+  <div class="blkhdngBox animHldr mt-2 mb-5" data-entrance="my-custom-animation">
+    <h6 class="animated fadeInUp blockHeading animObj target ">{{teamHeading.log_Headings}}</h6>
+  </div>
+  
+  <div class="container pt-4 pb-4">
+    <app-sliderteam></app-sliderteam>
+
+
+  </div>
+
+
+
+
+
+</section>
+
+

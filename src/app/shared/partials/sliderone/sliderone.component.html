@@ -1,0 +1,46 @@
+<div class="row mobicenter">
+  <div class="col-2 col-sm-3 col-md-1 col-lg-1 col-xl-1 col-xxl-1"><button id="my-prev-button" class="prebtn"><</button></div>
+  
+<div class="col-8 col-sm-6 col-md-10 col-lg-10 col-xl-10 col-xxl-10">
+  <swiper-container appSwiperDirective [config]="config" init="false" navigation-next-el="#my-next-button"
+      navigation-prev-el="#my-prev-button" >
+
+
+
+
+    <div class="swiper-slide" *ngFor="let supplier of supplierdata">
+      <div class="sliderman supbtn">
+        <div class="overlay"></div>
+        <div class="content">
+          <img src="{{filepath}}{{supplier.spl_logo}}" alt="{{supplier.pl_name}}" title="{{supplier.pl_name}}">
+        </div> 
+      </div>    
+    </div>
+
+   <!--   <div class="swiper-slide" *ngFor="let supplier of supplierdata">
+      <div class="sliderman supbtn">
+        <div class="overlay"></div>
+        <div class="content">
+          <img src="{{filepath}}{{supplier.spl_logo}}" alt="{{supplier.pl_name}}">
+        </div> 
+      </div>    
+    </div> -->
+
+
+
+
+
+
+
+
+
+  </swiper-container>
+</div>
+  <div class="col-2 col-sm-3 col-md-1 col-lg-1 col-xl-1 col-xxl-1"><button id="my-next-button" class="nxtbtn">></button></div>
+</div>
+
+
+
+
+<!--     <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div> -->

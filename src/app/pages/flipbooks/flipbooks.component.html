@@ -1,0 +1,57 @@
+<section class="pageheadone">
+  <img src="{{filepathabout}}{{pageBan}}" class="pagebanner" alt="{{pageData.pge_subtitle}}" title="{{pageData.pge_subtitle}}">
+  <div class="pageheader container">  
+    <div class="textbar">
+      <h1>{{pageData.pge_subtitle}}</h1>
+      <br/><span><i class="bi bi-house-fill"></i> Home <i class="bi bi-chevron-right"></i> {{pageData.pge_title}}</span>
+    </div>
+  </div>  
+</section>
+
+
+<section class="aboutus container" data-aos="zoom-in-up" data-aos-duration="3000">		
+
+
+	<div class=" row">
+			
+		<div class="col-md-3 col-sm-3 col-12 col-lg-3 col-xl-3 col-xxl-3 flipbook" *ngFor="let catalogue of flpbooks">
+			<a rel="canonical" href="{{catalogue.ctl_fliplink}}">
+			<div class="prdholder">							
+				<div class="imgholdr">
+					<div class="thumbnail">				              
+						  <img src="{{filepath}}{{catalogue.ctl_photo}}" class="" alt="{{catalogue.ctl_title}}" title="{{catalogue.ctl_title}}"/>
+		            </div>
+		            <div class="caption">				            		
+		                    <h6>{{catalogue.ctl_title}}</h6>				                    
+		            </div>
+				</div>			           
+		  	</div>
+		  	</a>
+        </div>
+
+	</div>
+
+
+
+
+	<div class="row elitepager ">
+			<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 text-center">
+				<button class="btn mb-3" (click)="getFlipBook(1)" [disabled]="1 == currentPage">
+					<i class="bi bi-chevron-bar-left"></i>
+				</button>
+				<button class="btn mb-3" (click)="getFlipBook('p')" [disabled]="btnPrevious">
+					<i class="bi bi-chevron-left"></i>
+				</button>
+				<button class="btn mb-3" *ngFor="let pages of pagesArray" [ngClass]="{'btnpageactive': currentPage === pages}" (click)="getFlipBook(pages)">{{pages}}</button>
+				<button class="btn mb-3" (click)="getFlipBook('n')" [disabled]="btnNext || totalPage == currentPage">
+					<i class="bi bi-chevron-right"></i>
+				</button>
+				<button class="btn  mb-3" (click)="getFlipBook(totalPage)" [disabled]="totalPage == currentPage || totalCount === 0">
+					<i class="bi bi-chevron-bar-right"></i>
+				</button>
+			</div>
+	</div>
+
+
+
+</section>

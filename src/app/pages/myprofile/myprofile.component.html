@@ -1,0 +1,100 @@
+<section class="pageheadone">
+  <img src="{{filepathabout}}{{pageBan}}" class="pagebanner" alt="{{pageData.pge_subtitle}}" title="{{pageData.pge_subtitle}}">
+  <div class="pageheader container">  
+    <div class="textbar">
+      <h1>{{pageData.pge_subtitle}}: {{usrname}}</h1>
+      <br/><span><i class="bi bi-house-fill"></i> Home <i class="bi bi-chevron-right"></i> {{pageData.pge_title}}</span>
+    </div>
+  </div>  
+</section>
+
+<section class="aboutus  container">
+	
+
+
+<div class="row col-12">
+  <div class="col-12 col-md-3 col-md-3 col-lg-3 col-xl-3 col-xxl-3 sidebtns">
+    <ul>
+      <li><a href="" class="btn btn-sm anibutton btn1 inpage" [routerLink]="['/profile']">My Profile <i class="bi bi-chevron-right"></i></a></li>
+      <li><a href="" class="btn btn-sm anibutton btn1" [routerLink]="['/reset-password']">Change Password</a></li>
+     <!--  <li><a href="" class="btn btn-sm anibutton btn1" [routerLink]="['/purchase-orders']">Purchase Order</a></li>
+      <li><a href="" class="btn btn-sm anibutton btn1" [routerLink]="['/addresses']">Saved Addresses</a></li> -->
+    </ul>
+    
+  </div>
+  <div class="col-12 col-md-9 col-md-9 col-lg-9 col-xl-9 col-xxl-9">
+    
+		<!-- Registration 2 - Bootstrap Brain Component -->
+			<div class=" py-0 py-md-0">
+			  <div class="container">
+			    <div class="row justify-content-md-center">
+			      <div class="col-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+			        <div class="bg-light p-4 p-md-5 rounded shadow-sm">
+			          <div class="row">
+			            <div class="col-12">
+			              <div class="mb-5">
+			                <h2 class="h3">Profile</h2>
+			                <h3 class="fs-6 fw-normal text-secondary m-0">Update your profile</h3>
+			              </div>
+			            </div>
+			          </div>
+			          <form [formGroup]="regfrm" (ngSubmit)="onSubmit()" autocomplete="off">
+			            <div class="row gy-3 gy-md-4 overflow-hidden">
+			              <div class="col-12">
+			                <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
+			                <input type="text" class="form-control" name="name" id="name" placeholder="Full Name" required formControlName="name" [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" autocomplete="off">
+			                <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+			                  <div *ngIf="f['name'].errors['required']">Fullname is required</div>
+			                </div>
+			              </div>
+			              <div class="col-12">
+			                <label for="email" class="form-label">E-Mail <span class="text-danger">*</span></label>
+			                <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" required formControlName="email" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" autocomplete="off">
+			                <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+			                  <div *ngIf="f['email'].errors['required']">Email is required</div>
+			                  <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+			                </div>
+			              </div>
+			              <div class="col-12">
+			                <label for="mobile" class="form-label">Mobile <span class="text-danger">*</span></label>
+			                <input type="number" class="form-control" name="mobile" id="mobile" placeholder="10 Digit Mobile Number" required formControlName="mobile" [ngClass]="{ 'is-invalid': submitted && f['mobile'].errors }" autocomplete="off" min="6111111111" max="9999999999" maxlength="10">
+			                 <div *ngIf="submitted && f['mobile'].errors" class="invalid-feedback">
+			                  <div *ngIf="f['mobile'].errors['required']">Mobile is Required</div>
+			                  <div *ngIf="f['mobile'].errors['minLength']">invalid Mobile Number</div>
+			                  <div *ngIf="f['mobile'].errors['maxLength']">invalid Mobile Number</div>
+			                  <div *ngIf="f['mobile'].errors['min']">Invalid Mobile Number</div>
+			                  <div *ngIf="f['mobile'].errors['max']">Invalid Mobile Number</div>
+			                </div>
+			              </div> 
+
+			              <div class="col-12">
+			                <label for="company" class="form-label">Company Name <span class="text-danger"></span></label>
+			                <input type="text" class="form-control" name="company" id="company" placeholder="Name of the company you are representing" required formControlName="company" autocomplete="off">               
+			              </div>
+
+			              <div class="col-12">
+			                <div class="d-grid">                 
+			                  <button class="anibutton btn1" type="submit">Update</button>
+			                </div>
+			              </div>
+			            </div>
+			          </form>
+			         
+			         
+			        </div>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+
+
+
+
+
+  </div>
+</div>
+
+</section>
+
+
+<app-toasts aria-live="polite" aria-atomic="true"></app-toasts>

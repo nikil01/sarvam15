@@ -1,0 +1,181 @@
+<section class="pageheadone">
+	<img src="{{filepathabout}}{{pageBan}}" class="pagebanner" alt="{{pageData.pge_subtitle}}" title="{{pageData.pge_subtitle}}">
+	<div class="pageheader container">	
+		<div class="textbar">
+			<h1>{{pageData.pge_subtitle}}</h1>
+			<br/><span><i class="bi bi-house-fill"></i> Home <i class="bi bi-chevron-right"></i> {{pageData.pge_title}}</span>
+		</div>
+	</div>	
+</section>
+
+
+<section class="cart container" style="padding-left: 10px; padding-right: 10px;">
+
+
+
+<div  *ngIf="iswishlistEmpty">
+
+	
+
+
+	<table class="table table-striped fullpage">
+		<thead>
+			<tr>
+				<th class="col-12 col-sm-1 col-md-1 col-lg-1 col-xl-1 col-xxl-1">#</th>
+				<th class="col-12 col-sm-1 col-md-1 col-lg-1 col-xl-1 col-xxl-1">PRODUCT</th>
+				<th class="col-12 col-sm-7 col-md-7 col-lg-7 col-xl-7 col-xxl-7"></th>
+				<th class="col-12 col-sm-1 col-md-1 col-lg-1 col-xl-1 col-xxl-1">PRICE</th>
+				<th class="col-12 col-sm-1 col-md-1 col-lg-1 col-xl-1 col-xxl-1">QUANTITY</th>
+				<th class="col-12 col-sm-1 col-md-1 col-lg-1 col-xl-1 col-xxl-1">SUBTOTAL</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let item of cartlist; index as i">
+				<td scope="row"><button class="btnround btn btn-sm btn-danger" (click)="deleteCartItem(item.crt_id)"><i class="bi bi-x-circle"></i></button></td>
+				<td><a href="" [routerLink]="['/product/',item.seo_urlink]"><img src="{{filepaththumbnail}}{{item.img_image}}" class="img-responsive" height="100px" alt="{{item.ctl_name}}" title="{{item.ctl_name}}"></a></td>
+				<td>
+					<a href="" [routerLink]="['/product/',item.seo_urlink]"><h6>{{item.ctl_name}}</h6></a>
+					{{item.ctl_catid}} - {{item.ctl_brand}}<br/>
+					<span *ngIf="item.ctl_filter_size != ''"> Size: {{item.ctl_filter_size}}</span>
+					<span *ngIf="item.ctl_filter_size != '' && item.ctl_filter_color != ''"> / </span>
+					<span *ngIf="item.ctl_filter_color != ''">Color: {{item.ctl_filter_color}}</span>
+				</td>
+				<td><span class="inr-blk">₹ {{item.ctl_discount | currency: 'INR' : ''}}</span></td>
+				<td>				
+					<div class="qntitypack d-flex align-items-center justify-content-between">
+					  <button class="btn quantitybtn" (click)="qntityDecrease(item.crt_prdid, item.crt_id, item.crt_quantity)"><i class="bi bi-dash"></i></button>
+					  <input type="number" class="form-control quantity" size="2" [(ngModel)]="item.crt_quantity" style="text-align: center;" (keyup)="qntityChange(item.crt_prdid, item.crt_id, $event)">
+					  <button class="btn quantitybtn" (click)="qntityIncrease(item.crt_prdid, item.crt_id, item.crt_quantity)"><i class="bi bi-plus"></i></button>
+					</div>
+				</td>
+				<td><span class="inr-blk"> ₹ {{item.crt_quantity * item.ctl_discount | currency: 'INR' : '' : '2.2-2'}} </span></td>
+			</tr>
+		</tbody>
+		<thead *ngIf="couponStatus">
+			<tr>
+				<th class="col-12 col-sm-1 col-md-1 col-lg-1 col-xl-1 col-xxl-1"></th>
+				<th class="col-12 col-sm-1 col-md-1 col-lg-1 col-xl-1 col-xxl-1"></th>
+				<th class="col-12 col-sm-7 col-md-7 col-lg-7 col-xl-7 col-xxl-7"></th>
+				<th class="col-12 col-sm-1 col-md-1 col-lg-1 col-xl-1 col-xxl-1"></th>
+				<th class="col-12 col-sm-1 col-md-1 col-lg-1 col-xl-1 col-xxl-1 text-end" >Discount</th>
+				<th class="col-12 col-sm-1 col-md-1 col-lg-1 col-xl-1 col-xxl-1 text-end"><span class="inr-white">₹ {{couponDiscount | currency: 'INR' : ''}}</span></th>
+			</tr>
+		</thead>		
+		<thead>
+			<tr>
+				<th class="col-12 col-sm-1 col-md-1 col-lg-1 col-xl-1 col-xxl-1"></th>
+				<th class="col-12 col-sm-1 col-md-1 col-lg-1 col-xl-1 col-xxl-1"></th>
+				<th class="col-12 col-sm-7 col-md-7 col-lg-7 col-xl-7 col-xxl-7"></th>
+				<th class="col-12 col-sm-1 col-md-1 col-lg-1 col-xl-1 col-xxl-1"></th>
+				<th class="col-12 col-sm-1 col-md-1 col-lg-1 col-xl-1 col-xxl-1 text-end" >TOTAL</th>
+				<th class="col-12 col-sm-1 col-md-1 col-lg-1 col-xl-1 col-xxl-1 text-end"><span class="inr-white">₹ {{subtotal | currency: 'INR' : '' : '2.2-2'}}</span></th>
+			</tr>
+		</thead>
+	</table>
+
+
+
+	<div class="mobilepage mobispace" *ngFor="let item of cartlist; index as i">
+		
+				<div class="col-12">
+					<button class="btnround btn btn-sm btn-danger" (click)="deleteCartItem(item.crt_id)"><i class="bi bi-x-circle"></i></button>
+				</div>
+				<div class="col-12">
+					<a href="" [routerLink]="['/product/',item.seo_urlink]">
+						<img src="{{filepaththumbnail}}{{item.img_image}}" class="img-responsive" height="100%" alt="{{item.ctl_name}}" title="{{item.ctl_name}}">
+					</a>
+				</div>
+				<div class="col-12">
+					<a href="" [routerLink]="['/product/',item.seo_urlink]"><h6>{{item.ctl_name}}</h6></a>
+					{{item.ctl_catid}} - {{item.ctl_brand}}<br/>
+					<span *ngIf="item.ctl_filter_size != ''"> Size: {{item.ctl_filter_size}}</span>
+					<span *ngIf="item.ctl_filter_size != '' && item.ctl_filter_color != ''"> / </span>
+					<span *ngIf="item.ctl_filter_color != ''">Color: {{item.ctl_filter_color}}</span>
+					<span class="inr-blk">Selling Price ₹ {{item.ctl_discount | currency: 'INR' : ''}}</span>
+				</div>
+				<div class="row">
+
+					<div class="col-6">				
+						<div class="qntitypack d-flex align-items-center justify-content-between">
+						  <button class="btn quantitybtn" (click)="qntityDecrease(item.crt_prdid, item.crt_id, item.crt_quantity)"><i class="bi bi-dash"></i></button>
+						  <input type="number" class="form-control quantity" size="2" [(ngModel)]="item.crt_quantity" style="text-align: center;" (keyup)="qntityChange(item.crt_prdid, item.crt_id, $event)">
+						  <button class="btn quantitybtn" (click)="qntityIncrease(item.crt_prdid, item.crt_id, item.crt_quantity)"><i class="bi bi-plus"></i></button>
+						</div>
+					</div>
+					<div class="col-6">
+						<span class="inr-blk"><b>₹ {{item.crt_quantity * item.ctl_discount | currency: 'INR' : '' : '2.2-2'}}</b></span>
+					</div>
+					
+				</div>
+				
+				
+			
+	</div>
+<section class="fullpage">
+	<div class="row">
+		<div class="text-start col-md-6">
+			<input type="text" name="coupon" [(ngModel)]="couponcode" class="form-control-md " placeholder="Coupon Code">
+			<button class="anibutton btn1" (click)="checkCouponCode()">APPLY COUPON CODE</button>
+			<br/>
+			<span class="text-start " *ngIf="couponMessage != ''" [innerHTML]="couponMessage"></span>
+		</div>
+
+		<div class="text-end col-md-6">
+			<p class=""><input type="number" name="pincode" id="pincode" [(ngModel)]="pincode" (keyup)="checkpin()" class="form-control-md" placeholder="Enter PIN to Check Deliverable" min="100001" max="999999" maxlength="6" minlength="6" style="width: 280px;"><br/><span [ngClass]="{'deliverable': deliverystat == true, 'notdeliverable': deliverystat == false}"> {{deliverymsg}}</span></p>
+
+			
+		</div>
+
+		<div class="text-start col-md-6 "></div>
+		<div class="text-end col-md-6">
+			<button class="anibutton btn1 btn-lg btncst" [routerLink]="['/shopnow']">Continue Shopping</button>&nbsp; &nbsp;&nbsp;			
+			<button class="anibutton btn1 btn-lg btncst" (click)="checkout()" *ngIf="deliverystat == true">PROCEED TO CHECKOUT</button>
+			<button class="anibutton btn1 btn-lg btncst" *ngIf="deliverystat == false" (click)="setFocus()">Check Delivarable PIN Before Checkout</button>
+
+		</div>
+
+	</div>
+</section>
+		
+
+
+		<hr/>
+	<div class="row mobicentr mobilepage mt-5">
+		<div class="text-centre col-12 mobispace">
+			<input type="text" name="coupon" [(ngModel)]="couponcode" class="form-control-sm mobicentr" placeholder="Coupon Code">
+			<button class="anibutton btn1 col-12 " (click)="checkCouponCode()">APPLY COUPON CODE</button>
+			<br/>
+			<span class="text-centre col-12 col-12 mobicentr" *ngIf="couponMessage != ''" [innerHTML]="couponMessage"></span>
+		</div>
+
+		<div class="text-centre col-12 mobispace">
+			<p class="col-12"><input type="number" name="pincode" id="pincode" [(ngModel)]="pincode" (keyup)="checkpin()" class="form-control-md" placeholder="Enter PIN to Check Deliverable" min="100001" max="999999" maxlength="6" minlength="6" style="width: 280px;"><br/><span [ngClass]="{'deliverable': deliverystat == true, 'notdeliverable': deliverystat == false}"> {{deliverymsg}}</span></p>
+
+			
+		</div>
+
+		
+		<div class="text-centre col-md-6 col-12">
+			
+			<button class="anibutton btn1 btn-lg btncst mobispace col-12" (click)="checkout()" *ngIf="deliverystat == true">PROCEED TO CHECKOUT</button>
+			<button class="anibutton btn1 btn-lg btncst mobispace col-12" *ngIf="deliverystat == false" (click)="setFocus()">Check Delivarable PIN Before Checkout</button>
+			<button class="anibutton btn1 btn-lg btncst mobispace col-12" [routerLink]="['/shopnow']">Continue Shopping</button>
+
+		</div>
+
+	</div>
+
+
+</div>
+	
+
+
+
+	<div class="alert alert-danger" *ngIf="!iswishlistEmpty">
+	  <strong>Oop's!</strong> You have no Products in your cart, Continue Shopping
+	</div>
+
+</section>
+
+
+<app-toasts aria-live="polite" aria-atomic="true"></app-toasts>

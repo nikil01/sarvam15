@@ -1,0 +1,102 @@
+<section class="pageheadone">
+  <img src="{{filepathabout}}{{pageBan}}" class="pagebanner" alt="{{pageData.pge_subtitle}}" title="{{pageData.pge_subtitle}}">
+  <div class="pageheader container">  
+    <div class="textbar">
+      <h1>{{pageData.pge_subtitle}}: {{usrname}}</h1>
+      <br/><span><i class="bi bi-house-fill"></i> Home <i class="bi bi-chevron-right"></i> {{pageData.pge_title}}</span>
+    </div>
+  </div>  
+</section>
+
+<section class="aboutus  container">
+
+<div class="row col-12">
+ 
+  <div class="col-12 col-md-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+    
+		<!-- Registration 2 - Bootstrap Brain Component -->
+			<div class=" py-0 py-md-0">
+			  <div class="container">
+			    <div class="row justify-content-md-center">
+			      <div class="col-12 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+			        <div class="bg-light p-4 p-md-5 rounded shadow-sm">
+			          <div class="row">
+			            <div class="col-12">
+			              <div class="mb-5">
+			                <h2 class="h3">Change Password</h2>
+			                <h3 class="fs-6 fw-normal text-secondary m-0">Enter OTP Recived to Initiate</h3>
+			              </div>
+			            </div>
+			          </div>
+			          <form [formGroup]="regfrm" (ngSubmit)="onSubmit()" autocomplete="off">
+			            <div class="row gy-3 gy-md-4 overflow-hidden">
+
+			              <div class="col-12">
+			                <label for="otp" class="form-label">OTP <span class="text-danger">* <small>{{btnerr}}</small></span></label>
+			                <div class="input-group">
+			                	<input type="number" class="form-control" name="otp" id="otp" placeholder="OTP" required formControlName="otp" [ngClass]="{ 'is-invalid': submitted && f['otp'].errors }" autocomplete="off" min="000001" max="999999" maxlength="6">
+			                	<button class="btn btn-danger" type="button" (click)="generateOtp()" [disabled]="sendotpbtn != 'Re-Generate OTP'">
+			                			<div  *ngIf="sendotpbtn == 'Re-Generate OTP'">{{sendotpbtn}} </div>
+			                			<div class="spinner-border spinner-border-sm" role="status" *ngIf="sendotpbtn == 'sending'">
+										  <span class="visually-hidden">Loading...</span>
+										</div>
+			                			<div  *ngIf="sendotpbtn == 'OTP Sent'">{{sendotpbtn}} </div>
+			                	</button>
+
+			                	<div *ngIf="submitted && f['otp'].errors" class="invalid-feedback">
+				                  <div *ngIf="f['otp'].errors['required']">OTP is required</div>
+				                   <div *ngIf="f['otp'].errors['minLength']">invalid OTP</div>
+				                  <div *ngIf="f['otp'].errors['maxLength']">invalid OTP</div>
+				                  <div *ngIf="f['otp'].errors['min']">Invalid OTP</div>
+				                  <div *ngIf="f['otp'].errors['max']">Invalid OTP</div>
+				                </div>			                
+			                </div>
+			                
+			              </div>
+
+			              <div class="col-12">
+			                <label for="pass" class="form-label">New Password <span class="text-danger">*</span></label>
+			                <input type="password" class="form-control" name="pass" id="pass" value="" required formControlName="pass" [ngClass]="{ 'is-invalid': submitted && f['pass'].errors }" autocomplete="off">
+			                <div *ngIf="submitted && f['pass'].errors" class="invalid-feedback">
+			                  <div *ngIf="f['pass'].errors['required']">Password is required</div>
+			                  <div *ngIf="f['pass'].errors['minlength']">Password must be at least 6 characters</div>
+			                  <div *ngIf="f['pass'].errors['maxlength']">Password must not exceed 40 characters</div>
+			                </div>
+			              </div>
+			              <div class="col-12">
+			                <label for="repass" class="form-label">Confirm New Password <span class="text-danger">*</span></label>
+			                <input type="password" class="form-control" name="repass" id="repass" value="" required formControlName="repass" [ngClass]="{ 'is-invalid': submitted && f['repass'].errors }" autocomplete="off">
+			                <div *ngIf="submitted && f['repass'].errors" class="invalid-feedback">
+			                  <div *ngIf="f['repass'].errors['required']">Confirm Password is required</div>
+			                  <div *ngIf="f['repass'].errors['matching']">Confirm Password does not match</div>
+			                </div>
+			              </div>
+
+			              
+
+			              <div class="col-12">
+			                <div class="d-grid">                 
+			                  <button class="anibutton btn1" type="submit">Update</button>
+			                </div>
+			              </div>
+			            </div>
+			          </form>
+			         
+			         
+			        </div>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+
+
+
+
+
+  </div>
+</div>
+
+</section>
+
+
+<app-toasts aria-live="polite" aria-atomic="true"></app-toasts>

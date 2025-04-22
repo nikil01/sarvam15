@@ -1,0 +1,483 @@
+.mainpage{
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+.sectionspcing{
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+
+/*******************************/
+/********** About CSS **********/
+/*******************************/
+.about {
+    position: relative;
+    width: 100%;
+    padding: 45px 0;
+    font-family: 'Cabrion';
+    color: #666666;
+}
+
+
+
+.about .about-img {
+    position: relative;
+    width: 85%;
+    height: auto;
+    /*overflow: hidden;*/
+    transition: .5s;
+    display: block;
+}
+
+.mdlbody{
+  border:3px solid var(--theme);
+  outline-offset: none;
+  /*max-width: 500px;*/
+  width: 100%;
+}
+
+.close-button {
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  padding: 4px 8px;
+  vertical-align: middle;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--theme);
+  background-color: #fff;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 30px;
+}
+
+.topright {
+  position: absolute;
+  right: -15px;
+  top: -15px;
+}
+
+.about .about-img .playbtn{
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background-color: var(--theme);
+    position: absolute;
+    top: calc(100% + 20px);
+    left: 20px;
+    color: #fff;
+    padding: 20px 20px 20px 20px;
+    font-size: 50px;
+    
+}
+
+.about .about-img .playbtn a, a:hover{
+    color: #fff;
+}
+
+.about .about-img .playbtn::before{
+    content: "";
+  position: absolute;
+  left: -5px;
+  top: -5px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+    border:2px dashed var(--theme);
+    background-color: transparent;
+    z-index: -1;
+    animation: btnRotate 15s linear infinite;
+}
+
+
+
+
+
+@keyframes btnRotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.about .about-img-1 {
+    position: relative;
+    height: 150%;
+    /*width: 150%;*/
+    margin: 0 120px 120px 0;
+    transition: .3s;
+}
+
+.about .about-img-2 {
+    position: absolute;    
+    height: 100%;
+    top: 160px;
+    left: 150px;
+    z-index: 1;
+}
+
+.about .about-img-1 img,
+.about .about-img-2 img {
+    position: relative;
+    width: 100%;    
+    border-radius: 10px;
+}
+
+.about .about-img-1:hover {
+  z-index: 3;
+transition: .3s;
+}
+
+
+
+.about .about-text p {
+    font-size: 16px;
+    vertical-align: top;
+    text-align: justify;
+}
+
+.about .headpoints{
+    display: block;
+    margin-top: 30px;
+    
+}
+.about .headpoints h6{
+    color: #000000;
+    /*float: left;*/
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 70px;
+    /*font-family: 'Arial Black';*/
+}
+
+.about .headpoints p{
+    /*color: #000;*/
+    margin-left: 70px;
+    /*float: left;*/
+}
+
+.about .headpoints .roundbtn{
+    font-size: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: transparent;
+    position: absolute;
+    color: var(--theme);
+    padding: 12px 10px 10px 11px;
+    margin-right: 30px;
+    float: left;
+    box-sizing: border-box;
+
+}
+
+.about .headpoints .roundbtn::before{
+    content: "";
+    position: absolute;
+    left: -5px;
+    top: -5px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border:2px dashed var(--theme);
+    background-color: transparent;
+    z-index: -1;
+    animation: btnRotate 15s linear infinite;
+}
+
+@media screen and (max-width:576px){
+  /*.about {width: 100%;}*/
+  .about .about-img {width: 100%;}
+  .about .about-img-1 {margin: 0 90px 90px 0;}
+
+  .about .about-img .playbtn{
+    width: 50px;
+    height: 50px;
+    padding: 10px 10px 10px 12px;
+    font-size: 30px;
+  }
+
+
+
+  .about .about-img .playbtn::before{   
+    width: 60px;
+    height: 60px;
+  }
+
+  .about .about-img-2 {
+    
+      top: 110px;
+      left: 130px;
+      z-index: 1;
+      /*width: 50%;*/
+  }
+
+  .mdlbody{
+    border:3px solid var(--theme);
+    outline-offset: none;
+    max-width: 100%;
+  }
+
+}
+
+@media screen and (min-width: 576px) and (max-width:1199px){
+  .about .about-img {width: 100%;}
+  .about .about-img-1 {margin: 0 90px 90px 0;}
+
+  .about .about-img .playbtn{
+    width: 50px;
+    height: 50px;
+    padding: 4px 10px 10px 12px;
+    font-size: 30px;
+  }
+
+  .about .about-img .playbtn::before{   
+    width: 60px;
+    height: 60px;
+  }
+
+  .about .about-img-2 {
+    
+      top: 110px;
+      left: 130px;
+      z-index: 1;
+      /*width: 50%;*/
+  }
+
+  .mdlbody{
+    border:3px solid var(--theme);
+    outline-offset: none;
+    max-width: 100%;
+  }
+
+}
+
+
+.suppliers{
+    margin-bottom: 80px;
+}
+
+.bgsuppliers{
+  width: 100%;
+  height: 430px;
+  padding-top: 80px;
+  padding-bottom: 10px;
+
+}
+
+.bglog{
+  width: 100%;
+  height: 400px;
+  padding-top: 80px;
+  padding-bottom: 10px;
+
+}
+
+.slidepan{
+    position: absolute;
+    margin-top: -280px;
+    z-index: 15;
+}
+
+.prodrange{
+  width: 100%;
+  height: auto;
+  padding-bottom: 50px;
+  
+}
+.prodrange .actualcontent{
+    padding-top: 100px;
+}
+
+
+#bground { 
+    background-color: #E2EFD1;
+    border-radius: 25px;    
+}
+
+#backgroundequip{
+    position: absolute;
+
+     background-color: #E2EFD1;
+     z-index: -10;
+     width: 100%;
+     height: 300px;
+}
+
+
+
+
+
+
+
+
+/*============================================
+# team
+=============================================*/
+.team{
+    width: 100%;
+    height: 200px;    
+     padding-top: 50px;
+     padding-bottom: 50px;
+}
+
+
+#backparallax{
+  
+    background-image: url("../../../assets/img/img_parallax.jpg");
+    min-height: 200px;
+
+ 
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -10;
+     width: 100%;
+     height: 200px;
+    
+}
+
+/*==========================================
+# counter
+===========================================*/
+
+.couterdown{
+    height: 200px;
+    background-color: transparent;
+    width: 100%;
+    /*margin-top: -150px;*/
+    padding-left: 50px;
+}
+
+.couterdown .couteritem{
+    /*display: block;*/
+    /*flex-wrap: all;*/
+    /*width: 300px;*/
+display: inline-block;
+margin-left: auto;
+    margin-right: auto;
+    
+
+}
+
+.couterdown .couteritem img{
+    font-size: 65px;
+    color: var(--theme);
+    margin-right: 10px;
+    display: inline-block;
+  float: left;
+  transition: 0.3s;
+  font-weight: bold;
+}
+
+.couterdown .couteritem h6{
+    font-size: 50px;
+    color: #fff;
+ padding-left: 25px;
+  font-weight: bold;
+    padding-top: 5px;
+   float: left;
+  display: inline-block;
+  line-height: 50px;
+  vertical-align: middle;
+}
+
+.couterdown .couteritem h6>.hsix{
+    font-size: 50px;
+    color: #fff;
+  font-weight: bold;   
+   float: left;  display: inline-block; 
+}
+
+.couterdown .couteritem .labl{
+    font-size: 18px;
+    color: #fff;
+    padding-left: 90px;
+   float: left;
+  display: inline-block;
+  line-height: 18px;
+}
+
+.couterdown .couteritem:hover img{
+  transform: rotateY(180deg);
+
+}
+
+
+@media screen and (max-width:575px){
+  .team{ height: 800px; }
+  #backparallax{height: 450px;}
+  .couterdown .couteritem h6{display: block; width: 70%; font-size: 30px;}
+
+}
+
+
+@media screen and (min-width: 576px) and (max-width:1199px){
+  #backparallax{height: 280px;}
+  .couterdown .couteritem h6>.hsix{ font-size: 30px;}
+}
+
+@media screen and (min-width: 1200px) and (max-width:1399px){
+
+  .couterdown .couteritem h6>.hsix{ font-size: 30px;}
+}
+/*===============================================
+# testimonials
+================================================*/
+
+
+.testi{
+    height: 700px;
+    /*background-color: #000;*/
+    background-image: url("../../../assets/img/industrial.jpg");
+    background-position: center;
+    background-size: cover;
+    padding-top: 100px;
+    padding-bottom: auto;
+}
+
+.testi span{
+    padding: 0px 20px 0px 20px;
+}
+
+.clietsscroll{
+    height: 500px;
+    
+    padding-top: 80px;
+    padding-bottom: auto;
+}
+
+
+
+
+@media screen and (max-width:575px){ 
+ 
+
+
+  .mdlbody{
+    border:3px solid var(--theme);
+    outline-offset: none;
+    max-width: 100%;
+  }
+}
+
+
+@media screen and (min-width: 576px) and (max-width:1199px){
+
+}
+
+@media screen and (min-width: 1200px) and (max-width:1399px){
+
+}
+
+/*==================================================
+# vedio modal
+=====================================================*/
+.dark-modal {
+                background-color: #292b2c;
+                color: white;
+            }

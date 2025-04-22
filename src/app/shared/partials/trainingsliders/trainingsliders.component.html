@@ -1,0 +1,42 @@
+<div class="row trainingSlide">
+  <div class="col-2 col-sm-1 col-md-1 col-lg-1 col-xl-1 col-xxl-1">
+    <button id="my-prev-button" class="trainingprebtn"><</button>
+  </div>
+    
+    
+  <div class="col-9 col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xxl-10">
+
+       <div class="linelink">
+        <ul>
+          <li *ngFor="let heads of trainigHeading" (click)="showgroup(heads.cat_group)" [ngClass]="{'isselected': heads.cat_group == selectedid}">{{heads.cat_group}}</li>
+        </ul>
+      </div>
+
+
+      <swiper-container appSwiperDirective [config]="config" init="false" class="row" navigation-next-el="#my-next-button" navigation-prev-el="#my-prev-button">
+       <div class="swiper-slide boxbrdr col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-3" *ngFor="let topics of trainigtopics" >
+        <div class="Trainingsd">  
+            <img src="{{filepath}}{{topics.cat_photo}}" alt="{{topics.cat_topic}}" title="{{topics.cat_topic}}">
+        </div>   
+        <div class="trainigContent">         
+            <h6>{{topics.cat_topic}}</h6>
+           <!--  <div class="topicer" [innerHTML]="topics.cat_content"></div> -->
+          </div>        
+       </div>
+
+     
+      
+       
+    </swiper-container>
+
+
+  </div>
+
+  <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 col-xxl-1">
+    <button id="my-next-button" class="trainingnxtbtn">></button>
+  </div>
+</div>
+
+
+
+

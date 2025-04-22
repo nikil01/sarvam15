@@ -1,0 +1,82 @@
+<section class="pageheadone">
+	<img src="{{filepathabout}}{{pageBan}}" class="pagebanner" alt="{{pageData.pge_subtitle}}" title="{{pageData.pge_subtitle}}">
+	<div class="pageheader container">	
+		<div class="textbar">
+			<h1>{{pageData.pge_subtitle}}</h1>
+			<br/><span><i class="bi bi-house-fill"></i> Home <i class="bi bi-chevron-right"></i> {{pageData.pge_title}}</span>
+		</div>
+	</div>	
+</section>
+
+<section class="bloglist container">
+	<div class="row">
+		<div class="blogside col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7 col-xxl-8">
+
+
+
+			
+			    <div class="blogitem">
+			      <div class="img"><img src="{{filepathblog}}{{OneBlog.blg_photo}}" style="width: 100%;" alt="{{OneBlog.blg_title}}" title="{{OneBlog.blg_title}}"></div>
+			      <div class="blogtext">
+			      	<div class="dateauthor">
+			      		<i class="bi bi-tag-fill"></i><span>{{OneBlog.blg_csra? 'CSR Event' : 'Blog'}}</span>
+			      		<i class="bi bi-calendar2-week"></i><span>{{OneBlog.blg_createdAt | date}}</span>
+			      		<i class="bi bi-person-circle"></i><span>{{OneBlog.blg_postedby}}</span>
+			      	</div>
+			      	<div class="bloghead">{{OneBlog.blg_title}}</div>			      
+			      	<div class="brief" [innerHTML]="OneBlog.blg_content"></div>
+
+			      	
+			      	
+			      </div>
+			    </div>
+
+			    <div class="row pagefinder">
+			    	<div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+			    		<button [routerLink]="['/blogs']" [queryParams]="{id: LastBlog.blg_id, title: OneBlog.seo_title_pre }" *ngIf="LastBlog" class="anibutton btn1"><i class="bi bi-chevron-left"></i> PREVIOUS</button>
+			    	</div>
+			    	<div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6 text-end">
+			    		<button [routerLink]="['/blogs']" [queryParams]="{id: NextBlog.blg_id, title: OneBlog.seo_title_nxt
+ }" *ngIf="NextBlog" class="anibutton btn1">NEXT <i class="bi bi-chevron-right"></i></button>
+			    	</div>
+			    </div>
+			   
+
+			   <div class="mt-5 mb-5 pagefinder">
+			   	<span>Share This Page: </span>
+			   		<a href="http://twitter.com/intent/tweet?text={{OneBlog.blg_title}}+https://www.sarvamsafety.com/blogs?{{OneBlog.blg_id}}&title={{OneBlog.blg_title}}" target="_blank"><i class="bi bi-twitter"></i></a>
+			   		<a href="https://www.facebook.com/sharer/sharer.php?u=https://www.sarvamsafety.com/blogs?{{OneBlog.blg_id}}&title={{OneBlog.blg_title}}" target="_blank"><i class="bi bi-facebook"></i></a>
+			   		<a href="https://www.linkedin.com/sharing/share-offsite/?url=https://www.sarvamsafety.com/blogs?{{OneBlog.blg_id}}&title={{OneBlog.blg_title}}" target="_blank"><i class="bi bi-linkedin"></i></a>
+			   </div>
+
+		</div>
+
+
+
+		<div class="menuside col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5 col-xxl-4">
+			
+			<div  class="catmenu sticky-top">
+				
+				<h4>Search</h4>				
+				<div class="d-flex justify-content-center justify-content-md-between">
+					<input type="search" name="searchblog" [(ngModel)]="searchtag" (change)="searchFor()"><button class="anibutton btn1" style="width: 140px;" (click)="searchFor()">Search</button>
+				</div>
+
+				<h4>Recent Posts</h4>		
+				<ul>
+					<li *ngFor="let blglist of blogData" [routerLink]="['/blogs']" [queryParams]="{id: blglist.blg_id, title: blglist.seo_title }">{{blglist.blg_title}}</li>				
+				</ul>
+
+
+				<!-- <h4>Categories</h4>		
+				<ul>
+					<li>CSR Activity</li>
+					<li>Blog</li>
+							
+				</ul> -->
+				
+			</div>
+
+		</div>
+	</div>
+</section>

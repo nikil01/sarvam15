@@ -1,0 +1,38 @@
+<section class="pageheadone">
+  <img src="{{filepathabout}}{{pageBan}}" class="pagebanner" alt="{{pageData.pge_subtitle}}" title="{{pageData.pge_subtitle}}">
+  <div class="pageheader container">  
+    <div class="textbar">
+      <h1>{{pageData.pge_subtitle}}</h1>
+      <br/><span><i class="bi bi-house-fill"></i> Home <i class="bi bi-chevron-right"></i> {{pageData.pge_title}}</span>
+    </div>
+  </div>  
+</section>
+
+<section class="aboutus container">
+
+	<div class="row">
+
+
+
+		<div class="blogside col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">	
+
+			<div *ngIf="result == 'success'">	
+				<h2>Thank-you</h2>	 	    	
+		    	<div class="alert alert-success">
+				  <strong>Thank You: </strong> Payment is successfull! Your Transaction ID is: {{transid}}				
+				</div>
+		    </div>
+
+		    <div *ngIf="result != 'success'">	
+		    	<h2>Ooop's</h2>	    	
+		    	<div class="alert alert-danger">
+				  <strong>Payment Failed: </strong> Your Payment Failed!				
+				</div>
+		    </div>		    
+		    
+		</div>
+
+
+		
+</div>
+</section>

@@ -1,0 +1,124 @@
+<section class="pageheadone">
+  <img src="{{filepathabout}}{{pageBan}}" class="pagebanner" alt="{{pageData.pge_subtitle}}" title="{{pageData.pge_subtitle}}">
+  <div class="pageheader container">  
+    <div class="textbar">
+      <h1>{{pageData.pge_subtitle}}</h1>
+      <br/><span><i class="bi bi-house-fill"></i> Home <i class="bi bi-chevron-right"></i> {{pageData.pge_title}}</span>
+    </div>
+  </div>  
+</section>
+
+<section class="events container">
+	
+
+	<!-- <div class="row mb-5">
+		<div class="row paginatr ">
+			<div class="col-12 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+				<div class="row">
+					
+					<div class="col-md-6">
+						<div class="dp-hidden position-absolute">
+							<div class="input-group">
+								<input name="datepicker" class="form-control" ngbDatepicker #datepicker="ngbDatepicker" [autoClose]="'outside'" (dateSelect)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t" outsideDays="hidden" [startDate]="fromDate!" tabindex="-1"	/>
+								<ng-template #t let-date let-focused="focused">
+									<span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)" [class.faded]="isHovered(date) || isInside(date)" (mouseenter)="hoveredDate = date" (mouseleave)="hoveredDate = null">
+										{{ date.day }}
+									</span>
+								</ng-template>
+							</div>
+						</div>
+						<div class="input-group">
+							<input #dpFromDate class="form-control" placeholder="yyyy-mm-dd" name="dpFromDate" [value]="formatter.format(fromDate)" (input)="fromDate = validateInput(fromDate, dpFromDate.value)" />
+							<button class="btn btn-outline-secondary bi bi-calendar3" (click)="datepicker.toggle()" type="button"></button>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="input-group">
+							<input #dpToDate class="form-control" placeholder="yyyy-mm-dd" name="dpToDate" [value]="formatter.format(toDate)" (input)="toDate = validateInput(toDate, dpToDate.value)" />
+							<button class="btn btn-outline-secondary bi bi-calendar3" (click)="datepicker.toggle()" type="button"></button>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+			<div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
+				<div class="input-group">
+					<input type="search" name="searchblog" class="form-control" placeholder="Search Event" [(ngModel)]="searchtag" (change)="searchFor()"><button class="btn btn-dark"  (click)="searchFor()">Search</button>
+				</div>
+			</div>
+			<div class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 col-xxl-3 stats text-end">
+				<span *ngIf="recordCount < totalCount">Showing {{recordStart}}-{{recordCount}} Events Out Of {{totalCount}} </span>
+				<span *ngIf="recordCount >= totalCount">{{recordCount}} Events Found</span>
+				&nbsp;&nbsp;&nbsp;
+			</div>
+		</div>
+	</div> -->
+
+	<div class="row">
+
+		<div class="alert alert-danger" *ngIf="isvalbl <=0">
+		  <strong>Sorry!</strong> We dont have any events for specified dates.
+		</div>
+		
+<!-- evt_id, evt_heading, evt_category, evt_photo, evt_brief, evt_vanue, evt_udate, evt_utime, evt_duration, evt_etype, evt_language, evt_fees, evt_type, evt_status -->
+
+
+
+		<div class="eventGrid col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4" *ngFor="let event of eventData">
+			
+			    <div class="eventItem"  [routerLink]="['/event/', event.evt_id, event.seo_urlink]" >
+			      <div class="img"><img src="{{filepathblog}}{{event.evt_photo}}" style="width: 100%;" alt="{{event.evt_heading}}" title="{{event.evt_heading}}">
+			      	<!-- <button class="catbtn btn btn-sm btn-danger">{{event.evt_category}}</button> -->
+			      </div>
+			      <div class="blogtext">
+			      	<div class="bloghead mt-3">{{event.evt_heading}}</div>
+			      	<div class="dateauthor">
+			      		<i class="bi bi-calendar2-week"></i><span>{{event.evt_udate | date}} - {{event.evt_utime}} | {{event.evt_duration}}</span><br/>
+			      		<i class="bi bi-geo-alt-fill"></i><span *ngIf="event.evt_type == 'online'">Online</span>	<span *ngIf="event.evt_type != 'Online'">{{event.evt_vanue}}</span>		      		
+			      	</div>  
+			      	<div class="row footbar">
+			      		<div class="col text-start ">
+				      		<span *ngIf="event.evt_type == 'Paid'">₹ {{event.evt_fees}}/-</span>
+				      		<span *ngIf="event.evt_type == 'Free'">Free</span>      		
+				      	</div>
+				      	<div class="col text-end">				      		
+				      		| <a href=""  rel="canonical" [routerLink]="['/eventsignup/', event.evt_id, event.seo_urlink]">Register</a>			      		
+				      	</div>
+			      	</div>
+			      	
+			      </div>
+			    </div>			   
+
+		</div>
+
+
+
+		
+	</div>
+
+
+<div class="row elitepager " *ngIf="isvalbl >=1">
+	<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 text-center">
+		<button class="btn mb-3" (click)="getEventdata(1)" [disabled]="1 == currentPage">
+			<i class="bi bi-chevron-bar-left"></i>
+		</button>
+		<button class="btn mb-3" (click)="getEventdata('p')" [disabled]="btnPrevious">
+			<i class="bi bi-chevron-left"></i>
+		</button>
+		<button class="btn mb-3" *ngFor="let pages of pagesArray" [ngClass]="{'btnpageactive': currentPage === pages}" (click)="getEventdata(pages)">{{pages}}</button>
+		<button class="btn mb-3" (click)="getEventdata('n')" [disabled]="btnNext || totalPage == currentPage">
+			<i class="bi bi-chevron-right"></i>
+		</button>
+		<button class="btn  mb-3" (click)="getEventdata(totalPage)" [disabled]="totalPage == currentPage || totalCount === 0">
+			<i class="bi bi-chevron-bar-right"></i>
+		</button>
+	</div>
+</div>
+
+
+
+</section>
+
+
+

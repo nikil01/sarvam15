@@ -1,0 +1,71 @@
+<section class="pageheadone">
+	<img src="{{filepathabout}}{{pageBan}}" class="pagebanner" alt="{{pageData.pge_subtitle}}" title="{{pageData.pge_subtitle}}">
+	<div class="pageheader container">	
+		<div class="textbar">
+			<h1>{{pageData.pge_subtitle}}</h1>
+			<br/><span><i class="bi bi-house-fill"></i> Home <i class="bi bi-chevron-right"></i> {{pageData.pge_title}}</span>
+		</div>
+	</div>	
+</section>
+
+
+<section class="aboutus container">	
+
+
+	<div class="row">
+		<ng-container *ngFor="let prd of searchData" data-aos="zoom-in-up" data-aos-duration="3000">
+			<div class="col-md-6 col-sm-6 col-12 col-lg-4 col-xl-3 col-xxl-3 prdcatlog padding-0" *ngIf="prd.seo_type
+	 =='Elite'" [routerLink]="['/elite-product/',prd.seo_urlink]">
+				<div class="prdholder">							
+					<div class="imgholdr">
+						<div class="thumbnail">				              
+							  <img src="{{elite_filepath}}{{prd.img_image}}" class="img-responsive" alt="{{prd.ctl_name}}"  title="{{prd.ctl_name}}"/>
+			            </div>
+			            <div class="caption">				            		
+			                    <h6>{{prd.ctl_name | slice:0:70}}</h6>
+			            </div>
+					</div>			           
+			  	</div>
+	        </div>
+
+	        <div class="col-md-6 col-sm-6 col-12 col-lg-4 col-xl-3 col-xxl-3 prdcatlog padding-0" *ngIf="prd.seo_type
+	 =='Shopnow'" [routerLink]="['/product/',prd.seo_urlink]">
+				<div class="prdholder">							
+					<div class="imgholdr">
+						<div class="thumbnail">				              
+							  <img src="{{shopnow_filepath}}{{prd.img_image}}" class="img-responsive" alt="{{prd.ctl_name}}"  title="{{prd.ctl_name}}"/>
+			            </div>
+			            <div class="caption">				            		
+			                    <h6>{{prd.ctl_title | slice:0:70}}</h6>
+			            </div>
+					</div>			           
+			  	</div>
+	        </div>
+
+    	</ng-container>
+	</div>
+
+
+
+
+	<div class="row elitepager ">
+			<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 text-center">
+				<button class="btn mb-3" (click)="getsearchdata(1)" [disabled]="1 == currentPage">
+					<i class="bi bi-chevron-bar-left"></i>
+				</button>
+				<button class="btn mb-3" (click)="getsearchdata('p')" [disabled]="btnPrevious">
+					<i class="bi bi-chevron-left"></i>
+				</button>
+				<button class="btn mb-3" *ngFor="let pages of pagesArray" [ngClass]="{'btnpageactive': currentPage === pages}" (click)="getsearchdata(pages)">{{pages}}</button>
+				<button class="btn mb-3" (click)="getsearchdata('n')" [disabled]="btnNext || totalPage == currentPage">
+					<i class="bi bi-chevron-right"></i>
+				</button>
+				<button class="btn  mb-3" (click)="getsearchdata(totalPage)" [disabled]="totalPage == currentPage || totalCount === 0">
+					<i class="bi bi-chevron-bar-right"></i>
+				</button>
+			</div>
+	</div>
+
+
+
+</section>

@@ -1,0 +1,53 @@
+<section class="pageheadone">
+  <img src="{{filepathabout}}{{pageBan}}" class="pagebanner" alt="{{pageData.pge_subtitle}}" title="{{pageData.pge_subtitle}}">
+  <div class="pageheader container">  
+    <div class="textbar">
+      <h1>{{pageData.pge_subtitle}}</h1>
+      <br/><span><i class="bi bi-house-fill"></i> Home <i class="bi bi-chevron-right"></i> {{pageData.pge_title}}</span>
+    </div>
+  </div>  
+</section>
+
+<section class="aboutus container" style="padding-left: 10px; padding-right: 10px;">
+
+	<div class="fullpage" *ngIf="iswishlistEmpty">
+		<div class="wishitem row" *ngFor="let item of wishlist; let i = index">
+			<div class="col-md-1"><span>{{i + 1}}</span></div>
+			<div class="col-md-2"><img src="{{filepaththumbnail}}{{item.img_image}}" class="img-responsive" height="100px" alt="{{item.ctl_name}}" title="{{item.ctl_name}}"></div>
+			<div class="col-md-7"><h6>{{item.ctl_name}}</h6> ₹ {{item.ctl_discount}}/-<br/>
+
+					{{item.ctl_catid}} - {{item.ctl_brand}}<br/>
+					<small *ngIf="item.ctl_filter_size != ''"> Size: {{item.ctl_filter_size}}</small><small *ngIf="item.ctl_filter_color != ''">  / Color: {{item.ctl_filter_color}}</small>
+				<small> / Added on: {{item.wsh_createdAt | date}}</small></div>
+			<div class="col-md-2 text-end">
+				<button class="btn btn-danger btn-sm mt-1" (click)="moveToCart(item.wsh_prdid, item.wsh_id)"><i class="bi bi-cart-plus"></i> Move to Cart</button>
+				<button class="btn btn-danger btn-sm mt-1" (click)="removeWishlist(item.wsh_id)"><i class="bi bi-x-square-fill"></i> Remove Item</button>
+				<button class="btn btn-danger btn-sm mt-1"  [routerLink]="['/product/',item.seo_urlink]"><i class="bi bi-eye-fill"></i> View Details</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="mobilepage" *ngIf="iswishlistEmpty">
+		<div class="wishitem row" *ngFor="let item of wishlist; let i = index">
+			
+			<div class="col-md-2"><img src="{{filepaththumbnail}}{{item.img_image}}" class="img-responsive" width="100%" alt="{{item.ctl_name}}" title="{{item.ctl_name}}"></div>
+			<div class="col-md-7"><h6>{{item.ctl_name}}</h6> ₹ {{item.ctl_discount}}/-<br/>
+
+					{{item.ctl_catid}} - {{item.ctl_brand}}<br/>
+					<small *ngIf="item.ctl_filter_size != ''"> Size: {{item.ctl_filter_size}}</small><small *ngIf="item.ctl_filter_color != ''">  / Color: {{item.ctl_filter_color}}</small>
+				<small> / Added on: {{item.wsh_createdAt | date}}</small></div>
+			<div class="col-12 text-end">
+				<button class="col-12 btn btn-danger btn-sm mt-1" (click)="moveToCart(item.wsh_prdid, item.wsh_id)"><i class="bi bi-cart-plus"></i> Move to Cart</button>
+				<button class="col-12 btn btn-danger btn-sm mt-1" (click)="removeWishlist(item.wsh_id)"><i class="bi bi-x-square-fill"></i> Remove Item</button>
+				<button class="col-12 btn btn-danger btn-sm mt-1"  [routerLink]="['/product/',item.seo_urlink]"><i class="bi bi-eye-fill"></i> View Details</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="alert alert-danger" *ngIf="!iswishlistEmpty">
+	  <strong>Oop's!</strong> You haven't added any product to wishlist.
+	</div>
+</section>
+
+
+<app-toasts aria-live="polite" aria-atomic="true"></app-toasts>

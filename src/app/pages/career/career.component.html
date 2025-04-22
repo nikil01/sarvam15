@@ -1,0 +1,93 @@
+<section class="pageheadone">
+	<img src="{{filepathabout}}{{pageBan}}" class="pagebanner" alt="{{pageData.pge_subtitle}}" title="{{pageData.pge_subtitle}}">
+	<div class="pageheader container">	
+		<div class="textbar">
+			<h1>{{pageData.pge_subtitle}}</h1>
+			<br/><span><i class="bi bi-house-fill"></i> Home <i class="bi bi-chevron-right"></i> {{pageData.pge_title}}</span>
+		</div>
+	</div>	
+</section>
+
+<!-- job_id, job_title, job_jd, job_education, job_skills, job_experience, job_vancancies, job_salary, job_type, job_locality, job_lastdate, job_status, job_createdAt, job_updatedAt -->
+
+<section class="aboutus container">
+
+	<div class="" *ngIf="nojobs">
+
+		<div class="row paginatr mb-4">
+			<div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2 mobispace">
+				<select class="form-control form-control-sm" [value]="rowPerPage" (change)="changePageSize($event)" >
+					<option value="5">5 Item's/Page</option>
+					<option value="10">10 Item's/Page</option>
+					<option value="25">25 Item's/Page</option>
+					<option value="50">50 Item's/Page</option>
+					<option value="100">100 Item's/Page</option>
+				</select>	
+			</div>
+			<div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2 mobispace">
+				<div>Go To Page <input placeholder="1" maxlength="3" size="1" [value]="currentPage" (keyup)="getPageProperty($event)" class="ronded" type="text"> / {{totalPage}}</div>			
+			</div>
+			<div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4 mobispace">
+				<div class="input-group">
+					<input type="search" name="searchblog" [(ngModel)]="searchtag" (change)="searchFor()" class="ronded" placeholder="Search Job">
+					<button class="anibutton btn1" style="width: 140px;" (click)="searchFor()">Search</button>
+				</div>
+			</div>
+			<div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4 stats text-end mobispace">
+				<span *ngIf="recordCount < totalCount">Showing {{recordStart}}-{{recordCount}} Records Out Of {{totalCount}} </span>
+				<span *ngIf="recordCount >= totalCount">Only {{recordCount}} Job's Found</span>
+				&nbsp;&nbsp;&nbsp;
+			</div>
+		</div>
+
+
+	
+		<div class="wishitem row" *ngFor="let job of jobData; let i = index">
+			<div class="col-md-1"><span>{{i + 1}}</span></div>		
+			<div class="col-md-8 contnt">
+				<small>Job Title: </small> <b> {{job.job_title}}</b><br/>
+				<small>Job Description:</small> {{job.job_jd}}<br/>
+				<small>Qualification:</small> {{job.job_education}}<br/>
+				<small>Skills:</small> {{job.job_skills}}<br/>
+				<small>Experience:</small> {{job.job_experience}}<br/>
+				
+			</div>
+			<div class="col-md-3">
+				<small>Placement:</small> {{job.job_type}}<br/>
+				<small>Location:</small> {{job.job_locality}}<br/>
+				<small>Package:</small> {{job.job_salary}}<br/>
+				<small>Posted On:</small> {{job.job_updatedAt | date}}<br/>
+				<small>Last date To Apply:</small> {{job.job_lastdate | date}}<br/>
+				<button class="btn btn-danger btn-sm mt-1 text-end" rel="canonical" [routerLink]="['/job-apply']" [queryParams]="{id: job.job_id, title: job.job_title }"> Apply</button>	
+			</div>
+		</div>
+	
+
+
+		<div class="row elitepager ">
+			<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 text-center">
+				<button class="btn mb-3" (click)="getjoblist(1)" [disabled]="1 == currentPage">
+					<i class="bi bi-chevron-bar-left"></i>
+				</button>
+				<button class="btn mb-3" (click)="getjoblist('p')" [disabled]="btnPrevious">
+					<i class="bi bi-chevron-left"></i>
+				</button>
+				<button class="btn mb-3" *ngFor="let pages of pagesArray" [ngClass]="{'btnpageactive': currentPage === pages}" (click)="getjoblist(pages)">{{pages}}</button>
+				<button class="btn mb-3" (click)="getjoblist('n')" [disabled]="btnNext || totalPage == currentPage">
+					<i class="bi bi-chevron-right"></i>
+				</button>
+				<button class="btn  mb-3" (click)="getjoblist(totalPage)" [disabled]="totalPage == currentPage || totalCount === 0">
+					<i class="bi bi-chevron-bar-right"></i>
+				</button>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="alert alert-danger" *ngIf="!nojobs">
+	  <strong>Sorry!</strong> Currently We Don't Have Any Vaccancies.
+	</div>
+
+</section>
+
+

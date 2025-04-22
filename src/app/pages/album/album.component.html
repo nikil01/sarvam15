@@ -1,0 +1,63 @@
+<section class="pageheadone">
+	<img src="{{filepathabout}}{{pageBan}}" class="pagebanner" alt="{{pageData.pge_subtitle}}" title="{{pageData.pge_subtitle}}">
+	<div class="pageheader container">	
+		<div class="textbar">
+			<h1>{{pageData.pge_subtitle}}</h1>
+			<br/><span><i class="bi bi-house-fill"></i> Home <i class="bi bi-chevron-right"></i> {{pageData.pge_title}}</span>
+		</div>
+	</div>	
+</section>
+
+<section class="aboutus container" data-aos="zoom-in-up" data-aos-duration="3000">		
+
+
+	<div class=" row">
+			
+		<div class="col-md-4 col-sm-4 col-12 col-lg-4 col-xl-4 col-xxl-4 photogalry" *ngFor="let album of albumdta; let i=index">
+			
+				<div class="prdholder" (click)="open(content, album.pho_photo)">							
+					<div class="imgholdr">
+						<div class="thumbnail">				              
+							  <img src="{{filepath}}{{album.pho_photo}}" class="img-responsive" alt="{{album.pho_photo}}" title=""/>
+			            </div>			           
+					</div>			           
+			  	</div>
+		  	
+        </div>
+
+	</div>
+
+
+
+
+	<div class="row elitepager ">
+			<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 text-center">
+				<button class="btn mb-3" (click)="getAlbum(1)" [disabled]="1 == currentPage">
+					<i class="bi bi-chevron-bar-left"></i>
+				</button>
+				<button class="btn mb-3" (click)="getAlbum('p')" [disabled]="btnPrevious">
+					<i class="bi bi-chevron-left"></i>
+				</button>
+				<button class="btn mb-3" *ngFor="let pages of pagesArray" [ngClass]="{'btnpageactive': currentPage === pages}" (click)="getAlbum(pages)">{{pages}}</button>
+				<button class="btn mb-3" (click)="getAlbum('n')" [disabled]="btnNext || totalPage == currentPage">
+					<i class="bi bi-chevron-right"></i>
+				</button>
+				<button class="btn  mb-3" (click)="getAlbum(totalPage)" [disabled]="totalPage == currentPage || totalCount === 0">
+					<i class="bi bi-chevron-bar-right"></i>
+				</button>
+			</div>
+	</div>
+
+
+
+</section>
+
+
+<ng-template #content let-modal>
+	<div class="modal-header">		
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<img src="{{filepath}}{{imgToModl}}" class="img-responsive" alt="{{imgToModl}}" style="width: 100%;"  title="{{imgToModl}}"/>
+	</div>
+</ng-template>

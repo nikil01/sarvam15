@@ -1,0 +1,28 @@
+<div class="pt-4 pb-4 row col-12 mobicenter" >
+  <div class="col-2 col-sm-1 col-md-1 col-lg-1 col-xl-1 col-xxl-1"><button id="team-prev-button" class="teamprebtn"><</button></div>
+  
+  
+<div class="col-9 col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xxl-10">
+  <swiper-container appSwiperDirective [config]="config" init="false" class="w-full" navigation-next-el="#team-next-button"
+      navigation-prev-el="#team-prev-button" class="row col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+
+    <div class="swiper-slide col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3" *ngFor="let member of teamdat">
+      <div class="teamMember">
+        <div class="tempic">
+          <img src="{{filepath}}{{member.tme_propic}}" alt="{{member.tme_name}}" title="{{member.tme_name}}" class="img-responsive">
+        </div>
+        <div class="namecard"><h6>{{member.tme_name}}</h6><span>{{member.tme_designation}}</span></div>
+       <!--  <div class="teamoverlay">
+          <div class="sociolink"><div class="mmbrbrief">{{member.tme_brief}}</div></div>
+        </div> -->
+      </div>
+    </div>
+
+
+
+
+  </swiper-container>
+</div>
+
+ <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 col-xxl-1"><button id="team-next-button" class="teamnxtbtn">></button></div>
+</div>

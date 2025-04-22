@@ -1,0 +1,141 @@
+.aboutus{
+	padding: 60px 20px 60px 20px;
+	background-color: #fff;
+	/*height: 600px;*/
+	display: block;
+
+}
+
+
+
+.wishitem{ 
+	vertical-align: middle;	
+	background-color: #f8f8f8;
+	border:2px solid #f2f2f2;
+	margin-bottom: 20px;
+	padding: 20px 10px 20px 10px;
+	height: auto;
+}
+
+.wishitem h6{
+	font-size: 18px;
+	line-height: 22px;
+	font-weight: normal;
+	padding-top: 20px;
+}
+
+.wishitem span{
+	font-size: 100px;
+	line-height: 100px;
+	font-weight: normal;
+	color: #fff;
+}
+
+
+.wishitem .contnt{
+	padding: 40px auto;
+}
+
+
+.elitepager{
+	text-align: center;
+}
+
+.elitepager button{
+	border-radius: 0px;
+	margin-left: 5px;
+	margin-right: 5px;
+	background-color: var(--theme);
+}
+
+.elitepager button:hover{
+	border-radius: 0px;
+	margin-left: 5px;
+	margin-right: 5px;
+	background-color: var(--theme);
+	color: #fff;
+}
+
+.elitepager button:disabled{
+	border-radius: 0px;
+	margin-left: 5px;
+	margin-right: 5px;
+	background-color: var(--theme);	
+}
+
+
+
+
+.bggram{
+	background-image: url('../../../assets/img/trainingbg.jpg');
+	height: 500px;
+	width: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.lefttext h5{
+	color: #fff;
+	font-size: 26px;
+	text-align: left;
+}
+
+.lefttext p{
+	color: #fff;
+	font-size: 16px;
+	text-align: left;
+}
+
+.lefttext ul{
+	list-style: none;
+
+}
+
+.lefttext ul li{
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background-color: #fff;	
+	color: var(--theme);
+	text-align: center;
+	vertical-align: middle;
+	font-weight: bold;
+	padding-top: 3px;
+	margin-top: 30px;
+	margin-left: -30px;
+	margin-right: 40px; 
+	transform: 0.3s;
+	display: inline-block;
+}
+
+.lefttext ul li:hover{	
+	background-color: #000;	
+	color: #fff;	
+}
+
+.lefttext ul li a{	
+	background-color: #fff;	
+	color: var(--theme);
+}
+
+.lefttext ul li a:hover{	
+	background-color: #000;	
+	color: #fff;	
+}
+
+.lefttext span{
+	color: #fff;
+	font-size: 16px;
+}
+
+@media screen and (max-width:991px){ 
+	.bggram{ 
+		background-image: none;
+		height: auto;
+
+	}
+
+	.trintxt{
+		background-color: var(--theme);
+	}
+}

@@ -1,0 +1,126 @@
+.aboutus{
+	padding: 60px 10px 60px 10px;
+	background-color: #fff;
+	/*height: 600px;*/
+	display: block;
+
+}
+
+.general{
+	font-size: 15;
+	font-family: 'LexendDeca';
+	color: #000;
+	
+}
+
+
+
+.maincontent{
+	height: auto;
+	
+}
+
+.maincontent p{
+	float: left;
+	/*text-align: justify;	*/
+	/*font-family: "Cabrion"; */
+    color: #848484;
+    font-size: 15px;
+    line-height: 26px;
+    width: 100%
+}
+
+.maincontent img{
+	width: 600px;
+	float: right;
+	margin: 0px 0px 50px 50px;
+
+}
+
+.maincontent h2{
+	float: left;
+	color: var(--theme);
+	font-size: 30px;
+	font-weight: bold;
+	display: block;
+	width: 100%;
+	text-align: left;
+}
+
+.subcontent{
+	/*max-height: 900px;*/
+	margin-top: 50px;
+	margin-bottom: 50px;
+	background-color: #F5F5F5;
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
+
+.subcontent h3{
+	color: var(--thme);
+	font-weight: bold;
+	font-size: 26px;
+}
+
+.subcontent .patchdiv{
+	padding: 20px 50px 20px 50px;
+}
+
+@media screen and (max-width: 575px){
+
+	.subcontent .patchdiv{
+		padding: 20px 5px 20px 5px;
+	}
+
+}
+
+/*============================================
+# team
+=============================================*/
+.team{
+    width: 100%;
+    height: 500px;
+}
+#backparallax{
+    position: absolute;
+    background-image: url("../../../assets/img/img_parallax.jpg");
+    /*min-height: 500px;*/
+
+ 
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -10;
+     width: 100%;
+     height: 380px;
+     margin-top: 250px;
+}
+
+
+/*===============================================
+# testimonials
+================================================*/
+.topicline{
+    font-size: 24px;
+    font-weight: bold;
+}
+.testi{
+    height: 700px;
+    background-color: #000;
+    padding-top: 100px;
+    padding-bottom: auto;
+}
+
+.testi span{
+    padding: 0px 20px 0px 20px;
+}
+
+.whitechars{
+    color: #fff;
+}
+
+
+
+

@@ -1,0 +1,573 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'ngx-toastr/toastr';
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+/* @import 'swiper/swiper-bundle.min.css'; */
+/*@import 'ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.css';
+@import 'ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.css';*/
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+@font-face {
+    font-family: 'Cabrion';
+    src: url('assets/fonts/Cabrion - Light.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Teko';
+    src: url('assets/fonts/Teko-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'LexendDeca';
+    src: url('assets/fonts/LexendDeca-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('assets/fonts/Poppins-SemiBold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PoppinsM';
+    src: url('assets/fonts/Poppins-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*#8BC34A   #8BC34A*/
+:root {
+  --theme: #8BC34A;
+  --themeText: #ffffff;
+  --color-default: #8BC34A;
+  --color-primary: #8BC34A;
+  --color-secondary: #8BC34A;
+  scroll-behavior: smooth;
+  --titleColor: #020E28;
+  --paragraphColor: #848409;
+  --offTheme:#95C13E;
+  --headingSize:30px;
+  --subheadingSize:26px;
+  --paragraphSize:14px;
+}
+
+
+#mousepointer {
+    height:10px;
+    width:10px;
+    border-radius: 50%;
+    margin-top:-10px;
+    margin-left:-10px;
+    background:var(--theme);
+    position:absolute;
+   z-index: 1999;
+   top:50%;
+    left:50%;
+    border:1px solid #fff;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus, button:active{
+    outline: none;
+    outline-offset: none;
+    outline-width: 0;
+}
+
+
+input.middle:focus {
+    outline-width: 0;
+}
+
+/*--------------------------------------------------------------
+# Disable aos animation delay on mobile devices
+--------------------------------------------------------------*/
+@media screen and (max-width: 768px) {
+  [data-aos-delay] {
+    transition-delay: 0 !important;
+  }
+}
+
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+body {
+  text-align: justify;  
+  font-family: "PoppinsM"; 
+    color: #848484;
+    font-size: 15px;
+    line-height: 26px;
+    /*cursor: pointer;*/
+    
+  
+}
+
+
+a {
+  color: #01b1d7;
+  text-decoration: none;
+  
+}
+
+a:hover {
+  color: #0dd3fe;
+  text-decoration: none;
+  
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins", sans-serif;
+}
+
+
+p{
+  font-family: "PoppinsM", sans-serif;
+  color: #000;
+}
+
+span{
+  font-family: "PoppinsM", sans-serif;
+  color: #000;
+}
+
+
+/*============================================
+#page heading
+=============================================*/
+
+.topicline {    
+  width: auto;
+  height: 30px;
+  line-height: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.topicline h6 {
+    color: var(--theme);
+  font-weight: bold;
+  /*text-transform: uppercase;*/
+  font-size: 1rem;  
+  font-family: 'Poppins';
+  font-size: 18px;
+}
+
+.topicline h1 {
+    color: var(--theme);
+  font-weight: bold;
+  /*text-transform: uppercase;*/
+  font-size: 1rem;  
+  font-family: 'Poppins';
+  font-size: 18px;
+}
+
+.topicline span {
+    color: var(--theme);
+  font-weight: bold;
+  /*text-transform: uppercase;*/
+  font-size: 1rem;  
+  font-family: 'Poppins';
+  font-size: 18px;
+}
+
+.topicline h6::before,
+.topicline h6::after {
+    display: inline-block;
+    content: "";
+    border-top: .1rem solid var(--theme);
+    width: 1rem;
+    margin: 0 1rem;
+    transform: translateY(-.4rem);
+}
+
+.blkhdngBox{
+  width: 75%;
+  height: auto;
+  line-height: auto;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.blockHeading{
+  font-size: 30px;  
+  color: #000;
+  font-weight: bold;
+  font-family: 'Poppins';
+}
+.whitechars{
+  color: #fff;
+}
+/*============================================
+#Animated Button
+==============================================*/
+.anibutton {
+  box-sizing: border-box;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: var(--theme);
+  /*border: 1px solid #e74c3c;*/
+  border-radius: 5px;
+  color: var(--theme);
+  cursor: pointer;
+  
+  /*display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-self: center;
+      -ms-flex-item-align: center;
+          align-self: center;*/
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  /*margin: 15px;*/
+  padding: 8px 15px 8px 15px;
+  text-decoration: none;
+  text-align: center;
+  /*text-transform: uppercase;*/
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  width: auto;
+border:none;
+}
+.anibutton:hover, .anibutton:focus .anibutton:active {
+  color: var(--theme);
+  outline: 0;
+}
+
+
+.btn1 {
+  /*border-color: #8e44ad;*/
+  border-radius: 5px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  -webkit-transition: color 150ms ease-in-out;
+  transition: color 300ms ease-in-out;
+  width: auto;
+  text-align: center;
+  border:none;
+}
+.btn1:after {
+  content: '';
+  position: absolute;
+  /*display: block;*/
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 0;
+  height: 100%;
+  background: #000;
+  z-index: -1;
+  -webkit-transition: width 150ms ease-in-out;
+  transition: width 500ms ease-in-out;
+}
+.btn1:hover {
+  color: #fff;
+}
+.btn1:hover:after {
+  width: 110%;
+}
+
+
+
+/*=======================================================
+# paginator
+=======================================================*/
+.paginatr{
+  box-sizing: border-box;
+  padding: 10px 10px 10px 10px;
+  background-color: #FCFCFC;
+  border:1px solid #F5F5F5;
+  border-radius: 10px;
+ 
+ 
+  height: auto;
+}
+
+.stats span{
+   font-size: 14px;
+  color: #000;
+  text-align: right;
+  font-weight: normal;
+}
+
+.ronded{
+  border-radius: 5px;
+  border:1px solid lightgray;
+}
+
+
+
+/*===============================================================
+# tooltip 
+==============================================================*/
+.tooltip .tooltip-inner {
+  background-color: var(--theme);
+  font-size: 125%;
+  color: #fff;
+}
+.tooltip.bs-tooltip-end .tooltip-arrow::before {
+  border-right-color: var(--theme);
+}
+.tooltip.bs-tooltip-start .tooltip-arrow::before {
+  border-left-color: var(--theme);
+}
+.tooltip.bs-tooltip-top .tooltip-arrow::before {
+  border-top-color: var(--theme);
+}
+.tooltip.bs-tooltip-bottom .tooltip-arrow::before {
+  border-bottom-color: var(--theme);
+}
+
+
+/*=============================================================
+# bage banner and heading
+================================================================*/
+#header{
+  z-index: 997;
+}
+.header {
+  z-index: 997;
+}
+.topbar {
+  z-index: 997;
+}
+
+
+.pageheadone{
+  position: relative;
+  z-index: 1;
+  display: block;
+  overflow: hidden;
+}
+.pageheadone .pagebanner{
+  position: relative;
+  width: 100%;
+  max-height: 300px;
+  z-index: 1;
+}
+
+
+.pageheadone .pageheader{
+  /*position: absolute;*/
+  /*height: 200px;*/
+  /*margin-top: -200px;*/
+  /*margin-top:70px;*/
+}
+
+
+.pageheadone .pageheader .textbar{
+  position: absolute;
+  margin-top: -200px;
+  
+  z-index: 8;
+}
+
+.pageheadone .pageheader .textbar h1{
+  float: left;
+  color: var(--theme);
+  font-size: 50px;
+  font-weight: bold;
+  color: #fff;
+  z-index: 9;
+  display: block;
+}
+
+
+
+.pageheadone .pageheader .textbar span{
+  float: left;
+  color: var(--theme);
+  font-size: 22px;
+  color: #fff;
+  z-index: 9;
+  display: block;
+}
+
+
+@media screen and (max-width:575px){
+  .pageheadone .pageheader{
+    /*padding-top: 120px;   */
+    /*height: 100px;*/
+  }
+
+  .pageheadone .pageheader .textbar{
+    /*position: absolute;*/
+    padding-top: 35%;    
+    max-height: 100px;
+    z-index: 8;
+  }
+
+  .pageheadone .pageheader .textbar h1{
+    float: left;
+    color: var(--theme);
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    z-index: 9;
+    display: block;
+  }
+
+  .pageheadone .pageheader .textbar span{
+    float: left;
+    color: var(--theme);
+    font-size: 11px;
+    color: #fff;
+    z-index: 9;
+    display: block;
+  }
+
+  #mousepointer{
+    display: none;
+  }
+}
+
+@media screen and (min-width: 576px) and (max-width:767px){
+  .pageheadone .pageheader .textbar{
+    /*position: absolute;*/
+    padding-top: 80px;    
+    height: 100px;
+    z-index: 8;
+  }
+
+  .pageheadone .pageheader .textbar h1{
+    float: left;
+    color: var(--theme);
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff;
+    z-index: 9;
+    display: block;
+  }
+
+  .pageheadone .pageheader .textbar span{
+    float: left;
+    color: var(--theme);
+    font-size: 16px;
+    color: #fff;
+    z-index: 9;
+    display: block;
+  }
+
+  #mousepointer{
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width:991px){
+  .pageheadone .pageheader .textbar{
+    /*position: absolute;*/
+    padding-top: 5%;    
+    height: 100px;
+    z-index: 8;
+  }
+
+  .pageheadone .pageheader .textbar h1{
+    float: left;
+    color: var(--theme);
+    font-size: 40px;
+    font-weight: bold;
+    color: #fff;
+    z-index: 9;
+    display: block;
+  }
+
+  .pageheadone .pageheader .textbar span{
+    float: left;
+    color: var(--theme);
+    font-size: 18px;
+    color: #fff;
+    z-index: 9;
+    display: block;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width:1199px){
+  .pageheadone .pageheader .textbar{
+    position: absolute;
+    margin-top: -200px;
+    
+    z-index: 8;
+  }
+
+  .pageheadone .pageheader .textbar h1{
+    float: left;
+    color: var(--theme);
+    font-size: 50px;
+    font-weight: bold;
+    color: #fff;
+    z-index: 9;
+    display: block;
+  }
+
+
+
+  .pageheadone .pageheader .textbar span{
+    float: left;
+    color: var(--theme);
+    font-size: 22px;
+    color: #fff;
+    z-index: 9;
+    display: block;
+  }
+}
+
+@media screen and (min-width: 1200px) and (max-width:1399px){
+  .pageheadone .pageheader .textbar{
+    position: absolute;
+    margin-top: -200px;
+    
+    z-index: 8;
+  }
+
+  .pageheadone .pageheader .textbar h1{
+    float: left;
+    color: var(--theme);
+    font-size: 50px;
+    font-weight: bold;
+    color: #fff;
+    z-index: 9;
+    display: block;
+  }
+
+
+
+  .pageheadone .pageheader .textbar span{
+    float: left;
+    color: var(--theme);
+    font-size: 22px;
+    color: #fff;
+    z-index: 9;
+    display: block;
+  }
+}
+
+@media screen and (min-width: 1400px){}

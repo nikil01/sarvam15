@@ -1,0 +1,183 @@
+<header id="header">
+
+    <!-- ======= Header ======= -->
+    <section id="topbar" class="topbar">
+      <div class="container">
+
+        <div class="row topbars">
+          
+         
+
+          <div class="col-12 col-sm-0 col-md-0 col-lg-5 col-xl-4 col-xxl-6"></div>
+
+           <div class="col-12 col-sm-6 col-md-7 col-lg-3 col-xl-5 col-xxl-3" id="search">
+            <div class=" input-group input-group-sm ">
+              <input class="form-control" placeholder="Search Products" id="searchconfig" type="text" [(ngModel)]="keyword" [ngbTypeahead]="search" (keyup.enter)="saerchit()" [selectOnExact]="true">
+              <button class="btn btn-light" type="submit" (click)="saerchit()"><i class="bi bi-search"></i></button>
+            </div> 
+          </div>
+
+          <div class="col-0 col-sm-6 col-md-5 col-lg-4 col-xl-3 col-xxl-3" id="mybtn">
+            <button type="button" class="btn btn-dark btn-sm loginbtn" rel="canonical" [routerLink]="['/track-order']" >
+               Track Order
+            </button>
+
+            <button type="button" *ngIf="!loginHead.showbutton" class="btn btn-dark btn-sm loginbtn" rel="canonical" (click)="gotosignup()">
+               Register
+            </button>
+
+            <button type="button" *ngIf="!loginHead.showbutton" class="btn btn-dark btn-sm loginbtn" rel="canonical" (click)="gotosignin()">
+               Login
+            </button>
+
+            <div ngbDropdown *ngIf="loginHead.showbutton" class="text-end" style="width: 100px; float: right;">
+              <button type="button" class="btn btn-dark btn-sm loginbtn" id="dropdownConfig" ngbDropdownToggle>
+                <i class="bi bi-person-circle"></i> {{loginHead.usrname}}
+              </button>
+              <div ngbDropdownMenu aria-labelledby="dropdownConfig">
+                <button ngbDropdownItem [routerLink]="['/profile']" rel="canonical">My Profile</button>
+                <button ngbDropdownItem [routerLink]="['/orderhistory']" rel="canonical">My Orders</button>
+                <hr/>   
+                <button ngbDropdownItem (click)="logout()" rel="canonical"><i class="bi bi-box-arrow-in-left"></i> Logout</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+     
+      </div>
+    </section><!-- End Top Bar -->
+
+
+<div  class="header align-items-center sticky-top fulpgeonly">
+    <div class="container container-xl d-flex align-items-center justify-content-between">
+      <a href="" [routerLink]="['/home']" class="logo d-flex align-items-center" rel="canonical">       
+        <img src="assets/sarvam_logo_small.png" alt="Sarvam Safety Equipments Pvt. Ltd. Logo" title="Sarvam Safety Equipments Pvt. Ltd. Logo">       
+      </a>
+
+       <button class="menutgle btn btn-link" (click)="sidemenu(menu)">
+        <i class="bi bi-list"></i>
+      </button>
+      
+       <nav id="navbar" class="navbar ">
+        <ul>
+          <li><a [routerLink]="['/home']" rel="canonical">Home</a></li>
+          <li><a [routerLink]="['/about']" rel="canonical">About Us</a></li>
+          <li><a [routerLink]="['/elite-products']" rel="canonical">Elite Products</a></li>
+          <li><a [routerLink]="['/shopnow']" rel="canonical">Shop Now</a></li>
+          <li class="dropdown"><a href="#"><span>Updates</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a [routerLink]="['/events']" rel="canonical">Webinars</a></li> 
+              <li><a [routerLink]="['/blogs']" rel="canonical">Blog</a></li> 
+              <li><a [routerLink]="['/gallery']" rel="canonical">Gallery</a></li> 
+              <li><a [routerLink]="['/training']" rel="canonical">Training</a></li> 
+              <!-- <li *ngFor="let menu of HeaderLinks" class="dropitem"><a [routerLink]="menu.pge_urlink">{{menu.pge_title}}</a></li>               -->
+            </ul>
+          </li>
+          <li><a [routerLink]="['/contact']">Contact Us</a></li>
+          <li><button class="btn btn-link btn-lg iconbtn" [routerLink]="['/cart']" rel="canonical"><i class="bi bi-cart"></i><span class="badge ">{{loginHead.CartCount}}</span></button></li>
+
+          <li><button class="btn btn-link btn-lg iconbtn" [routerLink]="['/wishlist']" rel="canonical"><i class="bi bi-heart"></i><span class="badge ">{{loginHead.wishCount}}</span></button></li>
+        </ul>
+      </nav>
+   
+
+
+
+     
+
+    </div>
+
+ </div>
+
+
+<div  class="header align-items-center sticky-top mobileonly">
+ <div class="container container-xl d-flex align-items-center justify-content-between ">
+      <a href="" [routerLink]="['/home']" class="logo d-flex align-items-center" rel="canonical">       
+        <img src="assets/sarvam_logo_small.png" alt="Sarvam Safety Equipments Pvt. Ltd. Logo" title="Sarvam Safety Equipments Pvt. Ltd. Logo" width="200px;">       
+      </a>
+
+      <button class="menusubbtn btn btn-link" [routerLink]="['/cart']" rel="canonical">
+        <i class="bi bi-cart"><span class="badge ">{{loginHead.CartCount}}</span></i>
+      </button>
+
+      <button class="menusubbtn btn btn-link" [routerLink]="['/wishlist']" rel="canonical">
+        <i class="bi bi-heart"><span class="badge ">{{loginHead.wishCount}}</span></i>
+      </button>
+
+       <button class="menutgle btn btn-link" (click)="sidemenu(menu)">
+        <i class="bi bi-list"></i>
+      </button>     
+
+  </div>
+</div>
+
+
+  </header><!-- End Header -->
+  <!-- End Header -->
+
+
+
+
+
+
+<ng-template #menu let-offcanvas>
+  <div class="offcanvas-header">
+    <h4 class="offcanvas-title">
+      <img src="assets/sarvam_logo_small.png" alt="" class="img-responsive" width="200px" alt="Sarvam Safety Equipments Pvt. Ltd. Logo" title="Sarvam Safety Equipments Pvt. Ltd. Logo">     
+    </h4>
+    
+  </div>
+  <div class="offcanvas-body">
+    
+        <ul class="sidemenu">
+          <li><a [routerLink]="['/home']"  (click)="offcanvas.dismiss('Cross click')" rel="canonical">Home</a></li>
+          <li><a [routerLink]="['/about']"  (click)="offcanvas.dismiss('Cross click')" rel="canonical">About Us</a></li>
+          <li><a [routerLink]="['/elite-products']"  (click)="offcanvas.dismiss('Cross click')" rel="canonical">Elite Products</a></li>
+          <li><a [routerLink]="['/shopnow']"  (click)="offcanvas.dismiss('Cross click')" rel="canonical">Shop Now</a></li>
+          <li><a [routerLink]="['/events']"  (click)="offcanvas.dismiss('Cross click')" rel="canonical">Webinars</a></li>
+          <li><a [routerLink]="['/blog']"  (click)="offcanvas.dismiss('Cross click')" rel="canonical">Blog</a></li>
+          <li><a [routerLink]="['/album']"  (click)="offcanvas.dismiss('Cross click')" rel="canonical">Gallery</a></li>
+          <li><a [routerLink]="['/training']"  (click)="offcanvas.dismiss('Cross click')" rel="canonical">Training</a></li>
+         <!--  <li class="dropdown"><a href="#"><span>Webinars</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              
+              
+            </ul>
+          </li> -->
+          <li><a [routerLink]="['/contact']" rel="canonical" (click)="offcanvas.dismiss('Cross click')">Contact Us</a></li>
+
+          <li><button class="btn btn-link btn-lg iconbtn" rel="canonical" [routerLink]="['/cart']" (click)="offcanvas.dismiss('Cross click')">
+            <i class="bi bi-cart"></i><span class="badge ">{{loginHead.CartCount}}</span> Cart</button>
+          </li>
+
+          <li><button class="btn btn-link btn-lg iconbtn" rel="canonical" [routerLink]="['/wishlist']" (click)="offcanvas.dismiss('Cross click')">
+            <i class="bi bi-heart"></i><span class="badge ">{{loginHead.wishCount}}</span> Wishlist</button>
+          </li>
+
+          <button type="button" *ngIf="!loginHead.showbutton" rel="canonical" class="btn btn-warning btn-sm loginbtn " (click)="gotosignup()"  (click)="offcanvas.dismiss('Cross click')">
+            <i class="bi bi-box-arrow-in-right"></i> Register
+          </button>&nbsp;&nbsp;&nbsp;
+
+          <button type="button" *ngIf="!loginHead.showbutton" rel="canonical" class="btn btn-danger btn-sm loginbtn " (click)="gotosignin()" (click)="offcanvas.dismiss('Cross click')">
+            <i class="bi bi-box-arrow-in-right"></i> Login
+          </button>
+
+         <div ngbDropdown *ngIf="loginHead.showbutton">
+            <button type="button" class="btn btn-success btn-sm loginbtn" id="dropdownConfig" ngbDropdownToggle>
+              <i class="bi bi-person-circle"></i>  {{loginHead.usrname}}
+            </button>
+            <div ngbDropdownMenu aria-labelledby="dropdownConfig">
+              <button ngbDropdownItem [routerLink]="['/profile']" rel="canonical" (click)="offcanvas.dismiss('Cross click')">My Profile</button>
+              <button ngbDropdownItem [routerLink]="['/orderhistory']" rel="canonical" (click)="offcanvas.dismiss('Cross click')">My Orders</button>
+              <hr/>   
+              <button ngbDropdownItem (click)="logout()" rel="canonical" (click)="offcanvas.dismiss('Cross click')"><i class="bi bi-box-arrow-in-left"></i> Logout</button>
+            </div>
+          </div>
+
+        </ul>
+        <hr/>
+        <button type="button" class="btn btn-primary btn-sm" aria-label="Close" (click)="offcanvas.dismiss('Cross click')">Close Menu <i class="bi bi-chevron-right"></i></button>
+    
+  </div>
+</ng-template>

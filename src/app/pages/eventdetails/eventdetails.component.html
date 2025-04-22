@@ -1,0 +1,89 @@
+<section class="pageheadone">
+  <img src="{{filepathabout}}{{pageBan}}" class="pagebanner" alt="{{pageData.pge_subtitle}}" title="{{pageData.pge_subtitle}}">
+  <div class="pageheader container">  
+    <div class="textbar">
+      <h1>{{pageData.pge_subtitle}}</h1>
+      <br/><span><i class="bi bi-house-fill"></i> Home <i class="bi bi-chevron-right"></i> {{pageData.pge_title}}</span>
+    </div>
+  </div>  
+</section>
+
+
+<section class="bloglist container">
+	<div class="row">
+		<div class="blogside col-12 col-sm-7 col-md-7 col-lg-7 col-xl-7 col-xxl-8">			
+		    <div class="blogitem">
+		      <div class="img mb-5"><img src="{{filepathblog}}{{eventData.evt_photo}}" style="width: 100%;" alt="{{eventData.evt_heading}}" title="{{eventData.evt_heading}}"></div>
+
+		      <h3>Details</h3>
+		      <div class="blogtext">  
+		      	<p class="brief" [innerHTML]="eventData.evt_brief"></p>
+		      </div>
+		    </div>
+		</div>
+
+
+
+		<div class="menuside col-12 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-4">
+			
+			<div  class="catmenu sticky-to eventGrid pt-4 mb-5">			
+				<div class="eventItem">
+			      <div class="blogtext">
+			      	<div class="bloghead">{{eventData.evt_heading}}</div>
+			      	<div class="dateauthor">
+			      		<i class="bi bi-bookmark-check"></i><span>{{eventData.evt_category}}</span>	<br/>
+			      		<i class="bi bi-calendar2-week"></i><span>{{eventData.evt_udate | date}} - {{eventData.evt_utime}} | {{eventData.evt_duration}}</span><br/>
+			      		<i class="bi bi-geo-alt-fill"></i><span *ngIf="eventData.evt_etype == 'Online'">Online</span>	<span *ngIf="eventData.evt_etype != 'Online'">{{eventData.evt_vanue}}</span>	
+			      	</div>  
+			      	<div class="row footbar">
+			      		<div class="col text-start ">				      		
+				      		<span *ngIf="eventData.evt_type == 'Paid'"><i class="bi bi-wallet2"></i> ₹ {{eventData.evt_fees}}/-</span>
+				      		<span *ngIf="eventData.evt_type == 'Free'">Free</span> 
+				      	</div>
+				      	<div class="col text-end">				      		
+				      		<button class="anibutton btn1" [routerLink]="['/eventsignup/', eventData.evt_id, eventData.seo_urlink]">Register</button>			      		
+				      	</div>
+			      	</div>
+			      	
+			      </div>
+			  </div>				
+				
+			</div>
+
+
+			<h5>Upcoming Events</h5>
+			<div class="eventList" *ngFor="let event of eventList">
+			
+			    <div class="eventItem" (click)="reloadevents(event.evt_id, event.seo_urlink)" *ngIf="event.evt_id != eventData.evt_id">
+			      <div class="img"><img src="{{filepathblog}}{{event.evt_photo}}" style="width: 100%;" alt="{{event.evt_heading}}" title="{{event.evt_heading}}"><button class="catbtn btn btn-sm btn-danger" >{{event.evt_category}}</button></div>
+			      <div class="blogtext">
+			      	<div class="bloghead mt-3">{{event.evt_heading}}</div>
+			      	<div class="dateauthor">
+			      		<i class="bi bi-calendar2-week"></i><span>{{event.evt_udate | date}} - {{event.evt_utime}} | {{event.evt_duration}}</span><br/>
+			      		<i class="bi bi-geo-alt-fill"></i><span>{{event.evt_vanue}}</span>			      		
+			      	</div>  
+			      	<div class="row footbar">
+			      		<div class="col text-start ">
+				      		<span *ngIf="event.evt_type == 'Paid'">₹ {{event.evt_fees}}/-</span>
+				      		<span *ngIf="event.evt_type == 'Free'">Free</span> 
+				      	</div>
+				      	<div class="col text-end">				      		
+				      		| <a [routerLink]="['/eventsignup/', event.evt_id, event.seo_urlink]">Register</a>			      		
+				      	</div>
+			      	</div>
+			      	
+			      </div>
+			    </div>			   
+
+			</div>
+
+
+
+		</div>
+
+
+		
+
+
+	</div>
+</section>

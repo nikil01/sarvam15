@@ -1,0 +1,77 @@
+<section class="pageheadone">
+  <img src="{{filepathabout}}{{pageBan}}" class="pagebanner" alt="{{pageData.pge_subtitle}}" title="{{pageData.pge_subtitle}}">
+  <div class="pageheader container">  
+    <div class="textbar">
+      <h1>{{pageData.pge_subtitle}}</h1>
+      <br/><span><i class="bi bi-house-fill"></i> Home <i class="bi bi-chevron-right"></i> {{pageData.pge_title}}</span>
+    </div>
+  </div>  
+</section>
+
+<section class="aboutus  container">
+	
+
+
+
+	<!-- Registration 2 - Bootstrap Brain Component -->
+<div class=" py-0 py-md-0">
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-12 col-md-11 col-lg-8 col-xl-7 col-xxl-6">
+        <div class="bg-light p-4 p-md-5 rounded shadow-sm">
+          <div class="row" *ngIf="otpvisible">
+            <div class="col-12">
+              <div class="mb-5">
+                <h2 class="h3">welcome {{cst_name}}</h2>
+                <h3 class="fs-6 fw-normal text-secondary m-0">Enter 6 Digit OTP recieved in your Mobile Number</h3>
+              </div>
+            </div>
+          </div>
+
+          
+          <div class="row" *ngIf="!otpvisible">
+            <div class="col-12">
+              <div class="mb-5">
+                <h2 class="h3">Sorry! {{cst_name}}</h2>
+                <h3 class="fs-6 fw-normal text-secondary m-0">Your Account Is Inactive! Please Contact Sarvam Team</h3>
+                <h5 class="fs-6 fw-normal text-danger m-0">You are being redirected back!</h5>
+              </div>
+            </div>
+          </div>
+         
+          <div *ngIf="otpvisible">
+          <form [formGroup]="regfrm" (ngSubmit)="onSubmit()">
+            <div class="row gy-3 gy-md-4 overflow-hidden">
+              <div class="col-12">
+                <label for="otp" class="form-label">OTP <span class="text-danger">* <small>{{btnerr}}</small></span></label>
+                <input type="number" class="form-control" name="otp" id="otp" placeholder="OTP" required formControlName="otp" [ngClass]="{ 'is-invalid': submitted && f['otp'].errors }" autocomplete="off" min="000001" max="999999" maxlength="6">
+                <div *ngIf="submitted && f['otp'].errors" class="invalid-feedback">
+                  <div *ngIf="f['otp'].errors['required']">OTP is required</div>
+                   <div *ngIf="f['otp'].errors['minLength']">invalid OTP</div>
+                  <div *ngIf="f['otp'].errors['maxLength']">invalid OTP</div>
+                  <div *ngIf="f['otp'].errors['min']">Invalid OTP</div>
+                  <div *ngIf="f['otp'].errors['max']">Invalid OTP</div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="d-grid">                  
+                  <button class="anibutton btn1" type="submit">Confirm</button>
+                </div>
+              </div>
+            </div>
+          </form>
+          </div>
+        
+
+         
+         
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+</section>

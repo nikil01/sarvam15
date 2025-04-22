@@ -1,0 +1,19 @@
+.aboutus{
+	padding: 60px 0px 60px 0px;
+	background-color: #fff;
+	/*height: 600px;*/
+	display: block;
+
+}
+
+
+
+h3{
+	color: #000;
+	font-size: 18px !important;
+}
+
+span{
+	color: #000;
+	font-size: 15px !important;
+}

@@ -1,0 +1,76 @@
+<section class="pageheadone">
+  <img src="{{filepathabout}}{{pageBan}}" class="pagebanner" alt="{{pageData.pge_subtitle}}" title="{{pageData.pge_subtitle}}">
+  <div class="pageheader container">  
+    <div class="textbar">
+      <h1>{{pageData.pge_subtitle}}</h1>
+      <br/><span><i class="bi bi-house-fill"></i> Home <i class="bi bi-chevron-right"></i> {{pageData.pge_title}}</span>
+    </div>
+  </div>  
+</section>
+
+<section class="aboutus  container">
+	
+
+
+
+	<!-- Registration 2 - Bootstrap Brain Component -->
+<div class=" py-0 py-md-0">
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-12 col-md-11 col-lg-8 col-xl-7 col-xxl-6">
+        <div class="bg-light p-4 p-md-5 rounded shadow-sm">
+          <div class="row">
+            <div class="col-12">
+              <div class="mb-5">
+                <h2 class="h3">Login</h2>       
+                <h3 class="fs-6 fw-normal text-secondary m-0" [innerHTML]="errmsg"></h3>         
+              </div>
+            </div>
+          </div>
+          <form [formGroup]="regfrm" (ngSubmit)="onSubmit()"> 
+            <div class="row gy-3 gy-md-4 overflow-hidden">             
+              <div class="col-12">
+                <label for="uid" class="form-label">Mobile <span class="text-danger">*</span></label>
+                <input type="number" class="form-control" name="uid" id="uid" placeholder="10 Digit Mobile Number" required [ngClass]="{ 'is-invalid': submitted && f['uid'].errors }" autocomplete="off" formControlName="uid" min="6111111111" max="9999999999" maxlength="10">
+                <div *ngIf="submitted && f['uid'].errors" class="invalid-feedback">
+                  <div *ngIf="f['uid'].errors['required']">Mobile Number is required</div>
+                  <div *ngIf="f['uid'].errors['minLength']">Invalid Mobile Number</div>
+                  <div *ngIf="f['uid'].errors['maxLength']">Invalid Mobile Number</div>
+                  <div *ngIf="f['uid'].errors['min']">Invalid Mobile Number</div>
+                  <div *ngIf="f['uid'].errors['max']">Invalid Mobile Number</div>
+                </div>
+              </div>
+             
+              
+              <div class="col-12">
+                <div class="d-grid">
+                  <button class="anibutton btn1" type="submit" (click)="padpge()">Sign In With Password</button>
+                </div>
+                <br/>
+                <div class="d-grid">
+                  <button class="anibutton btn1" type="submit" (click)="genotp()">Sign In With OTP</button>
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="row">
+            <div class="col-12">
+              <hr class="mt-5 mb-4 border-secondary-subtle">
+              <div class="col-12">
+                <p class="m-0 text-secondary text-center">Don't Have an account? <a href="#!" class="link-primary text-decoration-none" [routerLink]="['/signup']">Sign Up</a></p>
+
+                <p class="m-0 text-secondary text-center">Forgot Password? Enter Your Mobile Number And Click <a class="link-primary text-decoration-none" (click)="resetpwd()" style="cursor: pointer;">Here</a></p>
+              </div>
+            </div>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+</section>

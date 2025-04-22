@@ -1,0 +1,146 @@
+
+
+
+.proddetails{
+	padding: 60px 20px 60px 20px;
+	background-color: #fff;
+	/*height: 600px;*/
+	display: block;
+
+}
+
+
+/*===================================================
+
+=======================================================*/
+
+.eliteprddata{
+	/*padding: 60px 0px 60px 0px;*/
+	background-color: #fff;
+	/*height: 600px;*/
+	/*display: block;*/
+
+}
+
+.imghldr{
+
+}
+
+.eliteprddata .focussesimg{
+	border-radius: 10px;
+	border:2px solid #f2f2f2;
+	background-color: #fff;
+	width: 100%;
+	height: 400px;	
+	overflow: hidden;
+	padding-left: 75px;
+	padding-right: 75px;
+
+	/*display: inline-block;*/
+    /*height: 100%;*/
+    /*vertical-align: middle;*/
+
+}
+
+.eliteprddata .focussesimg img{
+	margin-left: auto;
+	margin-right: auto;	
+	vertical-align: middle;
+	display: inline-block;
+    /*max-width: 200px;
+    height: 400px;*/
+
+}
+
+
+
+.eliteprddata .thumbnails{	
+	display: inline-block;
+	margin-top: 30px;
+}
+
+.eliteprddata .thumbnails ul li{	
+	border-radius: 5px;
+	border:2px solid #f2f2f2;
+	width: 100px;
+	height: 100px;
+	text-align: center;
+	display: inline-block;
+	margin-right: 10px;
+	background-color: #f2f2f2;
+	list-style: none;
+}
+
+
+.eliteprddata .thumbnails ul li img{		
+	max-height: 100%;
+	max-width: 100%;
+	/*padding-top: 20%;*/
+}
+
+.eliteprddata h6{
+	font-weight: bold;
+	font-size: 36px;
+	color: #000;
+	line-height: 55px;
+	text-align: left;
+}
+
+.eliteprddata p{
+	text-align: justify;
+	/*line-height: 26px;	*/
+	color: #666666;
+}	
+
+
+.eliteprddata ul li{
+	list-style: disc;	
+}
+
+.eliteprddata li::marker {
+  color: var(--theme);
+}
+
+.eliteprddata .nomob{display: block}
+	.eliteprddata .yesmob{display: none;}
+	.eliteprddata .yesmob img{width: 300px; padding-left: 0px;}
+
+@media screen and (max-width: 450px){
+	.eliteprddata .nomob{display: none}
+	.eliteprddata .yesmob{display: block;}
+
+	.eliteprddata .focussesimg{		
+		padding-left: 10px;
+		padding-right: 10px;
+
+		/*display: inline-block;*/
+	    height: 300px;
+	    /*vertical-align: middle;*/
+
+	}
+
+
+	.eliteprddata .focussesimg img{
+		margin-left: auto;
+		margin-right: auto;	
+		vertical-align: middle;
+		/*display: inline-block;*/
+	    /*max-width: 200px;
+	    height: 400px;*/
+
+	}
+
+	.eliteprddata h6{
+		font-weight: bold;
+		font-size: 22px;
+		color: #000;
+		line-height: 25px;
+		text-align: left;
+	}
+
+}
+
+@media screen and (min-width: 577px){
+	.eliteprddata .nomob{display: block}
+	.eliteprddata .yesmob{display: none;}
+}

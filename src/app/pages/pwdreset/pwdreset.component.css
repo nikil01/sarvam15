@@ -1,0 +1,25 @@
+.aboutus{
+	padding: 60px 0px 60px 0px;
+	background-color: #fff;
+	/*height: 600px;*/
+	display: block;
+
+}
+
+
+
+.sidebtns ul li{
+	list-style: none;
+	display: block;
+	margin-bottom: 10px;
+}
+
+.sidebtns ul li a{
+	text-decoration: none;
+	display: block;
+	text-align: left;
+}
+
+.sidebtns ul li a.inpage{
+	text-align: right;
+}

@@ -1,0 +1,427 @@
+<section class="pageheadone">
+  <img src="{{filepathabout}}{{pageBan}}" class="pagebanner" alt="{{pageData.pge_subtitle}}" title="{{pageData.pge_subtitle}}">
+  <div class="pageheader container">  
+    <div class="textbar">
+      <h1>{{pageData.pge_subtitle}}</h1>
+      <br/><span><i class="bi bi-house-fill"></i> Home <i class="bi bi-chevron-right"></i> {{pageData.pge_title}}</span>
+    </div>
+  </div>  
+</section>
+
+<section class="mbpageonly">
+	<div class="row col-12 fbtn d-flex align-items-center justify-content-between">
+		<div class="col-5">
+			<button class=" btn btn-default">
+				<i class="bi bi-sort-down" (click)="sidemenu(sortpanel)"> Sort</i>
+			</button>     
+		</div>
+		<div class="col-2">|</div>
+		<div class="col-5">
+			<button class=" btn btn-default"  (click)="sidemenu(filterbar)">
+				<i class="bi bi-sliders"> Filter</i>
+			</button>  
+		</div>
+	</div>
+</section>
+
+<section class="shopnow container">
+	<div class="row">
+	<div class="flpageonly col-md-3 leftpanel" data-aos="fade-right" data-aos-duration="3000">	
+		<div class="fltrtxt d-flex align-items-center justify-content-between">Filters <small><button class="btn btn-sm lp2" (click)="clearFilters()">Clear All</button></small></div>	
+		<div class="sidehead"><h4>CATEGORIES</h4><span class="redunderline"></span></div>
+		<div class="catlist">
+		<ul>			
+			<li *ngFor="let category of catlist"><i class="bi bi-chevron-right"></i><a [routerLink]="['/shopnow']" [queryParams]="{catid: category.cat_name }"> {{category.cat_name | uppercase}}</a></li>
+			
+			
+		</ul>
+		</div>
+		<div class="sidehead"><h4>PRICE</h4><span class="redunderline"></span></div>
+		<div class="pricerange"><ngx-slider [(value)]="value" [(highValue)]="highValue" [options]="options" (mouseup)="pricechange()"></ngx-slider></div>
+
+		<div class="sidehead"><h4>BRANDS</h4><span class="redunderline"></span></div>
+		<input type="search" name="" class="form-control" [(ngModel)]="brands" placeholder="Search for Brands" (keyup)="filterBrand()">
+		<ul>
+			<ng-container *ngFor="let brand of filteredBrand; let i = index">
+			<li *ngIf="brand.brn_brand && i<= brandLimit"><input type="checkbox" name="brand" [id]="brand.brn_brand" (change)="getbrndlist($event, brand.brn_brand)" [checked]="isChecked(brand.brn_brand)"> <label [for]="brand.brn_brand">&nbsp;&nbsp;{{brand.brn_brand}}</label></li>		
+			</ng-container>	
+		</ul>
+		<div *ngIf="brandlistlenth >= 7 && brandswitch == false" class="formore" (click)="expandBrand()" style="cursor: pointer;">+{{brandlistlenth - 6}} more</div>
+		<div *ngIf="brandswitch == true" class="formore" (click)="shrinkBrand()" style="cursor: pointer;">show less</div>
+
+		<div *ngIf="sizelistlenth >= 2" class="sidehead"><h4>SIZE</h4><span class="redunderline"></span></div>
+		<input type="search" name="" class="form-control" [(ngModel)]="sizes" placeholder="Search for Size" (keyup)="filterSize()">
+		<ul>
+			<ng-container *ngFor="let size of filteredSize, let i=index">
+			<li *ngIf="size.siz_size && i<= sizeLimit"><input type="checkbox" name="size" [id]="size.siz_size" (change)="getsizelist($event, size.siz_size)" [checked]="isSizeChecked(size.siz_size)"> <label [for]="size.siz_size">&nbsp;&nbsp;{{size.siz_size}}</label></li>	
+			</ng-container>		
+		</ul>
+		<div *ngIf="sizelistlenth >= 7 && sizeswitch == false" class="formore" (click)="expandSize()" style="cursor: pointer;">+{{sizelistlenth - 6}} more</div>
+		<div *ngIf="sizeswitch == true" class="formore" (click)="shrinkSize()" style="cursor: pointer;">show less</div>
+
+		<div *ngIf="colorlistlenth >= 2" class="sidehead"><h4>COLOUR</h4><span class="redunderline"></span></div>
+		<input type="search" name="" class="form-control" [(ngModel)]="colors" placeholder="Search for Color" (keyup)="filterColor()">
+		<ul>
+			<ng-container *ngFor="let color of colorlist; let i = index">
+			<li *ngIf="color.clr_name && i<= colorLimit">
+				<label class="chkbx" [for]="color.clr_name"> 
+					<span class="lbl"> {{color.clr_name}}</span>
+					<input type="checkbox" [checked]="isClrChecked(color.clr_name)" (change)="getcolorlist($event, color.clr_name)" [id]="color.clr_name">
+					<span class="checkmark" [ngStyle]="{'background-color': color.clr_color}"></span>
+				</label>
+
+
+				<!-- <input type="checkbox" name="color" [id]="color.clr_name" (change)="getcolorlist($event, color.clr_name)" [checked]="isClrChecked(color.clr_name)"> <label [for]="color.clr_name">&nbsp;&nbsp;{{color.clr_name}}</label> -->
+
+			</li>		
+			</ng-container>		
+		</ul>
+		<div *ngIf="colorlistlenth >= 7 && colorswitch == false" class="formore" (click)="expandColor()" style="cursor: pointer;">+{{colorlistlenth - 6}} more</div>
+		<div *ngIf="colorswitch == true" class="formore" (click)="shrinkColor()" style="cursor: pointer;">show less</div>
+
+
+		<!-- <ng-container *ngFor="let specs of filtrlist">
+
+			<div><h4>{{specs.flt_lable | uppercase}}</h4><span class="redunderline"></span></div>
+			<ul>
+				<ng-container *ngIf="specs.flt_type == 'color'">
+					<li *ngFor="let item of specs.filter; let i = index">
+						<label class="chkbx" [for]="item"> 
+							<span class="lbl"> {{item}}</span>
+							<input type="checkbox" [checked]="isFltrCheck(item)" (change)="getFltrlist($event, specs.flt_name, item)" [id]="item">
+							<span class="checkmark" [ngStyle]="{'background-color': item}"></span>
+						</label>
+					</li>
+				</ng-container>
+
+				<ng-container *ngIf="specs.flt_type != 'color'">
+					<li *ngFor="let item of specs.filter; let i = index "><input type="checkbox" name="item" [id]="item" (change)="getFltrlist($event, specs.flt_name, item)" [checked]="isFltrCheck(item)"><label [for]="item">&nbsp;&nbsp;{{item}}</label></li>
+				</ng-container>
+			</ul>
+		</ng-container> -->
+
+
+		
+
+		<!-- <div><button class="btn btn-light" (click)="clearFilters()">Clear All Filters</button> </div> -->
+
+		<div class="prdban" *ngIf="sideBanner.bnr_banner != ''"><a href="{{sideBanner.bnr_urlink}}" ><img src="{{bannerPath}}{{sideBanner.bnr_banner}}" class="img-responsive" alt="{{sideBanner.bnr_title}}" title="{{sideBanner.bnr_title}}" width="100%"></a></div>
+		
+	</div>
+	<div class=" col-md-9 mainpanel" data-aos="fade-left" data-aos-duration="1500">
+		
+		<section class="flpageonly">
+			
+		
+			<div class="filterbar d-flex align-items-center justify-content-between row">
+				<div class="col-md-4 col-12 col-sm-4 col-lg-4 col-xl-3 col-xxl-3">
+				 <select class="form-select form-select-sm" [value]="rowPerPage" (change)="changePageSize($event)">
+					<option value="15">15 Item's/Page</option>
+					<option value="30">30 Item's/Page</option>			
+					<option value="60">60 Item's/Page</option>						  
+			     </select> 
+				</div>
+				<div class="col-md-4 col-12 col-sm-4 col-lg-4 col-xl-3 col-xxl-3 pagestat">				
+					<span *ngIf="recordCount < totalCount">Showing {{recordStart}}-{{recordCount}} Of {{totalCount}} Products</span>
+					<span *ngIf="recordCount >= totalCount">{{recordCount}} Records Found</span>
+				</div>
+				<div class="col-md-0 col-0 col-sm-0 col-lg-0 col-xl-3 col-xxl-3 gridbtn">
+					<button class="btn btn-link" (click)="changeview(1)" [ngClass]="{'viewslctd': viewgrid, 'viewdslctd': !viewgrid}"><i class="bi bi-grid-3x2-gap-fill"></i></button> 
+					<button class="btn btn-link" (click)="changeview(0)" [ngClass]="{'viewslctd': !viewgrid, 'viewdslctd': viewgrid}"><i class="bi bi-list-task"></i></button>
+				</div>
+				
+				<div class="col-md-4 col-12 col-sm-4 col-lg-4 col-xl-3 col-xxl-3">
+					<select class="form-select form-select-sm" (change)="changeOrder($event)" >
+					  <option value="default">Default Sorting</option>
+					  <option value="pa">Price By: Low To High</option>
+					  <option value="pz">Price By: High To Low</option>
+					  <option value="na">Sort By Latest</option>	
+					  <option value="pn">Sort By Popularity</option>			  
+					</select> 
+				</div>
+			</div>
+		</section>
+
+		
+
+		<div class="productbase row" *ngIf="viewgrid">
+		        <div class="col-12 col-md-8 col-sm-10 col-lg-6 col-xl-6 col-xxl-4 prdholdergrid" *ngFor="let product of shopProds">
+		        	<div class="prdholder">
+					<img src="assets/img/badgenew.png" class="lablenew" *ngIf="product.ctl_new == 'Yes'" alt="new" title="new">
+					<img src="assets/img/badgesale.png" class="lablesale" *ngIf="product.ctl_onsale == 'Yes'" alt="sale" title="sale">
+					
+					<div class="imgholdr" [routerLink]="['/product/',product.seo_urlink]">
+						<div class="thumbnail">
+			               <div class="image-wrapper">
+							  <img src="{{filepaththumbnail}}{{product.imgone}}" class="image img-responsive" alt="{{product.ctl_title}}"/>
+							  <img src="{{filepaththumbnail}}{{product.imgtwo}}" class="image-hover img-responsive" alt="{{product.ctl_title}}" title="{{product.ctl_title}}"/>
+							</div>	               
+			            </div>
+			            <div class="caption">
+			            		<!-- <ngb-rating [rate]="product.ctl_rating"></ngb-rating> -->
+			                    <h6>{{product.ctl_title | slice:0:60}}</h6>
+			                    <span class="price">
+			                    	<span class="new" *ngIf="product.ctl_rate != product.ctl_discount">₹{{product.ctl_discount}}/- </span>
+			                    	<span *ngIf="product.ctl_rate >= product.ctl_discount" [ngClass]="{ 'old': product.ctl_rate > product.ctl_discount, 'normal': product.ctl_rate == product.ctl_discount }">₹{{product.ctl_rate}}/- </span>
+			                    	<small *ngIf="product.ctl_rate != product.ctl_discount" class="text-success">({{100-((product.ctl_discount/product.ctl_rate) * 100) |  number: '1.0-0'}}% off)</small>
+			                    	
+			                    </span><br/>
+
+			                    <small *ngIf="product.ctl_fewleft == 'Yes'" class="text-danger scndline">Only Few Left</small>
+			                    <small *ngIf="product.ctl_fewleft == 'Yes' && product.ctl_limitedoffer == 'Yes'" class="text-danger scndline"> / </small>
+			                    <small *ngIf="product.ctl_limitedoffer == 'Yes'" class="text-danger scndline">Limited Offer</small>
+			                    
+			            </div>
+
+					</div>
+		            <div class="prodoverlay">
+				        <div class="sociolink" [routerLink]="['/product/',product.seo_urlink]"><i class="bi bi-eye-fill"></i></div>
+				        <div class="sociolink" *ngIf="product.ctl_sell == 'Yes' && product.ctl_stock >=1" (click)="addToCart(product.ctl_id)"><i class="bi bi-cart-fill"></i></div>
+				        <!-- <div class="sociolink"><i class="bi bi-search"></i></div> -->
+				        <div class="sociolink"><i class="bi bi-heart-fill" (click)="addToWishlist(product.ctl_id)"></i></div>
+				      </div>
+				       </div>
+		        </div>
+		</div>
+
+		<div class="productbase row" *ngIf="!viewgrid">
+			<div class="row prdlistviw" *ngFor="let product of shopProds" data-aos="fade-up" data-aos-duration="3000">				
+				<div class="col-md-4 col-sm-4 col-12 col-lg-4 col-xl-4 col-xxl-4">
+					<div class="prdholderlist" >
+						<img src="assets/img/badgenew.png" class="lablenew" *ngIf="product.ctl_new == 'Yes'" alt="new" title="new">
+						<img src="assets/img/badgesale.png" class="lablesale" *ngIf="product.ctl_onsale == 'Yes'" alt="sale" title="sale">
+						
+						<div class="imgholdr" [routerLink]="['/product/',product.seo_urlink]">
+							<div class="thumbnail">
+				               <div class="image-wrapper">
+								  <img src="{{filepaththumbnail}}{{product.imgone}}" class="image" alt="{{product.ctl_title}}" />
+								  <img src="{{filepaththumbnail}}{{product.imgtwo}}" class="image-hover" alt="{{product.ctl_title}}" title="{{product.ctl_title}}"/>
+								</div>	                
+				            </div>
+						</div>
+
+			            <div class="prodoverlay">
+					        <div class="sociolink" [routerLink]="['/product/',product.seo_urlink]"><i class="bi bi-eye-fill"></i></div>
+					        <div class="sociolink" *ngIf="product.ctl_sell == 'Yes' && product.ctl_stock >=1" (click)="addToCart(product.ctl_id)"><i class="bi bi-cart-fill"></i></div>
+					        <!-- <div class="sociolink"><i class="bi bi-search"></i></div> -->
+					        <div class="sociolink"><i class="bi bi-heart-fill" (click)="addToWishlist(product.ctl_id)"></i></div>
+					      </div>
+				  	</div>
+		        </div>
+
+		        <div class="col-md-8 col-sm-8 col-8 col-lg-8 col-xl-8 col-xxl-8">
+		        	<div class="caption">
+			            		<!-- <ngb-rating [rate]="2"></ngb-rating> -->
+			                    <h6>{{product.ctl_title}}</h6>
+			                    <p>{{product.ctl_description | slice:0:300}}</p>
+			                    <span class="price">
+			                    	<span class="new" *ngIf="product.ctl_rate != product.ctl_discount">₹ {{product.ctl_discount}}/- </span>
+			                    	<span class="old" *ngIf="product.ctl_rate >= product.ctl_discount">₹ {{product.ctl_rate}}/-</span>
+			                    	<small *ngIf="product.ctl_rate != product.ctl_discount" class="text-success"> ({{100-((product.ctl_discount/product.ctl_rate) * 100) |  number: '1.0-0'}}% Off)</small>
+			                    </span><br/><br/>
+
+			                    <small *ngIf="product.ctl_fewleft == 'Yes'" class="text-danger scndline">Only Few Left</small>
+			                    <small *ngIf="product.ctl_fewleft == 'Yes' && product.ctl_limitedoffer == 'Yes'" class="text-danger scndline"> / </small>
+			                    <small *ngIf="product.ctl_limitedoffer == 'Yes'" class="text-danger scndline">Limited Offer</small>
+			        </div>
+			    </div>
+			</div>
+		</div>
+
+
+
+
+	<div class="row shoppager">
+		<div class="text-center">
+			<button class="btn  mb-3" (click)="getelitedata(1)" [disabled]="1 == currentPage">
+				<i class="bi bi-chevron-bar-left"></i>
+			</button>
+			<button class="btn mb-3" (click)="getelitedata('p')" [disabled]="btnPrevious">
+				<i class="bi bi-chevron-left"></i>
+			</button>
+			<button class="btn mb-3" *ngFor="let pages of pagesArray" [ngClass]="{'btnpageactive': currentPage === pages}" (click)="getelitedata(pages)">{{pages}}</button>
+			<button class="btn  mb-3" (click)="getelitedata('n')" [disabled]="btnNext || totalPage == currentPage">
+				<i class="bi bi-chevron-right"></i>
+			</button>
+			<button class="btn mb-3" (click)="getelitedata(totalPage)" [disabled]="totalPage == currentPage || totalCount === 0">
+				<i class="bi bi-chevron-bar-right"></i>
+			</button>
+		</div>
+	</div>
+
+
+	</div>
+	</div>
+</section>
+
+
+
+
+<ng-template #filterbar let-offcanvas>
+ 
+  <div class="offcanvas-body leftpanel">
+    	
+    	<div class="fltrtxt d-flex align-items-center justify-content-between">Filters <small><button class="btn btn-sm lp2" (click)="clearFilters()">Clear All</button></small></div>	
+		<div><h4>CATEGORIES</h4><span class="redunderline"></span></div>
+		<div class="catlist">
+		<ul>			
+			<li *ngFor="let category of catlist"><i class="bi bi-chevron-right"></i><a [routerLink]="['/shopnow']" [queryParams]="{catid: category.cat_name }"> {{category.cat_name | uppercase}}</a></li>
+			
+			
+		</ul>
+		</div>
+		<div><h4>PRICE</h4><span class="redunderline"></span></div>
+		<div class="pricerange"><ngx-slider [(value)]="value" [(highValue)]="highValue" [options]="options" (touchend)="pricechange()"></ngx-slider></div>
+
+		<div><h4>BRANDS</h4><span class="redunderline"></span></div>
+		<input type="search" name="" class="form-control" [(ngModel)]="brands" placeholder="Search for Brands" (keyup)="filterBrand()">
+		<ul>
+			<ng-container *ngFor="let brand of filteredBrand; let i = index">
+			<li *ngIf="brand.brn_brand && i<= brandLimit"><input type="checkbox" name="brand" [id]="brand.brn_brand" (change)="getbrndlist($event, brand.brn_brand)" [checked]="isChecked(brand.brn_brand)"> <label [for]="brand.brn_brand">&nbsp;&nbsp;{{brand.brn_brand}}</label></li>		
+			</ng-container>	
+		</ul>
+		<div *ngIf="brandlistlenth >= 7 && brandswitch == false" class="formore" (click)="expandBrand()" style="cursor: pointer;">+{{brandlistlenth - 6}} more</div>
+		<div *ngIf="brandswitch == true" class="formore" (click)="shrinkBrand()" style="cursor: pointer;">show less</div>
+
+		<div *ngIf="sizelistlenth >= 2"><h4>SIZE</h4><span class="redunderline"></span></div>
+		<input type="search" name="" class="form-control" [(ngModel)]="sizes" placeholder="Search for Size" (keyup)="filterSize()">
+		<ul>
+			<ng-container *ngFor="let size of filteredSize, let i=index">
+			<li *ngIf="size.siz_size && i<= sizeLimit"><input type="checkbox" name="size" [id]="size.siz_size" (change)="getsizelist($event, size.siz_size)" [checked]="isSizeChecked(size.siz_size)"> <label [for]="size.siz_size">&nbsp;&nbsp;{{size.siz_size}}</label></li>	
+			</ng-container>		
+		</ul>
+		<div *ngIf="sizelistlenth >= 7 && sizeswitch == false" class="formore" (click)="expandSize()" style="cursor: pointer;">+{{sizelistlenth - 6}} more</div>
+		<div *ngIf="sizeswitch == true" class="formore" (click)="shrinkSize()" style="cursor: pointer;">show less</div>
+
+		<div *ngIf="colorlistlenth >= 2"><h4>COLOUR</h4><span class="redunderline"></span></div>
+		<input type="search" name="" class="form-control" [(ngModel)]="colors" placeholder="Search for Color" (keyup)="filterColor()">
+		<ul>
+			<ng-container *ngFor="let color of colorlist; let i = index">
+			<li *ngIf="color.clr_name && i<= colorLimit">
+				<label class="chkbx" [for]="color.clr_name"> 
+					<span class="lbl"> {{color.clr_name}}</span>
+					<input type="checkbox" [checked]="isClrChecked(color.clr_name)" (change)="getcolorlist($event, color.clr_name)" [id]="color.clr_name">
+					<span class="checkmark" [ngStyle]="{'background-color': color.clr_color}"></span>
+				</label>
+
+
+				<!-- <input type="checkbox" name="color" [id]="color.clr_name" (change)="getcolorlist($event, color.clr_name)" [checked]="isClrChecked(color.clr_name)"> <label [for]="color.clr_name">&nbsp;&nbsp;{{color.clr_name}}</label> -->
+
+			</li>		
+			</ng-container>		
+		</ul>
+		<div *ngIf="colorlistlenth >= 7 && colorswitch == false" class="formore" (click)="expandColor()" style="cursor: pointer;">+{{colorlistlenth - 6}} more</div>
+		<div *ngIf="colorswitch == true" class="formore" (click)="shrinkColor()" style="cursor: pointer;">show less</div>
+
+
+		<!-- <ng-container *ngFor="let specs of filtrlist">
+
+			<div><h4>{{specs.flt_lable | uppercase}}</h4><span class="redunderline"></span></div>
+			<ul>
+				<ng-container *ngIf="specs.flt_type == 'color'">
+					<li *ngFor="let item of specs.filter; let i = index">
+						<label class="chkbx" [for]="item"> 
+							<span class="lbl"> {{item}}</span>
+							<input type="checkbox" [checked]="isFltrCheck(item)" (change)="getFltrlist($event, specs.flt_name, item)" [id]="item">
+							<span class="checkmark" [ngStyle]="{'background-color': item}"></span>
+						</label>
+					</li>
+				</ng-container>
+
+				<ng-container *ngIf="specs.flt_type != 'color'">
+					<li *ngFor="let item of specs.filter; let i = index "><input type="checkbox" name="item" [id]="item" (change)="getFltrlist($event, specs.flt_name, item)" [checked]="isFltrCheck(item)"><label [for]="item">&nbsp;&nbsp;{{item}}</label></li>
+				</ng-container>
+			</ul>
+		</ng-container> -->
+
+
+		
+
+		<!-- <div><button class="btn btn-light" (click)="clearFilters()">Clear All Filters</button> </div> -->
+
+		<div class="prdban" *ngIf="sideBanner.bnr_banner != ''"><a href="{{sideBanner.bnr_urlink}}" ><img src="{{bannerPath}}{{sideBanner.bnr_banner}}" class="img-responsive" alt="{{sideBanner.bnr_title}}" title="{{sideBanner.bnr_title}}" width="100%"></a></div>
+     
+        <hr/>
+        <button type="button" class="btn btn-primary btn-sm" aria-label="Close" (click)="offcanvas.dismiss('Cross click')">Close Menu <i class="bi bi-chevron-right"></i></button>
+    
+  </div>
+</ng-template>
+
+
+
+<ng-template #sortpanel let-offcanvas>
+ 
+  <div class="offcanvas-body leftpanel">
+
+			
+		
+			<div class="filterbar d-flex align-items-center justify-content-between row">
+				<div class="col-md-4 col-12 col-sm-4 col-lg-4 col-xl-3 col-xxl-3">
+				 <select class="form-select form-select-sm" [value]="rowPerPage" (change)="changePageSize($event)">
+					<option value="15">15 Item's/Page</option>
+					<option value="30">30 Item's/Page</option>			
+					<option value="60">60 Item's/Page</option>						  
+			     </select> 
+				</div>
+				<div class="col-md-4 col-12 col-sm-4 col-lg-4 col-xl-3 col-xxl-3 pagestat">				
+					<span *ngIf="recordCount < totalCount">Showing {{recordStart}}-{{recordCount}} Of {{totalCount}} Products</span>
+					<span *ngIf="recordCount >= totalCount">{{recordCount}} Records Found</span>
+				</div>
+				<div class="col-md-0 col-0 col-sm-0 col-lg-0 col-xl-3 col-xxl-3 gridbtn">
+					<button class="btn btn-link" (click)="changeview(1)" [ngClass]="{'viewslctd': viewgrid, 'viewdslctd': !viewgrid}"><i class="bi bi-grid-3x2-gap-fill"></i></button> 
+					<button class="btn btn-link" (click)="changeview(0)" [ngClass]="{'viewslctd': !viewgrid, 'viewdslctd': viewgrid}"><i class="bi bi-list-task"></i></button>
+				</div>
+				
+				<div class="col-md-4 col-12 col-sm-4 col-lg-4 col-xl-3 col-xxl-3">
+					<select class="form-select form-select-sm" (change)="changeOrder($event)" >
+					  <option value="default">Default Sorting</option>
+					  <option value="pa">Price By: Low To High</option>
+					  <option value="pz">Price By: High To Low</option>
+					  <option value="na">Sort By Latest</option>	
+					  <option value="pn">Sort By Popularity</option>			  
+					</select> 
+				</div>
+			</div>
+
+  </div>
+</ng-template>
+
+
+<app-toasts aria-live="polite" aria-atomic="true"></app-toasts>
+
+
+<!-- <ng-template #eliteprddetail let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Air Ventilation Blower | 16" CE Marked | Flexible Duct Hose | Yellow colour | 15Mtrs | CTF: 40</h4>
+		<button type="button" class="btn-danger btn-sm btn-close" aria-label="Close" (click)="modal.close()"></button>
+	</div>
+	<div class="modal-body " style="height: 500px;">
+		<div class="row prddata col-md-12">
+			
+		
+		<div class="col-md-6">
+			<div class="imgfocus"><app-sliderprddetail></app-sliderprddetail></div>			
+		</div>
+
+		<div class="col-md-6" style="height: 450px; overflow-y: scroll;">			
+			<p>The 16" Air Ventilation Blower with its unsurpassed standards of safety and efficiency is the latest revolutionary implementation in ventilation facilities requiring top-notch precision of operation. Coupled with the 15-meter long flexible yellow duct hose, that system's primary objective is to supply the appropriate air flow required in risky zones at the same time, while obeying the highest safety and performance standards. This blower is CE certified and thus guarantees compliance with European safety requirements respecting the quality of air which is perceived as a guarantee to customers while using it. The 16" diameter brings about robust and effective airflow to accommodate larger and depth ventilation applications for heavier activities. The included 15-meter flexible yellow duct hose serves a dual purpose: these systems should not only direct air and avoid electrical risks but also minimize the risks associated with static electricity. The black color, apart from being being complementing the professional setting and surroundings, but also calling the attention to the environmental. The CTF energy-saving export-type axial fan is our company's hottest commodity these days. Its innovative design titillates and wows the users setting it at a level that only limited competition can achieve. It plays an important role in the shipbuilding realm and air-conditioning for trains. </p>
+			<ul>				
+			    <li>Blower Type: Air Ventilation Blower</li>
+			    <li>Blower Diameter: 16 inches</li>
+			    <li>Certifications: CE </li>
+			    <li>Hose Type: Yellow Flexible Duct Hose</li>
+			    <li>Hose Length: 15 meters (49 feet)</li>
+			    <li>Safety Assurance: Engineered for hazardous and explosive environments</li>
+			    <li>Static Electricity Prevention: Antistatic hose prevents static buildup</li>
+			    <li>Hose Color: Yellow </li>
+			    <li>BTF (Blower Thermal Rating): 40 for consistent and efficient performance across diverse conditions</li>
+			    <li>Versatility: Ideal for areas with potentially explosive atmospheres, industrial applications, and more, ensuring safety and reliability.</li>
+			</ul>
+		</div>
+
+
+
+</div>
+	</div>
+	
+</ng-template> -->

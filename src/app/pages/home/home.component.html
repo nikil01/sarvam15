@@ -1,0 +1,283 @@
+<app-carousel></app-carousel>
+
+<div class="mainpage">
+	
+
+
+<section class="container sectionspcing" data-aos="fade-up" data-aos-duration="3000">
+  <div class="topicline"><h1>{{aboutHeading.log_title}}</h1></div>
+  <div class="blkhdngBox" data-entrance="my-custom-animation">
+    <h6 class="blockHeading">{{aboutHeading.log_Headings}}</h6>
+  </div>
+	
+  <!-- About Start -->
+<div class="about">
+  <div class="container">
+    <div class="row ">
+      
+      <div class="col-md-6 col-sm-6 col-12 col-lg-6 col-xl-6">
+        <div class="about-img">
+          <div class="about-img-1">
+            <img src="assets/img/about_img01.jpg" alt="Sarvam Safety" title="Sarvam Safety">
+          </div>
+          <div class="about-img-2">
+            <img src="assets/img/about_img02.jpg" alt="Sarvam Safety" title="Sarvam Safety">
+          </div>
+          <div class="playbtn">
+            <a (click)="openvideo(youtube)">
+              <i class="bi bi-play-fill bi-x3"></i>
+            </a>            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-sm-6 col-12 col-lg-6 col-xl-6">
+        <div class="about-text">
+          <p [innerHTML]="AboutMainTexts.log_content"></p>       
+        </div>
+        <div class="headpoints">
+          <div class="roundbtn"><i class="bi bi-eye"></i></div>
+          <h6>{{AboutFirstTexts.log_title}}</h6>
+          <p [innerHTML]="AboutFirstTexts.log_content"></p>
+        </div>
+        <div class="headpoints">
+          <div class="roundbtn"><i class="bi bi-gear-wide-connected"></i></div>
+          <h6>{{AboutSecondTexts.log_title}}</h6>
+          <p [innerHTML]="AboutSecondTexts.log_content"></p>
+        </div>
+        <div class="d-flex align-items-center pt-4">
+          <a href="" class="anibutton btn1" [routerLink]="['/about']">Discover More</a>
+        <div>
+          
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- About End -->
+
+</section>
+
+
+
+<section class="suppliers" data-aos="fade-in" data-aos-duration="3000">
+  <div class="container bgsuppliers" id="bground">
+    
+
+    <div style="color: var(--theme)" class="topicline">
+        <svg xmlns="http://www.w3.org/2000/svg" width="39" height="16" viewBox="0 0 39 22" fill="none">
+            <path d="M39 0V3.5H2.6L0 0H39Z" fill="currentcolor"></path>
+            <path d="M39 7.20001V10.7H8.00002L5.40002 7.20001H39Z" fill="currentcolor"></path>
+            <path d="M39 14.4V17.9H13.5L10.9 14.4H39Z" fill="currentcolor"></path>
+        </svg>
+        <span>{{supplierHeading.log_title}}</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="39" height="16" viewBox="0 0 39 22" fill="none">
+            <path d="M0 0V3.5H36.4L39 0H0Z" fill="currentcolor"></path>
+            <path d="M0 7.20001V10.7H31L33.6 7.20001H0Z" fill="currentcolor"></path>
+            <path d="M0 14.4V17.9H25.5L28.2 14.4H0Z" fill="currentcolor"></path>
+        </svg>
+      </div>
+
+     <div class="blkhdngBox animHldr mt-2 mb-5" data-entrance="my-custom-animation">
+        <h6 class="animated fadeInUp blockHeading animObj target ">{{supplierHeading.log_Headings}}</h6>
+      </div>
+
+
+      <div class=" container"><app-sliderone></app-sliderone></div>
+  </div>
+  
+ 
+
+
+</section>
+
+
+
+<section class="prodrange" data-aos="fade-out" data-aos-duration="3000">
+  <div id="backgroundequip" ></div>
+
+<div class="actualcontent">
+     <div  style="color: var(--theme)" class="topicline">
+    <svg xmlns="http://www.w3.org/2000/svg" width="39" height="16" viewBox="0 0 39 22" fill="none">
+        <path d="M39 0V3.5H2.6L0 0H39Z" fill="currentcolor"></path>
+        <path d="M39 7.20001V10.7H8.00002L5.40002 7.20001H39Z" fill="currentcolor"></path>
+        <path d="M39 14.4V17.9H13.5L10.9 14.4H39Z" fill="currentcolor"></path>
+    </svg>
+    <span>{{equipemtHeading.log_title}}</span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="39" height="16" viewBox="0 0 39 22" fill="none">
+        <path d="M0 0V3.5H36.4L39 0H0Z" fill="currentcolor"></path>
+        <path d="M0 7.20001V10.7H31L33.6 7.20001H0Z" fill="currentcolor"></path>
+        <path d="M0 14.4V17.9H25.5L28.2 14.4H0Z" fill="currentcolor"></path>
+    </svg>
+  </div>
+
+
+  <div class="blkhdngBox animHldr mt-2" data-entrance="my-custom-animation">
+    <h6 class="animated fadeInUp blockHeading animObj target">{{equipemtHeading.log_Headings}}</h6>
+  </div>
+  
+  <div class="container-fluid"><app-sliderequipment></app-sliderequipment></div>
+</div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="team " id="backparallax">
+
+<div class="couterdown container " data-aos="flip-down" data-aos-duration="1000">
+  <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3 col-12 couteritem">
+    <img src="{{filepathcounter}}{{siteData.dta_sarvamitesimg}}" alt="sarvam Safety Sarvamites" title="sarvam Safety Sarvamites">
+    <h6><span class="hsix" [countUp]="dta_sarvamites" [options]="{ enableScrollSpy: true }">0</span>+</h6>  
+    <div class="labl">Sarvamites</div>
+  </div>
+
+  <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3 col-12 couteritem">
+    <img src="{{filepathcounter}}{{siteData.dta_customersimg}}" alt="sarvam Safety Customers" title="sarvam Safety Customers">
+    <h6><span class="hsix" [countUp]="dta_customers" [options]="{ enableScrollSpy: true }">0</span>+</h6>  
+    <div class="labl">Customers</div>
+  </div>
+
+  <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3 col-12 couteritem">
+    <img src="{{filepathcounter}}{{siteData.dta_suppliersimg}}" alt="sarvam Safety Supplier" title="sarvam Safety Supplier">
+     <h6><span class="hsix" [countUp]="dta_suppliers" [options]="{ enableScrollSpy: true }">0</span>+</h6>  
+    <div class="labl">Supplier &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+  </div>
+
+  <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3 col-12 couteritem">
+    <img src="{{filepathcounter}}{{siteData.dta_productsimg}}" alt="sarvam Safety Products" title="sarvam Safety Products">
+     <h6><span class="hsix" [countUp]="dta_products" [options]="{ enableScrollSpy: true }">0</span>+</h6>  
+    <div class="labl">Products</div>
+  </div>
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+<section class="clietsscroll" data-aos="flip-left" data-aos-duration="3000">
+ 
+  <!-- <div class="topicline"><h6>Santy</h6></div> -->
+
+     <div style="color: var(--theme)" class="topicline">
+    <svg xmlns="http://www.w3.org/2000/svg" width="39" height="16" viewBox="0 0 39 22" fill="none">
+        <path d="M39 0V3.5H2.6L0 0H39Z" fill="currentcolor"></path>
+        <path d="M39 7.20001V10.7H8.00002L5.40002 7.20001H39Z" fill="currentcolor"></path>
+        <path d="M39 14.4V17.9H13.5L10.9 14.4H39Z" fill="currentcolor"></path>
+    </svg>
+    <span >{{clientHeading.log_title}}</span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="39" height="16" viewBox="0 0 39 22" fill="none">
+        <path d="M0 0V3.5H36.4L39 0H0Z" fill="currentcolor"></path>
+        <path d="M0 7.20001V10.7H31L33.6 7.20001H0Z" fill="currentcolor"></path>
+        <path d="M0 14.4V17.9H25.5L28.2 14.4H0Z" fill="currentcolor"></path>
+    </svg>
+  </div>
+
+
+  <div class="blkhdngBox animHldr mt-2 " data-entrance="my-custom-animation">
+    <h6 class="animated fadeInUp blockHeading animObj target ">{{clientHeading.log_Headings}}</h6>
+  </div>
+  
+  <div class="container"><app-sliderclient></app-sliderclient></div>
+
+
+</section>
+
+
+
+
+
+<section class="testi" data-aos="zoom-in" data-aos-duration="3000">
+ 
+  <!-- <div class="topicline"><h6>Santy</h6></div> -->
+
+     <div style="color: var(--theme)" class="topicline">
+    <svg xmlns="http://www.w3.org/2000/svg" width="39" height="16" viewBox="0 0 39 22" fill="none">
+        <path d="M39 0V3.5H2.6L0 0H39Z" fill="currentcolor"></path>
+        <path d="M39 7.20001V10.7H8.00002L5.40002 7.20001H39Z" fill="currentcolor"></path>
+        <path d="M39 14.4V17.9H13.5L10.9 14.4H39Z" fill="currentcolor"></path>
+    </svg>
+    <span>{{testiHeading.log_title}}</span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="39" height="16" viewBox="0 0 39 22" fill="none">
+        <path d="M0 0V3.5H36.4L39 0H0Z" fill="currentcolor"></path>
+        <path d="M0 7.20001V10.7H31L33.6 7.20001H0Z" fill="currentcolor"></path>
+        <path d="M0 14.4V17.9H25.5L28.2 14.4H0Z" fill="currentcolor"></path>
+    </svg>
+  </div>
+
+
+  <div class="blkhdngBox animHldr mt-2 " data-entrance="my-custom-animation">
+    <h6 class="animated fadeInUp blockHeading animObj target whitechars">{{testiHeading.log_Headings}}</h6>
+  </div>
+  
+  <div class="py-4 my-4 container"><app-slidertestimonials></app-slidertestimonials></div>
+
+
+</section>
+
+
+
+
+<section class="blog" data-aos="fade-up" data-aos-duration="3000">
+ 
+  <!-- <div class="topicline"><h6>Santy</h6></div> -->
+
+     <div style="color: var(--theme)" class="topicline">
+    <svg xmlns="http://www.w3.org/2000/svg" width="39" height="16" viewBox="0 0 39 22" fill="none">
+        <path d="M39 0V3.5H2.6L0 0H39Z" fill="currentcolor"></path>
+        <path d="M39 7.20001V10.7H8.00002L5.40002 7.20001H39Z" fill="currentcolor"></path>
+        <path d="M39 14.4V17.9H13.5L10.9 14.4H39Z" fill="currentcolor"></path>
+    </svg>
+    <span>{{blogHeading.log_title}}</span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="39" height="16" viewBox="0 0 39 22" fill="none">
+        <path d="M0 0V3.5H36.4L39 0H0Z" fill="currentcolor"></path>
+        <path d="M0 7.20001V10.7H31L33.6 7.20001H0Z" fill="currentcolor"></path>
+        <path d="M0 14.4V17.9H25.5L28.2 14.4H0Z" fill="currentcolor"></path>
+    </svg>
+  </div>
+
+
+  <div class="blkhdngBox animHldr mt-2 mb-5" data-entrance="my-custom-animation">
+    <h6 class="animated fadeInUp blockHeading animObj target">{{blogHeading.log_Headings}}</h6>
+  </div>
+  
+<app-blogs></app-blogs>
+
+</section>
+
+
+</div>
+
+
+
+
+
+<ng-template #youtube let-modal>
+ 
+    <iframe  height="450" [src]="siteData.dta_ytvedio | safeurl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+ 
+
+
+</ng-template>
+
+
+<ng-template #welcome let-modal>
+  <span (click)="modal.dismiss('Cross click')" class="close-button topright">&times;</span>
+ <a href="{{popupban.bnr_urlink}}"><img src="{{filepathpopup}}{{popupban.bnr_banner}}" class="img-responsive mdlbody" style="max-height: 600px;" alt="{{popupban.bnr_title}}" title="{{popupban.bnr_title}}"></a>
+</ng-template>

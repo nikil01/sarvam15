@@ -1,0 +1,84 @@
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <section class="footer-top">
+        <div class="container  justify-content-center justify-content-md-between">
+          <div class="left-side d-flex align-items-center">
+            <img src="assets/img/sarvam_logo_inverted.png" alt="Sarvam Safety Logo" title="Sarvam Safety Logo" class="img-responsive">
+          </div>
+          <div class="right-side d-flex align-items-center">
+          
+          </div>
+        </div>
+    </section>
+
+    <section class=" footer-middle">
+      <div class="container">
+        
+        <div class="row gy-4">
+          
+          <div class="col-lg-5 col-md-12 footer-info">
+            <img src="assets/img/sarvam_logo_inverted.png" alt="Sarvam Safety" title="Sarvam Safety" class="img-responsive" style="max-width:100%; margin-bottom: 30px;">
+            <h6>Get In Touch</h6>
+            <ul>
+              <li><div class="row"><div class="col-1"><i class="bi bi-geo-alt-fill"></i></div> <div class="col-11">{{OfficeData.off_address}} {{OfficeData.off_city}} - {{OfficeData.off_pin}}, {{OfficeData.off_state}}</div> </div></li>              
+              <!-- <li><i class="bi bi-envelope-at-fill"></i> <a href="#" class="">{{OfficeData.off_email}}</a></li> -->
+              <li><div class="row"><div class="col-1"><i class="bi bi-envelope-at-fill"></i></div> <div class="col-11">{{OfficeData.off_email}}</div> </div></li>
+              
+              <li><div class="row"><div class="col-1"><i class="bi bi-telephone-fill"></i></div> <div class="col-11">{{OfficeData.off_phone}} {{OfficeData.off_mobile}}</div> </div></li>
+              <li><div class="row"><div class="col-1"><i class="bi bi-clock-fill"></i></div> <div class="col-11">{{dta_timings}}</div> </div></li>
+             
+            </ul>  
+          </div>
+
+          <div class="col-lg-7 col-md-12 footer-link ml-5 pl-5">
+            
+            <ul class="row" style="margin-left: 40px;">
+              <li class="col-sm-4 col-md-4 col-lg-4 col-xl-4"><a rel="canonical" href="#" class="underline" [routerLink]="['/home']">Home</a></li>
+              <li class="col-sm-4 col-md-4 col-lg-4 col-xl-4"><a rel="canonical" href="#" class="underline" [routerLink]="['/about']">About Us</a></li>                    
+              <li class="col-sm-4 col-md-4 col-lg-4 col-xl-4"><a rel="canonical" href="#" class="underline" [routerLink]="['/elite-products']">Elite Products</a></li>
+              <li class="col-sm-4 col-md-4 col-lg-4 col-xl-4"><a rel="canonical" href="#" class="underline" [routerLink]="['/shopnow']">Shop Now</a></li>
+              <li class="col-sm-4 col-md-4 col-lg-4 col-xl-4"><a rel="canonical" href="#" class="underline" [routerLink]="['/blog']">Blog</a></li>
+             
+              <li class="col-sm-4 col-md-4 col-lg-4 col-xl-4"><a rel="canonical" href="#" class="underline" [routerLink]="['/contact']">Contact Us</a></li>     
+              <li class="col-sm-4 col-md-4 col-lg-4 col-xl-4" *ngFor="let menu of FooterLinks"><a rel="canonical" [routerLink]="menu.pge_urlink" class="underline">{{menu.pge_title}}</a></li>  
+            </ul>  
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+   
+
+  
+    <div class="footer-down py-3">
+      <div class="social-links mobisocial">
+          <ul>
+              <li><a [href]="dta_linkedin" target="_blank"><i class="bi bi-linkedin"></i></a></li>
+              <li><a [href]="dta_facebook" target="_blank"><i class="bi bi-facebook"></i></a></li>
+              <li><a [href]="dta_instagram" target="_blank"><i class="bi bi-instagram"></i> </a></li>
+              <li><a [href]="dta_youtube" target="_blank"><i class="bi bi-youtube"></i> </a></li>
+            </ul>  
+        </div>
+      <div class="container d-flex justify-content-center justify-content-md-between">
+
+        <div class="copyright-text d-flex align-items-center">
+          Copyright © 2024 <a href="https://www.sarvamsafety.com"> SARVAM SAFETY </a>, All Rights Reserved
+        </div>
+        <div class="social-links d-none d-md-flex align-items-center">
+          <ul>
+              <li><a rel="canonical" [href]="dta_linkedin" target="_blank"><i class="bi bi-linkedin"></i></a></li>
+              <li><a rel="canonical" [href]="dta_facebook" target="_blank"><i class="bi bi-facebook"></i></a></li>
+              <li><a rel="canonical" [href]="dta_instagram" target="_blank"><i class="bi bi-instagram"></i> </a></li>
+              <li><a rel="canonical" [href]="dta_youtube" target="_blank"><i class="bi bi-youtube"></i> </a></li>
+            </ul>  
+        </div>
+
+        
+
+      </div>
+    </div>
+
+  </footer><!-- End Footer -->
+
+

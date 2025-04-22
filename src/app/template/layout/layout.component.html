@@ -1,0 +1,9 @@
+
+<app-header></app-header>
+<div id="main">
+<router-outlet></router-outlet>
+</div>
+<app-footer></app-footer>
+
+
+<button class="btn btn-link scroll-top back-to-top d-flex align-items-center justify-content-center" [ngClass]="{ 'active': windowScrolled }" (click)="scrollToTop()"><i class="bi bi-arrow-up-short"></i></button>

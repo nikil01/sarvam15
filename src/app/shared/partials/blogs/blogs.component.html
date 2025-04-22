@@ -1,0 +1,30 @@
+<div class="row col-12">
+	<div class="col-2 col-sm-1 col-md-1 col-lg-1 col-xl-1 col-xxl-1">
+		<button id="blg-prev-button" class="blogprebtn"><</button>
+	</div>
+	  
+	  
+	<div class="col-9 col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xxl-10">
+
+	  	
+		 <swiper-container appSwiperDirective [config]="config" init="false" navigation-next-el="#blg-next-button"
+      navigation-prev-el="#blg-prev-button" >
+
+
+		    <div class="blogitem swiper-slide col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4" *ngFor="let blog of blogdta" [routerLink]="['/blogs']" [queryParams]="{id: blog.blg_id, title: blog.seo_title }">
+		     <!--  <div class="dateauthor"><i class="bi bi-calendar2-week"></i><span>{{blog.blg_createdAt | date}}</span><i class="bi bi-person-circle"></i><span>{{blog.blg_postedby}}</span></div> -->
+		      <div class="bloghead" [ngClass]="{ 'small': blog.blg_title.lenght > 60, 'normal': blog.blg_title.lenght < 59 }">{{blog.blg_title}}</div>
+		      <div class="img"><img src="{{filepathblog}}{{blog.blg_photo}}" style="width: 100%;" alt="{{blog.blg_title}}" title="{{blog.blg_title}}">
+		        <!-- <button class="catbtn btn btn-sm btn-danger">{{blog.blg_csra? 'CSR Event' : 'Blog'}}</button> -->
+		      </div>
+		      <div class="brief">{{blog.blg_brief | slice:0:150}}...</div>
+		      <button class="anibutton btn1" rel="canonical" [routerLink]="['/blogs']" [queryParams]="{id: blog.blg_id, title: blog.seo_title }">Read More</button>
+		    </div>   
+		 
+		</swiper-container>
+	</div>
+
+	<div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 col-xxl-1">
+		<button id="blg-next-button" class="blognxtbtn">></button>
+	</div>
+</div>

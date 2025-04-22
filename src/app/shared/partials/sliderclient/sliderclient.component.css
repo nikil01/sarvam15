@@ -1,0 +1,203 @@
+:root {
+  /*--swiper-scrollbar-bottom: 0;*/
+ /* --swiper-scrollbar-drag-bg-color: var(--theme);
+  --swiper-scrollbar-size: 10px;
+  --swiper-scrollbar-drag:;
+  --swiper-scrollbar-drag-size: 10px;*/
+}
+
+.clientnxtbtn{
+	background-color:  var(--theme);
+	color: #fff;
+	border:none;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	font-size: 25px;
+	/*position: absolute;*/
+	margin-top: 70px;
+	/*right: 10px;*/
+	z-index: 10;
+	/*text-align: center;*/
+}
+
+.clientprebtn{
+	background-color:  var(--theme);
+	color: #fff;
+	border:none;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	font-size: 25px;
+	/*position: absolute;*/
+	margin-top: 70px;
+	/*left: 10px;*/
+	z-index: 10;
+	/*text-align: center;*/
+}
+
+
+
+
+
+.clientitem img{
+	/*width: 100%;	*/
+	/*padding-top: 30%;*/
+}
+
+
+.clientitem:hover {
+  -webkit-box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, .2);
+	-moz-box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, .2);
+	box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, .2);
+}
+
+.mobicenter{}
+
+
+@media screen and (max-width:361px){ 
+  .mobicenter{ text-align: center; }
+  .clientitem{
+		/*margin: 20px 0px 20px 0px;*/
+		width: 150px;
+		height: 140px;
+		background: #fff;	
+		border-radius: 10px;
+		/*border-style: none;*/
+		color: #000;
+		position: relative;	
+		z-index: 1;
+		transition: .3s;
+		padding: 10px 10px 20px 10px;
+		border:1px solid #c8c8c8;
+		margin:20px 4px 20px 4px;
+	}
+
+}
+
+@media screen and ((min-width:362px) and (max-width:376px)){ 
+  .mobicenter{ text-align: center; }
+  .clientitem{
+		/*margin: 20px 0px 20px 0px;*/
+		width: 160px;
+		height: 140px;
+		background: #fff;	
+		border-radius: 10px;
+		/*border-style: none;*/
+		color: #000;
+		position: relative;	
+		z-index: 1;
+		transition: .3s;
+		padding: 10px 20px 20px 20px;
+		border:1px solid #c8c8c8;
+		margin:20px 4px 20px 4px;
+	}
+
+}
+
+/*360 samsung gakaxy s8
+375 iphone SE
+390  iphone 12 Pro
+412 pixel 7
+430 iphone 12 max Pro*/
+
+
+
+@media screen and ((min-width:377px) and (max-width:391px)){ 
+  .mobicenter{ text-align: center; }
+  .clientitem{
+		/*margin: 20px 0px 20px 0px;*/
+		width: 170px;
+		height: 170px;
+		background: #fff;	
+		border-radius: 10px;
+		/*border-style: none;*/
+		color: #000;
+		position: relative;	
+		z-index: 1;
+		transition: .3s;
+		padding: 10px 20px 20px 20px;
+		border:1px solid #c8c8c8;
+		margin:20px 2px 20px 2px;
+	}
+
+}
+
+@media screen and ((min-width:392px) and (max-width:413px)){ 
+  .mobicenter{ text-align: center; }
+  .clientitem{
+		/*margin: 20px 0px 20px 0px;*/
+		width: 182px;
+		height: 180px;
+		background: #fff;	
+		border-radius: 10px;
+		/*border-style: none;*/
+		color: #000;
+		position: relative;	
+		z-index: 1;
+		transition: .3s;
+		padding: 10px 20px 20px 20px;
+		border:1px solid #c8c8c8;
+		margin:20px 0px 20px 0px;
+	}
+
+}
+
+@media screen and ((min-width:413px) and (max-width:431px)){ 
+  .mobicenter{ text-align: center; }
+  .clientitem{
+		/*margin: 20px 0px 20px 0px;*/
+		width: 182px;
+		height: 160px;
+		background: #fff;	
+		border-radius: 10px;
+		/*border-style: none;*/
+		color: #000;
+		position: relative;	
+		z-index: 1;
+		transition: .3s;
+		padding: 10px 20px 20px 20px;
+		border:1px solid #c8c8c8;
+		margin:20px 1px 20px 9px;
+	}
+
+}
+
+@media screen and (min-width:431px) and (max-width:576px){ 
+  .mobicenter{ text-align: center; }
+  .clientitem{
+	/*margin: 20px 0px 20px 0px;*/
+		width: 150px;
+		height: 150px;
+		background: #fff;	
+		border-radius: 10px;
+		/*border-style: none;*/
+		color: #000;
+		position: relative;	
+		z-index: 1;
+		transition: .3s;
+		padding: 10px 20px 20px 20px;
+		border:1px solid #c8c8c8;
+		margin:20px 0px 20px 10px;
+	}
+}
+
+
+@media screen and (min-width:576px){ 
+  
+  .clientitem{
+	/*margin: 20px 0px 20px 0px;*/
+	width: 160px;
+	height: 140px;
+	background: #fff;	
+	border-radius: 10px;
+	/*border-style: none;*/
+	color: #000;
+	position: relative;	
+	z-index: 1;
+	transition: .3s;
+	padding: 10px 20px 20px 20px;
+	border:1px solid #c8c8c8;
+	margin:20px 2px 20px 2px;
+}
+}

@@ -1,0 +1,241 @@
+.bloglist{
+	padding: 60px 20px 60px 20px;
+	/*margin-top: 60px;*/
+	background-color: #fff;
+	/*height: 600px;*/
+	display: block;
+	box-sizing: border-box;
+	/*margin-bottom: 60px;*/
+}
+
+
+
+
+/*========================================================
+# blog side 
+==========================================================*/
+.blogside{
+	box-sizing: border-box;
+	/*border:1px solid red;*/
+	padding-right: 20px;
+}
+
+
+.menuside{
+	box-sizing: border-box;
+	/*border:1px solid red;*/
+	/*padding-left: 60px;*/
+}
+
+
+
+/*===============================================
+# blog
+================================================*/
+
+.blogside{
+    /*height: 760px;*/
+    display: block;
+    
+    /*padding-top: 100px;*/
+    /*padding-bottom: auto;*/
+}
+
+.blogside .blogitem{
+    display: inline-block;
+    height: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-bottom: 40px;
+   /* -webkit-box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, .2);
+	-moz-box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, .2);
+	box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, .2);*/
+	
+}
+
+.blogside .blogitem .blogtext{
+	padding: 20px 20px 20px 20px;
+}
+
+.blogside .blogitem .img{
+    width: 100%;
+   
+    height: auto;   
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    overflow: hidden;
+    margin: 0px 0px 20px 0px;
+    z-index: 1; 
+}
+
+.blogside .blogitem .img img{
+    transition: transform .6s;   
+    z-index: 2; 
+}
+
+
+
+.blogside .blogitem .button{
+    width: 140px;
+    /*height: 20px;*/
+    float: right;
+}
+
+.blogside .blogitem .button a{
+   font-size: 16px;
+   text-align: center;
+}
+
+
+.blogside .blogitem:hover .bloghead{
+    color: var(--theme);
+    transition: .3s;
+
+}
+
+.blogside .blogitem .bloghead{
+    font-size: 24px;
+    margin: 20px 0px 0px 0px;    
+    font-weight: bold;
+    color: #000;
+   
+}
+
+
+.blogside .blogitem .img .catbtn{
+    position: absolute;
+    margin-top: 30px;
+    margin-left: -100px;
+    z-index: 111;
+}
+
+.blogside .blogitem .dateauthor{
+    text-align: left;
+    margin-bottom: 20px;
+
+}
+
+.blogside .blogitem .dateauthor i{
+    margin-right: 5px;
+    font-size: 11px;
+    color: #848484;
+}
+
+.blogside .blogitem .dateauthor span{
+    margin-right: 15px;
+    font-size: 12px;
+    color: #848484;
+}
+
+.blogside .blogitem .brief{
+    text-align: justify;
+    margin: 20px 0px 20px 0px;
+    height: auto;
+    max-width: 820px;
+   
+}
+
+.blogside .blogitem .brief img{
+    max-width:300px !important;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+   
+}
+
+.innerimg{
+	display: none;
+}
+
+
+
+
+/*======================================================*/
+
+.catmenu{
+	border-radius: 10px;
+	padding: 20px 20px 20px 20px;
+	width: 100%;
+	border:1px solid #c8c8c8;
+	z-index: 10;
+
+}
+
+
+.catmenu h4{
+	font-weight: bold;
+	color: #000;
+	display: block;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.catmenu input, input:focus, input:active{
+	width: 100%;
+	margin-right: 20px;
+ 	outline-offset: none; 	
+ 	border:1px solid #c8c8c8;
+ 	
+ 	fill: none;
+ 	color: #000;
+ 	outline:none;
+}
+
+.catmenu button{
+	border: none;
+	border-radius: 0px;
+	text-align: center;
+	padding-left: 20px;
+}
+
+
+.catmenu ul{
+	list-style: disc;	
+}
+
+.catmenu ul li{
+	list-style: none;
+	color: #000;
+	transition: .3s;
+	font-size: 15px;
+	font-weight: bold;
+	padding: 5px 0 5px 0;
+	text-align: left;
+	margin-left: -12px;
+	cursor: pointer;	
+}
+
+.catmenu ul li:before{	
+	content: "\2022"; 
+	color: var(--theme);
+	display: inline-block; 
+	width: 1em;
+ 	margin-left: -1em;
+ 	size: 15px;
+}
+
+
+.catmenu ul li:hover{
+	color: var(--theme);	
+}
+
+
+.pagefinder a{
+	text-decoration: none;
+	color: var(--theme);
+	font-size: 18px;
+	/*height: 80px;*/
+	width: auto;
+	border-radius: 5px;
+	background-color: var(--theme);
+	padding: 5px 10px 5px 10px;
+	color: #fff;
+	margin-right: 20px;
+}
+
+.pagefinder a:hover{
+	text-decoration: none;
+	color: var(--theme);
+	font-size: 18px;
+	color: #fff;
+}

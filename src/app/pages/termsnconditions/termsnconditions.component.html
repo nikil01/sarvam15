@@ -1,0 +1,17 @@
+<section class="pageheadone">
+  <img src="{{filepathabout}}{{pageBan}}" class="pagebanner" alt="{{pageData.pge_subtitle}}" title="{{pageData.pge_subtitle}}">
+  <div class="pageheader container">  
+    <div class="textbar">
+      <h1>{{pageData.pge_subtitle}}</h1>
+      <br/><span><i class="bi bi-house-fill"></i> Home <i class="bi bi-chevron-right"></i> {{pageData.pge_title}}</span>
+    </div>
+  </div>  
+</section>
+
+<section class="aboutus container" style="padding-left: 10px; padding-right: 10px;">
+	<div class="" >
+		<!-- <h3 *ngIf="tncdata.tst_heading != ''">{{tncdata.tst_heading}}</h3>
+		<h4 *ngIf="tncdata.tst_subheading != ''">{{tncdata.tst_subheading}}</h4> -->
+		<p *ngIf="tncdata.tst_brief != ''" [innerHTML]="tncdata.tst_brief"></p>
+	</div>
+</section>

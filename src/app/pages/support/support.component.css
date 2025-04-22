@@ -1,0 +1,45 @@
+.aboutus{
+	padding: 60px 0px 60px 0px;
+	background-color: #fff;
+	/*height: 600px;*/
+	display: block;
+
+}
+
+.pageheader{
+
+}
+.pagebanner{
+	position: relative;
+	width: 100%;
+	max-height: 300px;
+	z-index: 1;
+}
+
+.pageheader .textbar{
+	position: absolute;
+	margin-top: -200px;
+	
+	z-index: 8;
+}
+
+.pageheader .textbar h1{
+	float: left;
+	color: var(--theme);
+	font-size: 50px;
+	font-weight: bold;
+	color: #fff;
+	z-index: 9;
+	display: block;
+}
+
+
+
+.pageheader .textbar span{
+	float: left;
+	color: var(--theme);
+	font-size: 22px;
+	color: #fff;
+	z-index: 9;
+	display: block;
+}

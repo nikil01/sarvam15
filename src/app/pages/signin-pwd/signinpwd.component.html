@@ -1,0 +1,83 @@
+<section class="pageheadone">
+  <img src="{{filepathabout}}{{pageBan}}" class="pagebanner" alt="{{pageData.pge_subtitle}}" title="{{pageData.pge_subtitle}}">
+  <div class="pageheader container">  
+    <div class="textbar">
+      <h1>{{pageData.pge_subtitle}}</h1>
+      <br/><span><i class="bi bi-house-fill"></i> Home <i class="bi bi-chevron-right"></i> {{pageData.pge_title}}</span>
+    </div>
+  </div>  
+</section>
+
+<section class="aboutus  container">
+	
+
+
+
+	<!-- Registration 2 - Bootstrap Brain Component -->
+<div class=" py-0 py-md-0">
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-12 col-md-11 col-lg-8 col-xl-7 col-xxl-6">
+        <div class="bg-light p-4 p-md-5 rounded shadow-sm">
+          <div class="row" *ngIf="otpvisible">
+            <div class="col-12">
+              <div class="mb-5">
+                <h2 class="h3">welcome <span style="color: #8BC24A;">{{cst_name | titlecase}}</span></h2>
+                <h3 class="fs-6 fw-normal text-secondary m-0">Enter Password</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" *ngIf="!otpvisible">
+            <div class="col-12">
+              <div class="mb-5">
+                <h2 class="h3">Sorry! <span style="color: #8BC24A;">{{cst_name | titlecase}}</span></h2>
+                <h3 class="fs-6 fw-normal text-secondary m-0">Your Account Is Inactive! Please Contact Sarvam Team</h3>
+              </div>
+            </div>
+          </div>
+
+          <form [formGroup]="regfrm" (ngSubmit)="onSubmit()" *ngIf="otpvisible">
+            <div class="row gy-3 gy-md-4 overflow-hidden">
+              <div class="col-12">
+                <label for="pwd" class="form-label">Password <span class="text-danger">* <small>{{btnerr}}</small></span></label>
+                <div class="input-group">
+                  <input [type]="showPassword ? 'text' : 'password'" class="form-control" name="pwd" id="pwd" placeholder="Password" required formControlName="pwd" [ngClass]="{ 'is-invalid': submitted && f['pwd'].errors }" autocomplete="off">
+                  <button type="button" class="btn btn-secondary " (click)="togglePasswordVisibility()"><i class="bi bi-eye" *ngIf="!showPassword"></i><i class="bi bi-eye-slash" *ngIf="showPassword"></i></button>
+                </div>
+                <div *ngIf="submitted && f['pwd'].errors" class="invalid-feedback">
+                  <div *ngIf="f['pwd'].errors['required']">Password is required</div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="d-grid">                  
+                  <button class="anibutton btn1" type="submit">Confirm</button>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="d-grid">                  
+                  <button class="anibutton btn1" type="button" (click)="changeUid()">Change User ID</button>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <div class="row">
+            <div class="col-12">
+              <hr class="mt-5 mb-4 border-secondary-subtle">
+              <div class="col-12">
+                <p class="m-0 text-secondary text-center">Already have an account? <a class="link-primary text-decoration-none" [routerLink]="['/signin']">Sign in</a></p>
+              </div>
+            </div>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+</section>

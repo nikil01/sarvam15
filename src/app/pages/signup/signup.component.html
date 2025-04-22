@@ -1,0 +1,123 @@
+<section class="pageheadone">
+  <img src="{{filepathabout}}{{pageBan}}" class="pagebanner" alt="{{pageData.pge_subtitle}}" title="{{pageData.pge_subtitle}}">
+  <div class="pageheader container">  
+    <div class="textbar">
+      <h1>{{pageData.pge_subtitle}}</h1>
+      <br/><span><i class="bi bi-house-fill"></i> Home <i class="bi bi-chevron-right"></i> {{pageData.pge_title}}</span>
+    </div>
+  </div>  
+</section>
+
+<section class="aboutus  container">
+	
+
+
+
+	<!-- Registration 2 - Bootstrap Brain Component -->
+<div class=" py-0 py-md-0">
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-12 col-md-11 col-lg-8 col-xl-7 col-xxl-6">
+        <div class="bg-light p-4 p-md-5 rounded shadow-sm">
+          <div class="row">
+            <div class="col-12">
+              <div class="mb-5">
+                <h2 class="h3">Registration</h2>
+                <h3 class="fs-6 fw-normal text-secondary m-0">Enter your details to register</h3>
+              </div>
+            </div>
+          </div>
+          <form [formGroup]="regfrm" (ngSubmit)="onSubmit()" autocomplete="off">
+            <div class="row gy-3 gy-md-4 overflow-hidden">
+              <div class="col-12">
+                <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" name="name" id="name" placeholder="Full Name" required formControlName="name" [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" autocomplete="off">
+                <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                  <div *ngIf="f['name'].errors['required']">Fullname is required</div>
+                </div>
+              </div>
+              <div class="col-12">
+                <label for="email" class="form-label">E-Mail <span class="text-danger">*</span></label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" required formControlName="email" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" autocomplete="off">
+                <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                  <div *ngIf="f['email'].errors['required']">Email is required</div>
+                  <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+                </div>
+              </div>
+              <div class="col-12">
+                <label for="mobile" class="form-label">Mobile <span class="text-danger">*</span></label>
+                <input type="number" class="form-control" name="mobile" id="mobile" placeholder="10 Digit Mobile Number" required formControlName="mobile" [ngClass]="{ 'is-invalid': submitted && f['mobile'].errors }" autocomplete="off" min="6111111111" max="9999999999" maxlength="10">
+                 <div *ngIf="submitted && f['mobile'].errors" class="invalid-feedback">
+                  <div *ngIf="f['mobile'].errors['required']">Mobile is Required</div>
+                  <div *ngIf="f['mobile'].errors['minLength']">invalid Mobile Number</div>
+                  <div *ngIf="f['mobile'].errors['maxLength']">invalid Mobile Number</div>
+                  <div *ngIf="f['mobile'].errors['min']">Invalid Mobile Number</div>
+                  <div *ngIf="f['mobile'].errors['max']">Invalid Mobile Number</div>
+                </div>
+              </div>
+              <div class="col-12">
+                <label for="pass" class="form-label">Password <span class="text-danger">*</span></label>
+                
+                <div class="input-group">
+                  <input [type]="showPassword ? 'text' : 'password'" class="form-control" name="pass" id="pass" value="" required formControlName="pass" [ngClass]="{ 'is-invalid': submitted && f['pass'].errors }" autocomplete="off">
+                  <button type="button" class="btn btn-secondary " (click)="togglePasswordVisibility()"><i class="bi bi-eye" *ngIf="!showPassword"></i><i class="bi bi-eye-slash" *ngIf="showPassword"></i></button>
+                </div>
+
+                <div *ngIf="submitted && f['pass'].errors" class="invalid-feedback">
+                  <div *ngIf="f['pass'].errors['required']">Password is required</div>
+                  <div *ngIf="f['pass'].errors['minlength']">Password must be at least 6 characters</div>
+                  <div *ngIf="f['pass'].errors['maxlength']">Password must not exceed 40 characters</div>
+                </div>
+              </div>
+              <div class="col-12">
+                <label for="repass" class="form-label">Confirm Password <span class="text-danger">*</span></label>
+                <div class="input-group">
+                  <input [type]="showCPassword ? 'text' : 'password'" class="form-control" name="repass" id="repass" value="" required formControlName="repass" [ngClass]="{ 'is-invalid': submitted && f['repass'].errors }" autocomplete="off">
+                  <button type="button" class="btn btn-secondary " (click)="toggleCPasswordVisibility()"><i class="bi bi-eye" *ngIf="!showCPassword"></i><i class="bi bi-eye-slash" *ngIf="showCPassword"></i></button>
+                </div>
+                <div *ngIf="submitted && f['repass'].errors" class="invalid-feedback">
+                  <div *ngIf="f['repass'].errors['required']">Confirm Password is required</div>
+                  <div *ngIf="f['repass'].errors['matching']">Confirm Password does not match</div>
+                </div>
+              </div>
+              <!-- <div class="col-12">
+                <re-captcha (resolved)="resolved($event)" siteKey="6LfKXLwpAAAAAE_aRYOijExPxs48sPyQWh-XCJ0_"></re-captcha>
+              </div> -->
+              
+
+              <div class="col-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" name="agree" id="agree" required formControlName="agree" [ngClass]="{ 'is-invalid': submitted && f['agree'].errors }">
+                  <label class="form-check-label text-secondary" for="agree">
+                    I agree to the <a href="" class="link-primary text-decoration-none" [routerLink]="['/terms-conditions']">terms and conditions</a>
+                  </label>
+                  <div *ngIf="submitted && f['agree'].errors" class="invalid-feedback">Accept Terms is required</div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="d-grid">
+                  <a *ngIf='!subtn' class="anibutton btn1">{{btnerr}}</a>
+                  <button class="anibutton btn1" type="submit">Sign-Up</button>
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="row">
+            <div class="col-12">
+              <hr class="mt-5 mb-4 border-secondary-subtle">
+              <div class="col-12">
+                <p class="m-0 text-secondary text-center">Already have an account? <a class="link-primary text-decoration-none" [routerLink]="['/signin']">Sign in</a></p>
+              </div>
+            </div>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+</section>

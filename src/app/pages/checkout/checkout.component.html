@@ -1,0 +1,175 @@
+<section class="pageheadone">
+  <img src="{{filepathabout}}{{pageBan}}" class="pagebanner" alt="{{pageData.pge_subtitle}}" title="{{pageData.pge_subtitle}}">
+  <div class="pageheader container">  
+    <div class="textbar">
+      <h1>{{pageData.pge_subtitle}}</h1>
+      <br/><span><i class="bi bi-house-fill"></i> Home <i class="bi bi-chevron-right"></i> {{pageData.pge_title}}</span>
+    </div>
+  </div>  
+</section>
+
+<section class="aboutus container">
+  <h3 style="background-color: #fff !important; margin-bottom: 20px;">Order Summary</h3>
+<form [formGroup]="regfrm" (ngSubmit)="onSubmit()" autocomplete="off">
+	<div class="row">
+   
+
+		<div class="blogside col-12 col-sm-7 col-md-7 col-lg-7 col-xl-7 col-xxl-8">	
+			
+
+		    
+            <div class="row gy-3 gy-md-4 mb-4 overflow-hidden" style="border:1px solid #c8c8c8; border-radius: 5px; margin-top: 4px; padding-bottom: 50px;">
+
+              
+
+              <div class="col-12">
+                <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" name="name" id="name" placeholder="Full Name" required formControlName="name" [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" autocomplete="off">
+                <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                  <div *ngIf="f['name'].errors['required']">Fullname is required</div>
+                </div>
+              </div>
+              <div class="col-12">
+                <label for="email" class="form-label">E-Mail <span class="text-danger">*</span></label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" required formControlName="email" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" autocomplete="off">
+                <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                  <div *ngIf="f['email'].errors['required']">Email is required</div>
+                  <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+                </div>
+              </div>
+              <div class="col-12">
+                <label for="mobile" class="form-label">Mobile <span class="text-danger">*</span></label>
+                <input type="number" class="form-control" name="mobile" id="mobile" placeholder="10 Digit Mobile Number" required formControlName="mobile" [ngClass]="{ 'is-invalid': submitted && f['mobile'].errors }" autocomplete="off" min="6111111111" max="9999999999" maxlength="10">
+                 <div *ngIf="submitted && f['mobile'].errors" class="invalid-feedback">
+                  <div *ngIf="f['mobile'].errors['required']">Mobile is Required</div>
+                  <div *ngIf="f['mobile'].errors['minLength']">invalid Mobile Number</div>
+                  <div *ngIf="f['mobile'].errors['maxLength']">invalid Mobile Number</div>
+                  <div *ngIf="f['mobile'].errors['min']">Invalid Mobile Number</div>
+                  <div *ngIf="f['mobile'].errors['max']">Invalid Mobile Number</div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <label for="company" class="form-label">Company Name <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" name="company" formControlName="company" id="company" placeholder="" required autocomplete="off" [ngClass]="{ 'is-invalid': submitted && f['company'].errors }"> 
+                <div *ngIf="submitted && f['company'].errors" class="invalid-feedback">
+                  <div *ngIf="f['company'].errors['required']">Company Name is required</div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <label for="gst" class="form-label">GST Number </label>
+                <input type="text" class="form-control" name="gst" formControlName="gst" id="gst" placeholder="GST Number" autocomplete="off">
+              </div>
+
+              <div class="col-12">
+                <label for="ba" class="form-label">Billing Address <span class="text-danger">*</span></label>
+                <textarea rows="2" class="form-control" style="width: 100%;" formControlName="ba" id="ba" required placeholder="Enter Full Billing Address" [ngClass]="{ 'is-invalid': submitted && f['ba'].errors }"></textarea>
+                <div *ngIf="submitted && f['ba'].errors" class="invalid-feedback">
+                  <div *ngIf="f['ba'].errors['required']">Billing Addres is required</div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <label for="da" class="form-label">Delivery Address <span class="text-danger">*</span></label>
+                <textarea rows="2" class="form-control" style="width: 100%;" formControlName="da" id="da" required placeholder="Enter Full Delivery Address" [ngClass]="{ 'is-invalid': submitted && f['da'].errors }"></textarea>
+                <div *ngIf="submitted && f['da'].errors" class="invalid-feedback">
+                  <div *ngIf="f['da'].errors['required']">Delivery Address is required</div>
+                </div>
+              </div>
+              
+              <input type="hidden" formControlName="couponcode" readonly>
+              <input type="hidden" formControlName="coupontype" readonly>
+              <!-- <div class="col-12">
+                <re-captcha (resolved)="resolved($event)" siteKey="6LfKXLwpAAAAAE_aRYOijExPxs48sPyQWh-XCJ0_"></re-captcha>
+              </div> -->
+              
+
+          	 
+
+            </div>
+          
+
+		    
+		</div>
+
+
+		<div class="menuside col-12 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-4">
+			
+			<div  class="catmenu sticky-to eventGrid pt-4 mb-5">			
+				<div class="eventItem">
+			      <div class="blogtext">
+			      	<div class="bloghead">Cart Total</div>			      	
+			      	<div class="row footbar">
+			      		<div class="col text-start ">
+				      		<span>Total:</span>				      			      		
+				      	</div>
+
+				      	<div class="col text-end ">
+				      		<span><span style="font-family: 'Arial';">₹ </span>{{slimtotal}}.00</span>				      			      		
+				      	</div>
+
+				    </div>
+
+				    <div class="row footbar">
+			      		<div class="col text-start ">
+				      		<span>Shipping Cost:</span>				      			      		
+				      	</div>
+
+				      	<div class="col text-end ">
+				      		<span>Free</span>				      			      		
+				      	</div>
+
+				    </div>
+
+            <div class="row footbar" *ngIf="couponStatus">
+                <div class="col text-start ">
+                  <span><b>DISCOUNT:</b></span>                              
+                </div>
+
+                <div class="col text-end ">
+                  <span><b><span style="font-family: 'Arial';">₹ </span> {{couponDiscount}}</b></span>                             
+                </div>
+
+            </div>
+
+            <div class="row footbar col-12" *ngIf="couponStatus"> 
+                <span> Coupon Code Type: {{couponType}}</span>
+                <span> Coupon Code: {{couponcode}}</span>
+            </div>
+
+				    <div class="row footbar">
+			      		<div class="col text-start ">
+				      		<span><b>PAY:</b></span>				      			      		
+				      	</div>
+
+				      	<div class="col text-end ">
+				      		<span><b><span style="font-family: 'Arial';">₹ </span> {{subtotal}}</b></span>				      			      		
+				      	</div>
+
+				    </div>
+
+            
+
+				    <div class="row footbar col-12"> 
+			      		<button class="anibutton btn1 btn-lg" type="submit" width="100%">PROCEED TO PAYMENT</button>
+
+				    </div>
+
+
+				
+			      	
+			      </div>
+			  </div>				
+				
+			</div>
+
+		</div>
+</div>
+
+
+</form>      
+</section>
+
+
+<app-toasts aria-live="polite" aria-atomic="true"></app-toasts>

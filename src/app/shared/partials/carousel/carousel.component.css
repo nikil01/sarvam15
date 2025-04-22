@@ -1,0 +1,93 @@
+.carousel-caption{
+	padding-bottom: 350px;
+	margin-left: -100px;
+	text-align: left;
+}
+
+.carousel-caption h1{
+	font-size: 90px;
+	font-weight: bold;
+}
+
+
+.picsum-img-wrapper{
+	/*width: 100% !important;*/
+	/*max-height: 574px;	*/
+	/*height: auto;*/
+	/*margin-left: auto;
+	margin-right: auto;*/
+}
+
+
+.picsum-img-wrapper > img{
+	width: 100% !important;
+	max-height: 574px;	
+	height: auto;
+	/*margin-left: auto;*/
+	/*margin-right: auto;*/
+	/*float: center;*/
+	
+}
+
+@media screen and (max-width: 575px){
+	.picsum-img-wrapper img{
+		width: 100% !important;
+		/*max-height: 574px;	*/
+		height: auto;
+		/*margin-left: auto;*/
+		/*margin-right: auto;*/
+		/*float: center;*/
+		
+	}
+}
+
+
+@media screen and ((min-width: 577px) and (max-width: 719px)){
+	.picsum-img-wrapper img{
+		width: 100% !important;
+		/*max-height: 574px;	*/
+		height: auto;
+		/*margin-left: auto;*/
+		/*margin-right: auto;*/
+		/*float: center;*/
+		
+	}
+
+}
+
+
+@media screen and ((min-width: 720px) and (max-width: 1199px)){
+	.picsum-img-wrapper img{
+		width: 100% !important;
+		max-height: 574px;	
+		height: auto;
+		/*margin-left: auto;*/
+		/*margin-right: auto;*/
+		/*float: center;*/
+		
+	}
+}
+
+@media screen and ((min-width: 1200px) and (max-width: 1399px)){
+	.picsum-img-wrapper img{
+		width: 100% !important;
+		max-height: 574px;	
+		height: auto;
+		/*margin-left: auto;*/
+		/*margin-right: auto;*/
+		/*float: center;*/
+		
+	}
+}
+
+@media screen and (min-width: 1400px){
+	.picsum-img-wrapper img{
+		width: 100% !important;
+		max-height: 574px;	
+		height: auto;
+		/*margin-left: auto;*/
+		/*margin-right: auto;*/
+		/*float: center;*/
+		
+	}
+}

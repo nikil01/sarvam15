@@ -1,0 +1,243 @@
+<section class="pageheadone">
+  <img src="{{filepathabout}}{{pageBan}}" class="pagebanner" alt="{{pageData.pge_subtitle}}" title="{{pageData.pge_subtitle}}">
+  <div class="pageheader container">  
+    <div class="textbar">
+      <h1>{{pageData.pge_subtitle}}</h1>
+      <br/><span><i class="bi bi-house-fill"></i> Home <i class="bi bi-chevron-right"></i> {{pageData.pge_title}}</span>
+    </div>
+  </div>  
+</section>
+
+<section class="contact  container">
+	<section id="contact" class="contact mb-5">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 text-center mb-5">
+            <h2 class="page-title">Head Office</h2>
+          </div>
+        </div>
+
+        <div class="row gy-4">
+
+          <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
+            <div class="info-item">
+              <img src="assets/img/1.png" class="img-responsive mb-3" width="60px" alt="Location" title="Location"> 
+              <h3>Address</h3>
+              <address>{{OfficeData.off_address}} {{OfficeData.off_city}} - {{OfficeData.off_pin}}, {{OfficeData.off_state}}</address>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
+            <div class="info-item info-item-borders">
+              <img src="assets/img/2.png" class="img-responsive mb-3" width="60px" alt="Phone Number" title="Phone Number"> 
+              <h3>Phone Number</h3>
+              <p><a href="tel:{{OfficeData.off_phone}}">{{OfficeData.off_phone}}</a></p>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
+            <div class="info-item">
+              <img src="assets/img/3.png" class="img-responsive mb-3" width="60px" alt="Email" title="Email"> 
+              <h3>Email</h3>
+              <p><a href="mailto:{{OfficeData.off_email}}">{{OfficeData.off_email}}</a></p>
+            </div>
+          </div><!-- End Info Item -->
+
+        </div>
+
+
+        <div class="form mt-5 row php-email-form">
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+
+            <div *ngIf="!showForm"><h4 class="text-success text-center pt-5 mt-5">Your message has been recieved. Thank you!</h4></div>
+            <div *ngIf="showForm">
+              <form [formGroup]="contForm" (ngSubmit)="onSubmit()" autocomplete="off">
+                <div class="row">
+                  <div class="form-group col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
+                    <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Full Name" required formControlName="name" [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" autocomplete="off">
+                    <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                      <div *ngIf="f['name'].errors['required']">Fullname is Required</div>
+                    </div>
+                  </div>
+                  <div class="form-group col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
+                    <label for="company" class="form-label">Company <span class="text-danger">*</span></label>
+                    <input type="text" name="company" class="form-control" id="company" placeholder="Company Name" required formControlName="company" [ngClass]="{ 'is-invalid': submitted && f['company'].errors }" autocomplete="off">
+                    <div *ngIf="submitted && f['company'].errors" class="invalid-feedback">
+                      <div *ngIf="f['company'].errors['required']">Company Name is Required</div>
+                    </div>
+                  </div>                  
+                </div>
+                <div class="row">
+                  <div class="form-group col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
+                    <label for="mobile" class="form-label">Mobile <span class="text-danger">*</span></label>
+                    <input type="text" name="mobile" class="form-control" id="mobile" placeholder="Mobile Number" required formControlName="mobile" [ngClass]="{ 'is-invalid': submitted && f['mobile'].errors }" autocomplete="off" min="6111111111" max="9999999999" maxlength="10">
+                    <div *ngIf="submitted && f['mobile'].errors" class="invalid-feedback">
+                      <div *ngIf="f['mobile'].errors['required']">Mobile is Required</div>
+                      <div *ngIf="f['mobile'].errors['minLength']">invalid Mobile Number</div>
+                      <div *ngIf="f['mobile'].errors['maxLength']">invalid Mobile Number</div>
+                      <div *ngIf="f['mobile'].errors['min']">Invalid Mobile Number</div>
+                      <div *ngIf="f['mobile'].errors['max']">Invalid Mobile Number</div>
+                    </div>
+                  </div>
+                  <div class="form-group col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
+                    <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Email" required formControlName="email" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" autocomplete="off">
+                    <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                      <div *ngIf="f['email'].errors['required']">Email is required</div>
+                      <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                  <label for="subject" class="form-label">Subject <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required formControlName="subject" [ngClass]="{ 'is-invalid': submitted && f['subject'].errors }" autocomplete="off">
+                  <div *ngIf="submitted && f['subject'].errors" class="invalid-feedback">
+                      <div *ngIf="f['subject'].errors['required']">Subject is Required</div>
+                    </div>
+                </div>
+                <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                  <label for="message" class="form-label">Message <span class="text-danger">*</span></label>
+                  <textarea class="form-control" name="message" rows="5" placeholder="Message" required formControlName="message" [ngClass]="{ 'is-invalid': submitted && f['message'].errors }" autocomplete="off" maxlength="250"></textarea>
+                  <div *ngIf="submitted && f['message'].errors" class="invalid-feedback">
+                      <div *ngIf="f['message'].errors['required']">Message is Required</div>
+                      <div *ngIf="f['message'].errors['maxLength']">Message Exseeds 250 Characters</div>
+                    </div>                  
+                </div>
+                <div class="my-3">
+                 
+                  <div class="error-message" *ngIf="errormsg">Ooop's! something went wrong, try agian later.</div>                
+                </div>
+                <div class="text-center mb-5"><button type="submit">Send Message</button></div>
+              </form>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+            <img src="{{filepathblog}}{{OfficeData.off_offimg}}" class="img-responsive" width="100%" alt="Sarvam Safety Main Office Building" title="Sarvam Safety Main Office Building">
+
+          </div>
+        </div><!-- End Contact Form -->
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+          <iframe style="border:0; width: 100%; height: 340px;" [src]="OfficeData.off_mapcoords | safeurl" frameborder="0" allowfullscreen></iframe>
+        </div><!-- End Google Maps -->
+
+
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 text-left mb-5 mt-5">
+            <h2 class="page-title">Our Branches</h2>
+          </div>
+        </div>
+
+
+        <div class="row ">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4" *ngFor="let branch of BranchData">
+              <div class="branches ">
+              	<div class="img">
+                  <img src="{{filepathblog}}{{branch.off_offimg}}" class="img-responsive" alt="Sarvam Safety {{branch.off_city}} Office Building"  title="Sarvam Safety {{branch.off_city}} Office Building">
+                </div>
+                <h3 class="location">{{branch.off_city}}</h3>
+              	<div class="row">
+                    <div class="col-1 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                      <img src="assets/img/1.png" class="img-responsive" width="25px"> 
+                    </div><div class="col-11 col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xxl-10"> 
+                      <span class="address">{{branch.off_address}} {{branch.off_city}} - {{branch.off_pin}}, {{branch.off_state}}</span>
+                    </div>
+                </div>
+
+                <div class="row pt-2">
+                    <div class="col-1 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                      <img src="assets/img/3.png" class="img-responsive" width="25px"> 
+                    </div><div class="col-11 col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xxl-10"> 
+                      <span class="email">{{branch.off_email}}</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-1 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                      <img src="assets/img/2.png" class="img-responsive" width="25px"> 
+                    </div><div class="col-11 col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xxl-10"> 
+                      <span class="phone">{{branch.off_phone}} {{branch.off_mobile}}</span>
+                    </div>
+                </div>
+              	
+              	
+              	
+
+                <div class="map">
+                  <iframe style="border:0; width: 100%; height: 200px;" [src]="branch.off_mapcoords | safeurl" frameborder="0" allowfullscreen></iframe>
+                </div>
+              </div>
+          </div>
+
+         
+      </div>
+
+
+
+
+      </div>
+    </section>
+
+
+<section class="fullpagec">
+    <div class="row sitedata col-md-12 col-12">
+      <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+        <div class="textholder php-email-form" style="padding-left: 50px;">
+           <img src="assets/img/4.png" class="img-responsive" width="70px" style="margin-bottom: 20px;"> 
+          <h3>Gst Details:</h3>
+          <p>GSTIN: {{siteData.dta_gstin}}</p>
+          <p>TYPE : {{siteData.dta_taxtype}}</p>
+          <p>CIN No :  {{siteData.dta_cinno}}</p>
+         
+        </div>
+      </div>
+      <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+        <div class="textholder php-email-form" style="padding-left: 50px;">
+          <img src="assets/img/5.png" class="img-responsive" width="70px" style="margin-bottom: 20px;"> 
+          <h3>Bank Account Details:</h3>
+          <p>BANK NAME : {{siteData.dta_bank}}</p>
+          <p>ACCOUNT NUMBER : {{siteData.dta_accountnum}}</p>
+          <p>BRANCH NAME : {{siteData.dta_branch}}</p>
+          <p>BANK BRANCH CODE : {{siteData.dta_branchcode}}</p>
+          <p>9 DIGITS MICRO NO OF BANK : {{siteData.dta_micronum}}</p>
+          <p>NEFT / RTGS IFSC CODE : {{siteData.dta_ifsc}}</p>
+          <p>SWIFT IFSC CODE : {{siteData.dta_swift}}</p>
+        </div>
+      </div>
+    </div>
+</section>
+
+
+<section class="mobilepagec">
+   <div class="row sitedata col-md-12 mobilepage">
+      <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+        <div class="textholder php-email-form" style="padding-left: 50px;">
+           <img src="assets/img/4.png" class="img-responsive" width="70px" style="margin-bottom: 20px;"> 
+          <h3>Gst Details:</h3>
+          <p><small>GSTIN</small><br/>{{siteData.dta_gstin}}</p>
+          <p><small>TYPE</small><br/>{{siteData.dta_taxtype}}</p>
+          <p><small>CIN No</small><br/>{{siteData.dta_cinno}}</p>
+         
+        </div>
+      </div>
+      <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+        <div class="textholder php-email-form" style="padding-left: 50px;">
+          <img src="assets/img/5.png" class="img-responsive" width="70px"  style="margin-bottom: 20px;"> 
+          <h3>Bank Account Details:</h3>
+          <p><small>BANK NAME</small><br/>{{siteData.dta_bank}}</p>
+          <p><small>ACCOUNT NUMBER</small><br/>{{siteData.dta_accountnum}}</p>
+          <p><small>BRANCH NAME</small><br/>{{siteData.dta_branch}}</p>
+          <p><small>BANK BRANCH CODE</small><br/>{{siteData.dta_branchcode}}</p>
+          <p><small>9 DIGITS MICRO NO OF BANK</small><br/>{{siteData.dta_micronum}}</p>
+          <p><small>NEFT / RTGS IFSC CODE</small><br/>{{siteData.dta_ifsc}}</p>
+          <p><small>SWIFT IFSC CODE</small><br/>{{siteData.dta_swift}}</p>
+        </div>
+      </div>
+    </div>
+
+</section>
+
+</section>

@@ -1,0 +1,36 @@
+ <div class="" >
+
+  <swiper-container appSwiperDirective [config]="config" init="false" class="w-full row">
+     <div class="swiper-slide col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-3" *ngFor="let equips of equipments" >
+      <a [routerLink]="equips.tst_linkurl">
+       	<div class="equipment">	
+       		<img src="{{filepath}}{{equips.tst_photo}}" alt="{{equips.tst_smalltext}}" title="{{equips.tst_smalltext}}">
+       		<div class="equipOverlay">    			
+       			<h6>{{equips.tst_smalltext}}</h6>
+       			<span>{{equips.tst_bigtext}}</span>
+       		</div>
+
+       	</div>   
+     	 </a>
+     </div>
+
+     <div class="swiper-slide  col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-3" *ngFor="let equips of equipments" >
+      <a [routerLink]="equips.tst_linkurl">
+        <div class="equipment" > 
+          <img src="{{filepath}}{{equips.tst_photo}}" alt="{{equips.tst_smalltext}}" title="{{equips.tst_smalltext}}">
+          <div class="equipOverlay">          
+            <h6>{{equips.tst_smalltext}}</h6>
+            <span>{{equips.tst_bigtext}}</span>
+          </div>
+
+        </div>   
+      </a>
+     </div>
+    
+     
+  </swiper-container>
+
+
+  </div>
+
+

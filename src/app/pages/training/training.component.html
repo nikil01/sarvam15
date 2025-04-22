@@ -1,0 +1,159 @@
+<section class="pageheadone">
+  <img src="{{filepathabout}}{{pageBan}}" class="pagebanner" alt="{{pageData.pge_subtitle}}" title="{{pageData.pge_subtitle}}">
+  <div class="pageheader container">  
+    <div class="textbar">
+      <h1>{{pageData.pge_subtitle}}</h1>
+      <br/><span><i class="bi bi-house-fill"></i> Home <i class="bi bi-chevron-right"></i> {{pageData.pge_title}}</span>
+    </div>
+  </div>  
+</section>
+
+<section class="aboutus container">		
+	<h2 style="color:#8BC24A;">{{TrainingFirstTexts.log_title}}</h2>
+	<div [innerHTML]="TrainingFirstTexts.log_content"></div>
+	<br/><br/>
+	<h2 style="color:#8BC24A;">SAFETY TRAINING OFFERED</h2>
+	<div class=" container"><app-trainingsliders></app-trainingsliders></div>
+</section>
+
+<div class="bggram">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 trintxt">
+				<div class="lefttext p-5 ">
+					<h5 >Request for upcoming training</h5>
+					<p>To learn more about enhancing employee safety through our comprehensive training programs, please enter your details. We will get back to you with information about our upcoming trainings.</p>
+					
+						<span>Share: </span>
+						<ul>
+							<li><a href="https://www.instagram.com/"><i class="bi bi-instagram"></i></a></li>
+							<li><a href="https://www.instagram.com/"><i class="bi bi-twitter"></i></a></li>
+							<li><a href="https://www.instagram.com/"><i class="bi bi-linkedin"></i></a></li>
+						</ul>
+					
+				</div>
+				
+			</div>
+			<div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 p-5">
+				
+				<div *ngIf="!visibledub"><span class="text-danger">You have already enquired for this Training</span></div>
+		        <div *ngIf="!visibleform"><span class="text-danger">Thank-you, We have recieved your enquiry, We'll revert soon.</span></div>
+
+
+				<div *ngIf="visibleform">
+		          <div class="row">
+		            <div class="col-12">
+		              <div class="mb-1">
+		                <h6 class="h3">Enquire Now!</h6>		                
+		              </div>
+		            </div>
+		          </div>
+		          <form [formGroup]="regfrm" (ngSubmit)="onSubmit()" autocomplete="off">
+		            <div class="row gy-1 gy-md-3 overflow-hidden">
+		           		
+		              <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">		                
+		                <input type="text" class="form-control" name="name" id="name" placeholder="Full Name" required formControlName="name" [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" autocomplete="off">
+		                <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+		                  <div *ngIf="f['name'].errors['required']">Fullname is required</div>
+		                </div>
+		              </div>
+		              <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">		                
+		                <input type="text" class="form-control" name="company" id="company" placeholder="Company Name" required formControlName="company" [ngClass]="{ 'is-invalid': submitted && f['company'].errors }" autocomplete="off">
+		                <div *ngIf="submitted && f['company'].errors" class="invalid-feedback">
+		                  <div *ngIf="f['company'].errors['required']">Company Name is required</div>
+		                </div>
+		              </div>
+		              <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">		               
+		                <input type="email" class="form-control" name="email" id="email" placeholder="E-Mail" required formControlName="email" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" autocomplete="off">
+		                <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+		                  <div *ngIf="f['email'].errors['required']">Email is required</div>
+		                  <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+		                </div>
+		              </div>
+		              <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">		                
+		                <input type="number" class="form-control" name="mobile" id="mobile" placeholder="10 Digit Mobile Number" required formControlName="mobile" [ngClass]="{ 'is-invalid': submitted && f['mobile'].errors }" autocomplete="off" min="6111111111" max="9999999999" maxlength="10">
+		                 <div *ngIf="submitted && f['mobile'].errors" class="invalid-feedback">
+		                  <div *ngIf="f['mobile'].errors['required']">Mobile is Required</div>
+		                  <div *ngIf="f['mobile'].errors['minLength']">invalid Mobile Number</div>
+		                  <div *ngIf="f['mobile'].errors['maxLength']">invalid Mobile Number</div>
+		                  <div *ngIf="f['mobile'].errors['min']">Invalid Mobile Number</div>
+		                  <div *ngIf="f['mobile'].errors['max']">Invalid Mobile Number</div>
+		                </div>
+		              </div>
+
+		              <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">		               
+		                <input type="text" class="form-control" name="location" id="location" placeholder="Location - Where Do You Want Training" required formControlName="location" [ngClass]="{ 'is-invalid': submitted && f['location'].errors }" autocomplete="off">
+		                <div *ngIf="submitted && f['location'].errors" class="invalid-feedback">
+		                  <div *ngIf="f['location'].errors['required']">Location is required</div>
+		                </div>
+		              </div>
+
+		              <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">		               
+		                <select class="form-control" name="topics" id="topics" required formControlName="topics" [ngClass]="{ 'is-invalid': submitted && f['topics'].errors }" autocomplete="off">
+		                	<option selected="selected">Select Recommended Topics</option>
+		                	<option *ngFor="let topic of trainigtopics" value="{{topic.cat_topic}}">{{topic.cat_topic | titlecase}}</option>
+		                </select>
+		               
+		                <div *ngIf="submitted && f['topics'].errors" class="invalid-feedback">
+		                  <div *ngIf="f['topics'].errors['required']">Topics is required</div>
+		                </div>
+		              </div>
+
+		              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">		                
+		                <textarea class="form-control" name="remarks" id="remarks" placeholder="Expected Topics & Details" required formControlName="remarks" [ngClass]="{ 'is-invalid': submitted && f['remarks'].errors }" autocomplete="off" rows="3">Expected Topics & Details</textarea>
+		                <div *ngIf="submitted && f['remarks'].errors" class="invalid-feedback">
+		                  <div *ngIf="f['remarks'].errors['required']">Details is required</div>
+		                </div>
+		              </div>		          
+		             
+		              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+		                <div class="d-grid">                  
+		                  <button class="anibutton btn1" type="submit">Submit</button>
+		                </div>
+          			  </div>
+		             
+
+
+		            </div>
+		          </form>          
+		         
+		         </div>	
+
+
+
+
+
+			</div>
+		</div>
+	</div>
+	
+</div>
+
+
+<section class="mt-5 container">
+ 
+  <!-- <div class="topicline"><h6>Santy</h6></div> -->
+
+  <div style="color: var(--theme)" class="topicline">
+    <svg xmlns="http://www.w3.org/2000/svg" width="39" height="16" viewBox="0 0 39 22" fill="none">
+        <path d="M39 0V3.5H2.6L0 0H39Z" fill="currentcolor"></path>
+        <path d="M39 7.20001V10.7H8.00002L5.40002 7.20001H39Z" fill="currentcolor"></path>
+        <path d="M39 14.4V17.9H13.5L10.9 14.4H39Z" fill="currentcolor"></path>
+    </svg>
+    <span>{{testiHeading.log_title}}</span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="39" height="16" viewBox="0 0 39 22" fill="none">
+        <path d="M0 0V3.5H36.4L39 0H0Z" fill="currentcolor"></path>
+        <path d="M0 7.20001V10.7H31L33.6 7.20001H0Z" fill="currentcolor"></path>
+        <path d="M0 14.4V17.9H25.5L28.2 14.4H0Z" fill="currentcolor"></path>
+    </svg>
+  </div>
+
+
+  <div class="blkhdngBox animHldr mt-2 " data-entrance="my-custom-animation">
+    <h6 class="animated fadeInUp blockHeading animObj target ">{{testiHeading.log_Headings}}</h6>
+  </div>
+  
+  <div class="py-4 my-4 container"><app-trainingtestimonials></app-trainingtestimonials></div>
+
+
+</section>

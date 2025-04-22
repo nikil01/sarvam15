@@ -1,0 +1,23 @@
+<img src="assets/img/pagebanner.jpg" class="pagebanner">
+<section class="pageheader container">	
+	<div class="textbar">
+		<h1>Photo Gallery</h1>
+		<br/><span><i class="bi bi-house-fill"></i> Home <i class="bi bi-chevron-right"></i> Albums / Photos</span>
+	</div>
+</section>
+
+<section class="aboutus container">
+	
+	<ngb-carousel #carousel [interval]="5000" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus"	(slide)="onSlide($event)">
+		<ng-template ngbSlide *ngFor="let slide of albumdta">		
+			
+				<div class="picsum-slide-wrapper">
+					<!-- /*<div style="background-image: url({{filepath}}{{slide.glr_photo}}); width: 100%; max-height: 574px;"></div>*/ -->
+
+					<img src="{{filepath}}{{slide.pho_photo}}" alt="{{slide.pho_photo}}" />
+				</div>
+			
+		</ng-template>
+	</ngb-carousel>
+
+</section>

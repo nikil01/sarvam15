@@ -1,0 +1,81 @@
+.aboutus{
+	padding: 60px 10px 60px 10px;
+	background-color: #fff;
+	/*height: 600px;*/
+	display: block;
+
+}
+
+
+
+.wishitem{ 
+	vertical-align: middle;	
+	background-color: #f8f8f8;
+	border:2px solid #f2f2f2;
+	margin-bottom: 20px;
+	padding: 20px 10px 20px 10px;
+	height: auto;
+}
+
+.wishitem h6{
+	font-size: 18px;
+	line-height: 22px;
+	font-weight: normal;
+	padding-top: 20px;
+}
+
+.wishitem span{
+	font-size: 100px;
+	line-height: 100px;
+	font-weight: normal;
+	color: #fff;
+}
+
+
+.wishitem .contnt{
+	padding: 40px auto;
+}
+
+
+.elitepager{
+	text-align: center;
+}
+
+.elitepager button{
+	border-radius: 0px;
+	margin-left: 5px;
+	margin-right: 5px;
+	background-color: var(--theme);
+}
+
+.elitepager button:hover{
+	border-radius: 0px;
+	margin-left: 5px;
+	margin-right: 5px;
+	background-color: var(--theme);
+	color: #fff;
+}
+
+.elitepager button:disabled{
+	border-radius: 0px;
+	margin-left: 5px;
+	margin-right: 5px;
+	background-color: var(--theme);	
+}
+
+
+@media screen and (max-width:450px){
+	.fullpage{display: none;}
+	.mobilepage{display: block;}
+	.mobispace{margin-bottom: 10px;}
+	.mobhide{display: none;}
+	.mobicentr{text-align: center; margin-left: auto; margin-right: auto;}
+}
+
+@media screen and (min-width:576px){
+	.fullpage{display: block;}
+	.mobilepage{display: none;}
+	.mobispace{}
+	.mobhide{}
+	.mobicentr{}
+}

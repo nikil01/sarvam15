@@ -1,0 +1,23 @@
+
+
+
+<div class="row mobicenter">
+    <div class="col-3 col-sm-1 col-md-1 col-lg-1 col-xl-1 col-xxl-1"><button id="my-prev-button" class="clientprebtn"><</button></div>
+    <div class="col-6 col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xxl-10">
+        <swiper-container appSwiperDirective [config]="config" init="false" class="clientswiper"  navigation-next-el="#my-next-button"
+          navigation-prev-el="#my-prev-button">
+            <div class="swiper-slide " *ngFor="let client of clientdata">
+                <div class="clientitem">
+                    <img src="{{filepath}}{{client.spl_logo}}" alt="{{client.spl_msname}}" title="{{client.spl_msname}}" class="img-responsive" width="100%"> 
+                </div>              
+            </div>  
+           <!--  <div class="swiper-slide " *ngFor="let client of clientdata">
+                <div class="clientitem">
+                    <img src="{{filepath}}{{client.spl_logo}}" alt="{{client.spl_msname}}" class="img-responsive" width="100%"> 
+                </div>              
+            </div>    -->
+        </swiper-container>
+    </div>
+    <div class="col-3 col-sm-1 col-md-1 col-lg-1 col-xl-1 col-xxl-1"><button id="my-next-button" class="clientnxtbtn">></button></div>
+</div>
+    

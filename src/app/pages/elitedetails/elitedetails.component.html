@@ -1,0 +1,99 @@
+<section class="pageheadone">
+  <img src="{{filepathabout}}{{pageBan}}" class="pagebanner" alt="{{pageData.pge_subtitle}}" title="{{pageData.pge_subtitle}}">
+  <div class="pageheader container">  
+    <div class="textbar">
+      <h1>{{pageData.pge_subtitle}}</h1>
+      <br/><span><i class="bi bi-house-fill"></i> Home <i class="bi bi-chevron-right"></i> {{pageData.pge_title}}</span>
+    </div>
+  </div>  
+</section>
+
+
+<section class="proddetails container">	
+	<div class="row col-md-12 eliteprddata">			
+			<div class="col-sm-5 col-md-5 col-lg-5 col-xl-5 ">
+				<div class="focussesimg nomob">
+					<lib-ngx-image-zoom [thumbImage]=imgbank [fullImage]=imgbankfull zoomMode='hover' [enableLens]="true" [circularLens]="true" [lensWidth]="150" [lensHeight]="150"></lib-ngx-image-zoom>
+				</div>
+        <div class="focussesimg yesmob">
+          <img src="{{thumbimg}}" class="img-responsive" alt="{{elitedata.ctl_name}}" title="{{elitedata.ctl_name}}">
+        </div>
+				<div class="thumbnails d-flex justify-content-center justify-content-md-between">
+					<ul>
+						<li *ngFor="let img of prdimages"><img src="{{filepaththumbnail}}{{img.img_image}}" class="img-responsive" (click)="showthisimg(img.img_image)" alt="product thumbnail {{elitedata.ctl_name}}" title="product thumbnail {{elitedata.ctl_name}}"></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-sm-7 col-md-7 col-lg-7 col-xl-7 ">
+				<h6>{{elitedata.ctl_name}}</h6>				
+				<p>{{elitedata.ctl_description}}</p>
+				<div [innerHTML]="elitedata.ctl_features"></div>
+				<button class="anibutton btn1" (click)="sendenquiry(eliteprddetail)">REQUEST QUOTATION FOR THIS PRODUCT</button>
+			</div>
+	</div>
+</section>
+
+
+
+<ng-template #eliteprddetail let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title"><small>Request Quotation For - {{elitedata.ctl_name}}</small></h4>
+		<button type="button" class="btn-danger btn-sm btn-close" aria-label="Close" (click)="modal.close()"></button>
+	</div>
+	<div class="modal-body " style="height: auto;">
+		<div class="row  col-md-12">
+			<div *ngIf="btnerr">{{btnerr}}</div>
+			
+		<form [formGroup]="quotation" (ngSubmit)="onSubmit()" autocomplete="off" *ngIf="formVisi">
+            <div class="row gy-3 gy-md-4 overflow-hidden">
+              <div class="col-12">
+                <label for="quantity" class="form-label">Quantity <span class="text-danger">*</span></label>
+                <input type="number" class="form-control" name="quantity" id="quantity" placeholder="Enter Quantity" required formControlName="quantity" [ngClass]="{ 'is-invalid': submitted && f['quantity'].errors }" autocomplete="off" maxlength="4" min="1" max="9999">
+                <div *ngIf="submitted && f['quantity'].errors" class="invalid-feedback">
+                  <div *ngIf="f['quantity'].errors['required']">Quantity is required</div>
+                  <div *ngIf="f['quantity'].errors['minLength']">invalid Quantity (minimum is 10)</div>
+                  <div *ngIf="f['quantity'].errors['maxLength']">invalid Quantity</div>
+                  <div *ngIf="f['quantity'].errors['min']">Invalid Quantity</div>
+                  <div *ngIf="f['quantity'].errors['max']">Invalid Quantity</div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <label for="pin" class="form-label">PIN (Delivery Postal Code) <span class="text-danger">*</span></label>
+                <input type="number" class="form-control" name="pin" id="pin" placeholder="6 Digit Postal Code" required formControlName="pin" [ngClass]="{ 'is-invalid': submitted && f['pin'].errors }" autocomplete="off" maxlength="6" min="100000" max="999999">
+                <div *ngIf="submitted && f['pin'].errors" class="invalid-feedback">
+                  <div *ngIf="f['pin'].errors['required']">PIN is required</div>
+                  <div *ngIf="f['pin'].errors['minLength']">invalid PIN</div>
+                  <div *ngIf="f['pin'].errors['maxLength']">invalid PIN</div>
+                  <div *ngIf="f['pin'].errors['min']">Invalid PIN</div>
+                  <div *ngIf="f['pin'].errors['max']">Invalid PIN</div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <label for="remarks" class="form-label">Remarks <span class="text-danger">*</span></label>
+                <textarea class="form-control" name="remarks" id="remarks" required formControlName="remarks" [ngClass]="{ 'is-invalid': submitted && f['remarks'].errors }" autocomplete="off"></textarea>
+                <div *ngIf="submitted && f['remarks'].errors" class="invalid-feedback">
+                  <div *ngIf="f['remarks'].errors['required']">PIN is required</div>                 
+                </div>
+              </div>
+             
+              <div class="col-12">
+                <div class="d-grid">
+                  <a *ngIf='!subtn' class="anibutton btn1">{{btnerr}}</a>
+                  <button class="anibutton btn1" type="submit" [disabled]="!quotation.valid">Send Enquiry</button>
+                </div>
+              </div>
+            </div>
+          </form>
+		
+
+
+
+		</div>
+	</div>
+	
+</ng-template>
+
+

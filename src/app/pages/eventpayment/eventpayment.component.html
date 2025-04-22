@@ -1,0 +1,116 @@
+<section class="pageheadone">
+  <img src="{{filepathabout}}{{pageBan}}" class="pagebanner" alt="{{pageData.pge_subtitle}}" title="{{pageData.pge_subtitle}}">
+  <div class="pageheader container">  
+    <div class="textbar">
+      <h1>{{pageData.pge_subtitle}}</h1>
+      <br/><span><i class="bi bi-house-fill"></i> Home <i class="bi bi-chevron-right"></i> {{pageData.pge_title}}</span>
+    </div>
+  </div>  
+</section>
+
+
+<section class="aboutus container">
+
+	<div class="row">
+
+
+
+		<div class="blogside col-12 col-sm-7 col-md-7 col-lg-7 col-xl-7 col-xxl-8">	
+
+			<div *ngIf="paymentStatus != 'NA'">
+		    	<h2>Thank You</h2>		    	
+		    	<div class="alert alert-success">
+				  <strong>Webinar Link: </strong> {{eventdta.evt_weblink}}  
+				  <button class="btn btn-link" ngxClipboard [cbContent]="eventdta.evt_weblink" tooltipClass="tooltip" ngbTooltip="Copy Link"><i class="bi bi-copy"></i></button>
+				
+				
+				</div>
+		    </div>
+
+		    <div *ngIf="eventdta.evt_type == 'Free'">
+		    	<h2>Thank You</h2>		    	
+		    	<div class="alert alert-success">
+				  <strong>Webinar Link: </strong> {{eventdta.evt_weblink}}  
+				  <button class="btn btn-link" ngxClipboard [cbContent]="eventdta.evt_weblink" tooltipClass="tooltip" ngbTooltip="Copy Link"><i class="bi bi-copy"></i></button>
+				
+				
+				</div>
+		    </div>
+
+		    <div *ngIf="paymentStatus == 'NA' && eventdta.evt_type == 'Paid'">	
+		    	<h2>Ooop's</h2>	    	
+		    	<div class="alert alert-danger">
+				  <strong>Payment Failed: </strong> Your Payment Failed!				
+				</div>
+		    </div>
+
+
+		    <div class="blogitem">
+		      <div class="img mb-5"><img src="{{filepathblog}}{{eventdta.evt_photo}}" style="width: 100%;" alt="{{eventdta.evt_heading}}" title="{{eventdta.evt_heading}}"></div>
+
+		      <h3>Details</h3>
+		      <div class="blogtext">  
+		      	<p class="brief" [innerHTML]="eventdta.evt_brief"></p>
+		      </div>
+		    </div>
+
+		    
+		</div>
+
+
+		<div class="menuside col-12 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-4">
+			
+			<div  class="catmenu sticky-to eventGrid pt-4 mb-5">			
+				<div class="eventItem">
+			      <div class="blogtext">
+			      	<div class="bloghead">{{eventdta.evt_heading}}</div>
+			      	<div class="dateauthor">
+			      		<i class="bi bi-bookmark-check"></i><span>{{eventdta.evt_category}}</span>	<br/>
+			      		<i class="bi bi-calendar2-week"></i><span>{{eventdta.evt_udate | date}} - {{eventdta.evt_utime}} | {{eventdta.evt_duration}}</span><br/>
+			      		<i class="bi bi-geo-alt-fill"></i><span *ngIf="eventdta.evt_etype == 'Online'">Online</span>	<span *ngIf="eventdta.evt_etype != 'Online'">{{eventdta.evt_vanue}}</span>	
+			      	</div>  
+			      	<div class="row footbar">
+			      		<div class="col text-start ">
+				      		<span>Fees:</span>				      			      		
+				      	</div>
+
+				      	<div class="col text-end ">				      		
+				      		<span *ngIf="eventdta.evt_type == 'Paid'">₹ {{eventdta.evt_fees}}/-</span>
+				      		<span *ngIf="eventdta.evt_type == 'Free'">Free</span> 			      			      		
+				      	</div>
+
+				    </div>
+				    <div class="row footbar" *ngIf="eventdta.evt_type == 'Paid'">
+
+				      	<div class="col text-start ">
+				      		<span> Payment Status:</span>				      			      		
+				      	</div>
+
+				      	<div class="col text-end" *ngIf="paymentStatus != 'NA'">				      		
+				      		<button class="anibutton btn1" >Recieved.</button>			      		
+				      	</div>
+
+				      	<div class="col text-end" *ngIf="paymentStatus == 'NA'">				      		
+				      		<button class="btn btn-sm btn-danger" >Failed.</button>			      		
+				      	</div>
+				    </div>
+				    <div class="row footbar" *ngIf="paymentStatus != 'NA' && eventdta.evt_type == 'Paid'">
+
+
+				      	<div class="col text-start">
+				      		<span> Transaction ID:</span>				      			      		
+				      	</div>
+
+				      	<div class="col text-end">				      		
+				      		<span ><b>{{paymentData.prt_transnum}}</b></span>			      		
+				      	</div>
+			      	</div>
+			      	
+			      </div>
+			  </div>				
+				
+			</div>
+
+		</div>
+</div>
+</section>

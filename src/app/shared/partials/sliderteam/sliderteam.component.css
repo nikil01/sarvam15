@@ -1,0 +1,499 @@
+:root {
+  /*--swiper-scrollbar-bottom: 0;*/
+  /*--swiper-scrollbar-drag-bg-color: var(--theme);*/
+  /*--swiper-scrollbar-size: 10px;*/
+  /*--swiper-scrollbar-width: 400px;*/
+
+  --swiper-navigation-color: var(--theme);
+
+ 
+}
+
+.team .teamnxtbtn{
+  background-color:  var(--theme);
+  color: #fff;
+  border:none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 25px;
+  /*position: absolute;*/
+  margin-top: 120px;
+  /*right: 10px;*/
+  z-index: 10;
+  /*text-align: center;*/
+  margin-left: -20px;
+}
+
+.team .teamprebtn{
+  background-color:  var(--theme);
+  color: #fff;
+  border:none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 25px;
+  /*position: absolute;*/
+  margin-top: 120px;
+  
+  z-index: 10;
+  /*text-align: center;*/
+}
+
+.team .teamMember{
+    position: relative;
+    width: 100%;
+    height: 200px;
+    display: block;
+}
+
+.team .teamMember .tempic{
+   border-radius: 5px;
+   overflow: hidden;
+   z-index: 2;
+   transition: .3s;
+   width: 90%;
+   /*height: 200px;*/
+}
+
+.team .teamMember .tempic img{
+   width: 100%;
+
+}
+
+.team .teamMember .namecard{
+    position: absolute;
+    /*width: 280px;*/
+    height: 80px;
+    border-radius:5px;
+    left: 0px;
+    top: 200px;
+    background-color: #fff;
+    z-index: -1;
+    padding: 20px 10px 10px 10px;
+    transition: .3s;
+    text-align: left;
+}
+.team .teamMember .namecard h6{
+    font-size: 16px;
+    color: #000;
+    /*font-weight: bold;*/
+    /*display: block;*/
+    line-height: 16px;
+    font-family: 'Poppins';
+    padding-top: 5px;
+    margin-bottom: 0px;
+}
+
+.team .teamMember .namecard span{
+    font-size: 13px;
+    color: #999999;   
+    line-height: 13px;
+    margin-top: 0px;
+}
+
+.teamoverlay{
+    position: absolute;
+    height: 0px;
+    width: 290px;
+    background-color: transparent;
+    bottom: 0px;
+    z-index: 3;
+    transition: .3s;
+    overflow: hidden;    
+    top:20px;
+}
+
+.teamoverlay .sociolink{
+    box-sizing: border-box;
+    overflow: hidden;
+    width: 280px;
+    height: 250px;
+    border-radius: 5px;
+    background-color: #000;       
+    margin: 5px 5px 5px 5px;
+    padding: 5px 5px 5px 10px;
+    opacity: .6;
+   
+}
+
+.mmbrbrief{   
+    opacity: 1;
+    color: #fff;
+    font-size: 14px;   
+    line-height: 1.5;
+  padding-top:  25%;
+    
+
+}
+
+.team .teamMember:hover .teamoverlay{
+    /*height: 300px;   */
+}
+
+.team .teamMember:hover .namecard{
+   /*background-color: var(--theme);*/
+}
+
+.team .teamMember:hover .namecard h6{
+   /*color: #fff;*/
+}
+
+.team .teamMember:hover .namecard span{
+   /*color: #fff;*/
+}
+
+.team .teamMember:hover .tempic{
+   /*filter: saturate(0);*/
+   transform: scale(1.1);
+     transition: .6s;
+     z-index: 50;
+}
+
+
+
+
+
+@media screen and (max-width: 1200px){
+  .team .teamnxtbtn{margin-left: -40px;}
+}
+
+
+
+
+.team .mobicenter{}
+
+
+@media screen and (max-width:361px){ 
+  .team .mobicenter{ text-align: center; margin-left: 5px;}
+  .team .teamMember{
+      position: relative;
+      width: 100%;
+      height: 400px;
+      display: block;
+
+  }
+
+  .team .teamMember .tempic{
+     border-radius: 5px;
+     overflow: hidden;
+     z-index: 2;
+     transition: .3s;
+     /*width: 100%;*/
+     /*height: 200px;*/
+     padding-left: 10px;
+  }
+
+  .team .teamMember .tempic img{
+     width: 100%;
+
+  }
+
+  .team .teamMember .namecard{
+      position: absolute;
+      /*width: 280px;*/
+      height: 80px;
+      border-radius:5px;
+      left: 0px;
+      top: 170px;
+      background-color: #fff;
+      z-index: -1;
+      padding: 20px 10px 10px 10px;
+      transition: .3s;
+      text-align: left;
+  }
+
+}
+
+@media screen and ((min-width:362px) and (max-width:376px)){ 
+  .team .mobicenter{ text-align: center; margin-left: 10px;}
+  .team .teamMember{
+      position: relative;
+      width: 100%;
+      height: 400px;
+      display: block;
+
+  }
+
+  .team .teamMember .tempic{
+     border-radius: 5px;
+     overflow: hidden;
+     z-index: 2;
+     transition: .3s;
+     /*width: 100%;*/
+     /*height: 200px;*/
+     padding-left: 10px;
+  }
+
+  .team .teamMember .tempic img{
+     width: 100%;
+
+  }
+
+  .team .teamMember .namecard{
+      position: absolute;
+      /*width: 280px;*/
+      height: 80px;
+      border-radius:5px;
+      left: 0px;
+      top: 170px;
+      background-color: #fff;
+      z-index: -1;
+      padding: 20px 10px 10px 10px;
+      transition: .3s;
+      text-align: left;
+  }
+
+}
+
+/*360 samsung gakaxy s8
+375 iphone SE
+390  iphone 12 Pro
+412 pixel 7
+430 iphone 12 max Pro*/
+
+
+
+@media screen and ((min-width:377px) and (max-width:391px)){ 
+  .team .mobicenter{ text-align: center; margin-left: 10px;}
+  .team .teamMember{
+      position: relative;
+      width: 100%;
+      height: 400px;
+      display: block;
+
+  }
+
+  .team .teamMember .tempic{
+     border-radius: 5px;
+     overflow: hidden;
+     z-index: 2;
+     transition: .3s;
+     /*width: 100%;*/
+     /*height: 200px;*/
+     padding-left: 10px;
+  }
+
+  .team .teamMember .tempic img{
+     width: 100%;
+
+  }
+
+  .team .teamMember .namecard{
+      position: absolute;
+      /*width: 280px;*/
+      height: 80px;
+      border-radius:5px;
+      left: 0px;
+      top: 200px;
+      background-color: #fff;
+      z-index: -1;
+      padding: 20px 10px 10px 10px;
+      transition: .3s;
+      text-align: left;
+  }
+
+}
+
+@media screen and ((min-width:392px) and (max-width:413px)){ 
+  .team .mobicenter{ text-align: center; margin-left: 10px;}
+  .team .teamMember{
+      position: relative;
+      width: 100%;
+      height: 400px;
+      display: block;
+
+  }
+
+  .team .teamMember .tempic{
+     border-radius: 5px;
+     overflow: hidden;
+     z-index: 2;
+     transition: .3s;
+     /*width: 100%;*/
+     /*height: 200px;*/
+     padding-left: 10px;
+  }
+
+  .team .teamMember .tempic img{
+     width: 100%;
+
+  }
+
+  .team .teamMember .namecard{
+      position: absolute;
+      /*width: 280px;*/
+      height: 80px;
+      border-radius:5px;
+      left: 0px;
+      top: 200px;
+      background-color: #fff;
+      z-index: -1;
+      padding: 20px 10px 10px 10px;
+      transition: .3s;
+      text-align: left;
+  }
+
+}
+
+@media screen and ((min-width:413px) and (max-width:431px)){ 
+  .team .mobicenter{ text-align: center; margin-left: 10px;}
+  .team .teamMember{
+      position: relative;
+      width: 100%;
+      height: 400px;
+      display: block;
+
+  }
+
+  .team .teamMember .tempic{
+     border-radius: 5px;
+     overflow: hidden;
+     z-index: 2;
+     transition: .3s;
+     /*width: 100%;*/
+     /*height: 200px;*/
+     padding-left: 10px;
+  }
+
+  .team .teamMember .tempic img{
+     width: 100%;
+
+  }
+
+  .team .teamMember .namecard{
+      position: absolute;
+      /*width: 280px;*/
+      height: 80px;
+      border-radius:5px;
+      left: 0px;
+      top: 200px;
+      background-color: #fff;
+      z-index: -1;
+      padding: 20px 10px 10px 10px;
+      transition: .3s;
+      text-align: left;
+  }
+
+}
+
+@media screen and (min-width:432px) and (max-width:576px){ 
+  .team .mobicenter{ text-align: center; margin-left: 10px;}
+  .team .teamMember{
+      position: relative;
+      width: 100%;
+      height: 400px;
+      display: block;
+
+  }
+
+  .team .teamMember .tempic{
+     border-radius: 5px;
+     overflow: hidden;
+     z-index: 2;
+     transition: .3s;
+     /*width: 100%;*/
+     /*height: 200px;*/
+     padding-left: 10px;
+  }
+
+  .team .teamMember .tempic img{
+     width: 100%;
+
+  }
+
+  .team .teamMember .namecard{
+      position: absolute;
+      /*width: 280px;*/
+      height: 80px;
+      border-radius:5px;
+      left: 0px;
+      top: 200px;
+      background-color: #fff;
+      z-index: -1;
+      padding: 20px 10px 10px 10px;
+      transition: .3s;
+      text-align: left;
+  }
+}
+
+@media screen and (min-width:576px) and (max-width:767px){
+  .team .teamMember{     
+      max-width: 100%;
+      height: 350px; 
+      margin-left: 25%;
+      margin-right: auto;
+  }
+  .team .teamMember .tempic img{
+     height: 250px;
+     width: 250px;
+     margin-left: auto;
+      margin-right: auto;
+  }
+  .team .teamMember .namecard{
+    top: 250px;
+    height: 120px;
+  }
+}
+@media screen and (min-width:576px) and (max-width:767px){
+  .team .teamMember{     
+      max-width: 100%;
+      height: 350px; 
+      margin-left: 25%;
+      margin-right: auto;
+  }
+  .team .teamMember .tempic img{
+     height: 250px;
+     width: 250px;
+     margin-left: auto;
+      margin-right: auto;
+  }
+  .team .teamMember .namecard{
+    top: 250px;
+    height: 120px;
+  }
+}
+@media screen and (min-width:768px) and (max-width:991px){
+   .team .teamMember{     
+      max-width: 95%;
+      height: 320px; 
+      margin-left: auto;
+      margin-right: auto;
+  }
+  .team .teamMember .namecard{
+    top: 220px;
+    height: 100px;
+  }
+}
+@media screen and (min-width:992px) and (max-width:1199px){
+  .team .teamMember{     
+      max-width: 95%;
+      height: 300px; 
+      margin-left: auto;
+      margin-right: auto;
+  }
+  .team .teamMember .namecard{
+    top: 200px;
+    
+  }
+
+}
+@media screen and (min-width:1200px) and (max-width:1399px){
+  .team .teamMember{     
+      max-width: 95%;
+      height: 300px; 
+      margin-left: auto;
+      margin-right: auto;
+  }
+  .team .teamMember .namecard{
+    top: 180px;
+  }
+}
+@media screen and (min-width:1400px){
+.team .teamMember{     
+      max-width: 95%;
+      height: 400px; 
+      margin-left: auto;
+      margin-right: auto;
+  }
+}
